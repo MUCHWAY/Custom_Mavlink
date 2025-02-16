@@ -1,0 +1,188 @@
+<?xml version="1.0"?>
+<mavlink>
+
+    <include>common.xml</include>
+
+    <dialect>8</dialect>
+
+    <enums>
+        <enum name="MAV_USER_COMPONENT">
+            <description>Cmponent ids (values) for the different types and instances of onboard hardware/software that might make up a MAVLink system.</description>
+            <entry value="25" name="MAV_COMP_ID_SPEAKER">
+                <description>SPEAKER #1.</description>
+            </entry>
+            <entry value="26" name="MAV_COMP_ID_SPEAKER2">
+                <description>SPEAKER #2.</description>
+            </entry>
+            <entry value="27" name="MAV_COMP_ID_SPEAKER3">
+                <description>SPEAKER #3.</description>
+            </entry>
+            <entry value="28" name="MAV_COMP_ID_SPEAKER4">
+                <description>SPEAKER #4.</description>
+            </entry>
+            <entry value="29" name="MAV_COMP_ID_SPEAKER5">
+                <description>SPEAKER #5.</description>
+            </entry>
+            <entry value="30" name="MAV_COMP_ID_SPEAKER6">
+                <description>SPEAKER #6.</description>
+            </entry>
+        </enum>
+        <enum name="SPEAKER_PLAY_AUDIO_MODE">
+            <description>Mode of play audio.</description>
+            <entry value="0" name="NONE_MODE">
+                <description>None.</description>
+            </entry>
+            <entry value="1" name="SINGLE_PLAY">
+                <description>Play a audio once.</description>
+            </entry>
+            <entry value="2" name="LOOP_PLAY">
+                <description>Loop play.</description>
+            </entry>
+        </enum>
+        <enum name="SPEAKER_PLAY_AUDIO_STATUS">
+            <description>Status of audio play.</description>
+            <entry value="0" name="IDLE">
+                <description>Idle status.</description>
+            </entry>
+            <entry value="1" name="PLAYING">
+                <description>Play status.</description>
+            </entry>
+        </enum>
+        <enum name="SPEAKER_UPDATE_AUDIO_FILE_TYPE">
+            <description>Type of update audio file.</description>
+            <entry value="0" name="NONE_TYPE">
+                <description>None.</description>
+            </entry>
+            <entry value="1" name="ADD">
+                <description>Add a audio file.</description>
+            </entry>
+            <entry value="2" name="REMOVE">
+                <description>Delete a audio file.</description>
+            </entry>
+            <entry value="3" name="RENAME">
+                <description>Rename a audio file.</description>
+            </entry>
+        </enum>
+        <enum name="MAV_CMD">
+        <!-- Custom specific MAV_CMD_* commands -->
+            <entry value="50000" name="MAV_CMD_SPEAKER_START_PLAY_AUDIO" hasLocation="false" isDestination="false">
+                <description>Start play audio.</description>
+                <param index="1" label="Play audio Mode" enum="SPEAKER_PLAY_AUDIO_MODE">Play audio mode</param>
+                <param index="2" label="Audio index" minValue="0" increment="1">Storage ID (1 for first, 2 for second, etc.)</param>
+                <param index="3" reserved="true" default="0"/>
+                <param index="4" reserved="true" default="0"/>
+                <param index="5" reserved="true" default="0"/>
+                <param index="6" reserved="true" default="0"/>
+                <param index="7" reserved="true" default="0"/>
+            </entry>
+            <entry value="50001" name="MAV_CMD_SPEAKER_STOP_PLAY_AUDIO" hasLocation="false" isDestination="false">
+                <description>Stop play audio.</description>
+                <param index="1">Empty</param>
+                <param index="2">Empty</param>
+                <param index="3">Empty</param>
+                <param index="4">Empty</param>
+                <param index="5">Empty</param>
+                <param index="6">Empty</param>
+                <param index="7">Empty</param>
+            </entry>
+            <entry value="50002" name="MAV_CMD_SPEAKER_NOTIFY_AUDIO_FILE_UPDATE" hasLocation="false" isDestination="false">
+                <description>Notify audio file updated.</description>
+                <param index="1" label="Update audio file type" enum="SPEAKER_UPDATE_AUDIO_FILE_TYPE">Update audio file type</param>
+                <param index="2">Empty</param>
+                <param index="3">Empty</param>
+                <param index="4">Empty</param>
+                <param index="5">Empty</param>
+                <param index="6">Empty</param>
+                <param index="7">Empty</param>
+            </entry>
+            <entry value="50003" name="MAV_CMD_SPEAKER_REQUEST_STATUS" hasLocation="false" isDestination="false">
+                <description>Request speaker status.</description>
+                <param index="1">Empty</param>
+                <param index="2">Empty</param>
+                <param index="3">Empty</param>
+                <param index="4">Empty</param>
+                <param index="5">Empty</param>
+                <param index="6">Empty</param>
+                <param index="7">Empty</param>
+            </entry>
+            <entry value="50005" name="MAV_CMD_SPEAKER_SET_VOLUME" hasLocation="false" isDestination="false">
+                <description>Set volume.</description>
+                <param index="1" label="Volume" minValue="0" increment="1">Volume level(in persentage)</param>
+                <param index="2">Empty</param>
+                <param index="3">Empty</param>
+                <param index="4">Empty</param>
+                <param index="5">Empty</param>
+                <param index="6">Empty</param>
+                <param index="7">Empty</param>
+            </entry>
+            <entry value="50006" name="MAV_CMD_SPEAKER_REQUEST_INFORMATION" hasLocation="false" isDestination="false">
+                <description>Request speaker infomation.</description>
+                <param index="1">Empty</param>
+                <param index="2">Empty</param>
+                <param index="3">Empty</param>
+                <param index="4">Empty</param>
+                <param index="5">Empty</param>
+                <param index="6">Empty</param>
+                <param index="7">Empty</param>
+            </entry>
+            <entry value="50007" name="MAV_CMD_SPEAKER_REQUEST_STORAGE_INFORMATION" hasLocation="false" isDestination="false">
+                <description>Request speaker storage infomation.</description>
+                <param index="1">Empty</param>
+                <param index="2">Empty</param>
+                <param index="3">Empty</param>
+                <param index="4">Empty</param>
+                <param index="5">Empty</param>
+                <param index="6">Empty</param>
+                <param index="7">Empty</param>
+            </entry>
+            <entry value="50008" name="MAV_CMD_SPEAKER_FORMAT_STORAGE" hasLocation="false" isDestination="false">
+                <description>Format storage.</description>
+                <param index="1" label="Storage ID" minValue="0" increment="1">Storage ID (0 for all, 1 for first, 2 for second, etc.)</param>
+                <param index="2">Empty</param>
+                <param index="3">Empty</param>
+                <param index="4">Empty</param>
+                <param index="5">Empty</param>
+                <param index="6">Empty</param>
+                <param index="7">Empty</param>
+            </entry>
+        </enum>
+    </enums>
+
+    <messages>
+        <message id="20000" name="SPEAKER_INFORMATION">
+            <description>Information of speaker.</description>
+            <field type="char[64]" name="vendor_name">Name of the speaker vendor.</field>
+            <field type="char[64]" name="model_name">Name of the speaker model.</field>
+            <field type="uint32_t" name="max_volume">Max volume (in dB).</field>
+            <field type="uint32_t" name="max_power">Max power (in W).</field>
+        </message>
+        <message id="20001" name="SPEAKER_STATUS">
+            <description>Information of audio file.</description>
+            <field type="uint8_t" name="play_mode" enum="SPEAKER_PLAY_AUDIO_MODE">Play audio mode.</field>
+            <field type="uint8_t" name="play_status" enum="SPEAKER_PLAY_AUDIO_STATUS">Whether audio playing is currently in process.</field>
+            <field type="float" name="playing_time_s">Elapsed time since starting the audio playing (in seconds).</field>
+            <field type="float" name="current_volume">Current volume level (in persentage).</field>
+        </message>
+        <message id="20002" name="SPEAKER_STORAGE_INFORMATION">
+            <description>Information about the speaker storage.</description>
+            <field type="uint8_t" name="storage_status"  enum="STORAGE_STATUS">Status of storage.</field>
+            <field type="uint8_t" name="storage_type" enum="STORAGE_TYPE">Storage type.</field>
+            <field type="float" name="total_storage" units="MiB">Total storage (in MiB).</field>
+            <field type="float" name="used_storage" units="MiB">Used storage (in MiB).</field>
+            <field type="float" name="available_storage" units="MiB">Available storage (in MiB).</field>
+        </message>
+        <message id="20003" name="SPEAKER_AUDIO_INFO_REQUEST">
+            <description>Request of audio file information.</description>
+            <field type="char[64]" name="audio_name">The name of audio file.</field>
+            <field type="int32_t" name="reserved">Reserved.</field>
+        </message>
+        <message id="20004" name="SPEAKER_AUDIO_INFO">
+            <description>Information of audio file.</description>
+            <field type="char[64]" name="name">The name of audio file.</field>
+            <field type="uint32_t" name="index">Zero-based index of this audio since vehicle was armed.</field>
+            <field type="char[16]" name="format">The format of audio file.</field>
+            <field type="float" name="length">The length of audio, (in seconds).</field>
+        </message>
+    </messages>
+
+</mavlink>
