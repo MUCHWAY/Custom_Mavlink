@@ -63,6 +63,33 @@
                 <description>Rename a audio file.</description>
             </entry>
         </enum>
+        <enum name="SPEAKER_LIGHT_MODE">
+            <description>Mode of speaker light.</description>
+            <entry value="0" name="NONE_LIGHT_MODE">
+                <description>None light mode.</description>
+            </entry>
+            <entry value="1" name="MODE1">
+                <description>Mode 1.</description>
+            </entry>
+            <entry value="2" name="MODE2">
+                <description>Mode 2.</description>
+            </entry>
+            <entry value="3" name="MODE3">
+                <description>Mode 3.</description>
+            </entry>
+            <entry value="4" name="MODE4">
+                <description>Mode 4.</description>
+            </entry>
+        </enum>
+        <enum name="SPEAKER_LIGHT_ON_OFF">
+            <description>On/off of speaker light.</description>
+            <entry value="0" name="OFF">
+                <description>Off.</description>
+            </entry>
+            <entry value="1" name="ON">
+                <description>On.</description>
+            </entry>
+        </enum>
         <enum name="MAV_CMD">
         <!-- Custom specific MAV_CMD_* commands -->
             <entry value="50000" name="MAV_CMD_SPEAKER_START_PLAY_AUDIO" hasLocation="false" isDestination="false">
@@ -145,6 +172,66 @@
                 <param index="6">Empty</param>
                 <param index="7">Empty</param>
             </entry>
+            <entry value="50009" name="MAV_CMD_SPEAKER_UPDATE_FIRMWARE" hasLocation="false" isDestination="false">
+                <description>Update speaker firmware.</description>
+                <param index="1">Empty</param>
+                <param index="2">Empty</param>
+                <param index="3">Empty</param>
+                <param index="4">Empty</param>
+                <param index="5">Empty</param>
+                <param index="6">Empty</param>
+                <param index="7">Empty</param>
+            </entry>
+            <entry value="50010" name="MAV_CMD_SPEAKER_RESTART" hasLocation="false" isDestination="false">
+                <description>Restart speaker.</description>
+                <param index="1">Empty</param>
+                <param index="2">Empty</param>
+                <param index="3">Empty</param>
+                <param index="4">Empty</param>
+                <param index="5">Empty</param>
+                <param index="6">Empty</param>
+                <param index="7">Empty</param>
+            </entry>
+            <entry value="50011" name="MAV_CMD_SPEAKER_SET_ANGLE" hasLocation="false" isDestination="false">
+                <description>Set speaker pitch.</description>
+                <param index="1" label="Roll" units="deg" minValue="-180" maxValue="180">Roll angle (of surface). Range: -180..180 degrees. NAN or 0 means value not set. 0.01 indicates zero roll.</param>
+                <param index="2" label="Pitch" units="deg" minValue="-90" maxValue="90">Pitch angle (of surface). Range: -90..90 degrees. NAN or 0 means value not set. 0.01 means zero pitch.</param>
+                <param index="3" label="Yaw" units="deg" minValue="-180" maxValue="180">Yaw angle. NaN to use default heading. Range: -180..180 degrees.</param>
+                <param index="4">Empty</param>
+                <param index="5">Empty</param>
+                <param index="6">Empty</param>
+                <param index="7">Empty</param>
+            </entry>
+            <entry value="50012" name="MAV_CMD_SPEAKER_SET_LIGHT_MODE" hasLocation="false" isDestination="false">
+                <description>Set speaker light mode.</description>
+                <param index="1" label="Pitch set value" enum="SPEAKER_LIGHT_MODE">Positive valuce is up, negative value is down, 0 value is center.</param>
+                <param index="2">Empty</param>
+                <param index="3">Empty</param>
+                <param index="4">Empty</param>
+                <param index="5">Empty</param>
+                <param index="6">Empty</param>
+                <param index="7">Empty</param>
+            </entry>
+            <entry value="50013" name="MAV_CMD_SPEAKER_SET_LIGHT_ON_OFF" hasLocation="false" isDestination="false">
+                <description>Set speaker light on/off.</description>
+                <param index="1" label="Light on/off" enum="SPEAKER_LIGHT_ON_OFF">0 is off, 1 is on.</param>
+                <param index="2">Empty</param>
+                <param index="3">Empty</param>
+                <param index="4">Empty</param>
+                <param index="5">Empty</param>
+                <param index="6">Empty</param>
+                <param index="7">Empty</param>
+            </entry>
+            <entry value="50014" name="MAV_CMD_SPEAKER_FOLLOW_GIMBAL" hasLocation="false" isDestination="false">
+                <description>Set speaker follow the gimbal.</description>
+                <param index="1" label="Follow the gimbal" minValue="0" maxValue="1" increment="1">0: no, 1: yes</param>
+                <param index="2">Empty</param>
+                <param index="3">Empty</param>
+                <param index="4">Empty</param>
+                <param index="5">Empty</param>
+                <param index="6">Empty</param>
+                <param index="7">Empty</param>
+            </entry>
         </enum>
     </enums>
 
@@ -162,6 +249,12 @@
             <field type="uint8_t" name="play_status" enum="SPEAKER_PLAY_AUDIO_STATUS">Whether audio playing is currently in process.</field>
             <field type="float" name="playing_time_s">Elapsed time since starting the audio playing (in seconds).</field>
             <field type="float" name="current_volume">Current volume level (in persentage).</field>
+            <field type="int32_t" name="network_module_status">Current network status.</field>
+            <field type="float" name="roll">Value of speaker roll.</field>
+            <field type="float" name="pitch">Value of speaker pitch.</field>
+            <field type="float" name="yaw">Value of speaker yaw.</field>
+            <field type="uint8_t" name="light_mode" enum="SPEAKER_LIGHT_MODE">Mode of speaker light.</field>
+            <field type="uint8_t" name="light_on_off" enum="SPEAKER_LIGHT_ON_OFF">On/off of speaker light.</field>
         </message>
         <message id="20002" name="SPEAKER_STORAGE_INFORMATION">
             <description>Information about the speaker storage.</description>
