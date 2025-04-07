@@ -90,6 +90,15 @@
                 <description>On.</description>
             </entry>
         </enum>
+        <enum name="SPEAKER_FILE_OPERATION_PERMISSION">
+            <description>On/off of speaker light.</description>
+            <entry value="0" name="RELEASE">
+                <description>Off.</description>
+            </entry>
+            <entry value="1" name="GET">
+                <description>On.</description>
+            </entry>
+        </enum>
         <enum name="MAV_CMD">
         <!-- Custom specific MAV_CMD_* commands -->
             <entry value="50000" name="MAV_CMD_SPEAKER_START_PLAY_AUDIO" hasLocation="false" isDestination="false">
@@ -232,6 +241,46 @@
                 <param index="6">Empty</param>
                 <param index="7">Empty</param>
             </entry>
+            <entry value="50015" name="MAV_CMD_SPEAKER_CREATE_CONNECTION" hasLocation="false" isDestination="false">
+                <description>Create a new connection.</description>
+                <param index="1" label="Connection id" increment="1">Connection id.</param>
+                <param index="2">Empty</param>
+                <param index="3">Empty</param>
+                <param index="4">Empty</param>
+                <param index="5">Empty</param>
+                <param index="6">Empty</param>
+                <param index="7">Empty</param>
+            </entry>
+            <entry value="50016" name="MAVL_CMD_SPEAKER_REMOVE_CONNECTION" hasLocation="false" isDestination="false">
+                <description>Remove connection.</description>
+                <param index="1" label="Connection id" increment="1">Connection id.</param>
+                <param index="2">Empty</param>
+                <param index="3">Empty</param>
+                <param index="4">Empty</param>
+                <param index="5">Empty</param>
+                <param index="6">Empty</param>
+                <param index="7">Empty</param>
+            </entry>
+            <entry value="50017" name="MAV_CMD_SPEAKER_REQUEST_CONNECTION_STATUS" hasLocation="false" isDestination="false">
+                <description>Request connection status.</description>
+                <param index="1" label="Connection id" increment="1">Connection id.</param>
+                <param index="2">Empty</param>
+                <param index="3">Empty</param>
+                <param index="4">Empty</param>
+                <param index="5">Empty</param>
+                <param index="6">Empty</param>
+                <param index="7">Empty</param>
+            </entry>
+            <entry value="50018" name="MAV_CMD_SPEAKER_APPLY_FILE_OPERATION_PERMISSION" hasLocation="false" isDestination="false">
+                <description>File operation permission.</description>
+                <param index="1" label="Permission want" enum="SPEAKER_FILE_OPERATION_PERMISSION">0 is release, 1 is get.</param>
+                <param index="2">Empty</param>
+                <param index="3">Empty</param>
+                <param index="4">Empty</param>
+                <param index="5">Empty</param>
+                <param index="6">Empty</param>
+                <param index="7">Empty</param>
+            </entry>
         </enum>
     </enums>
 
@@ -275,6 +324,10 @@
             <field type="uint32_t" name="index">Zero-based index of this audio since vehicle was armed.</field>
             <field type="char[16]" name="format">The format of audio file.</field>
             <field type="float" name="length">The length of audio, (in seconds).</field>
+        </message>
+        <message id="20005" name="SPEAKER_CONNECTION_STATUS">
+            <description>Status of connection.</description>
+            <field type="uint8_t" name="is_connected">The connection is connected.</field>
         </message>
     </messages>
 
