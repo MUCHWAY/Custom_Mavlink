@@ -281,6 +281,18 @@
                 <param index="6">Empty</param>
                 <param index="7">Empty</param>
             </entry>
+
+             <entry value="51031" name="MAV_CMD_TK_ENTER_UPGRADE_MODE">
+                <description>Enter upgrade mode</description>
+                <param index="1">Empty</param>   
+            </entry> 
+
+            <entry value="51032" name="MAV_CMD_TK_EXIT_UPGRADE_MODE">
+                <description>Exit upgrade mode</description>
+                <param index="1">Empty</param>
+            </entry>  
+
+
         </enum>
     </enums>
 
@@ -329,6 +341,14 @@
             <description>Status of connection.</description>
             <field type="uint8_t" name="is_connected">The connection is connected.</field>
         </message>
+
+        <message id="51000" name="TK_CUSTOM_DATA">
+            <description>Custom data.</description>
+            <field type="uint16_t" name="msg_id">The name of audio file.</field>
+            <field type="uint8_t" name="len">Data length.</field>
+            <field type="char[252]" name="data">Custom data area.</field>
+        </message>
+
     </messages>
 
 </mavlink>
