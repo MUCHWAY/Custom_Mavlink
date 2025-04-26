@@ -65,7 +65,7 @@
         </enum>
         <enum name="SPEAKER_LIGHT_MODE">
             <description>Mode of speaker light.</description>
-            <entry value="0" name="NONE_LIGHT_MODE">
+            <entry value="0" name="MODE0">
                 <description>None light mode.</description>
             </entry>
             <entry value="1" name="MODE1">
@@ -98,6 +98,31 @@
             <entry value="1" name="GET">
                 <description>On.</description>
             </entry>
+        </enum>
+        <enum name="SPEAKER_MULTI_CONNECTION_OPERATION_TYPE">
+            <description>operation type of multi connection.</description>
+            <entry value="0" name="OPEN_CONNECTION">
+                <description>Open.</description>
+            </entry>
+            <entry value="1" name="CLOSE_CONNECTION">
+                <description>Close.</description>
+            </entry>
+            <entry value="2" name="REMOVE_CONNECTION">
+                <description>Remove.</description>
+            </entry>
+            <entry value="3" name="ADD_CONNECTION">
+                <description>Add.</description>
+            </entry>
+            <entry value="4" name="QUERY_CONNECTION_AMOUNT">
+                <description>Query connection amount.</description>
+            </entry>
+            <entry value="5" name="QUERY_CONNECTION_ID">
+                <description>Query connection id.</description>
+            </entry>
+            <entry value="6" name="QUERY_CONNECTION_STATUS">
+                <description>Query status.</description>
+            </entry>
+
         </enum>
         <enum name="MAV_CMD">
         <!-- Custom specific MAV_CMD_* commands -->
@@ -241,37 +266,17 @@
                 <param index="6">Empty</param>
                 <param index="7">Empty</param>
             </entry>
-            <entry value="50015" name="MAV_CMD_SPEAKER_CREATE_CONNECTION" hasLocation="false" isDestination="false">
-                <description>Create a new connection.</description>
-                <param index="1" label="Connection id" increment="1">Connection id.</param>
-                <param index="2">Empty</param>
-                <param index="3">Empty</param>
+            <entry value="50015" name="MAV_CMD_SPEAKER_MULTI_CONNECTION_OPERATION" hasLocation="false" isDestination="false">
+                <description>Multi connection operation.</description>
+                <param index="1" label="Operation type" enum = "SPEAKER_MULTI_CONNECTION_OPERATION_TYPE">Operation type.</param>
+                <param index="2" label="Connection id" increment="1">Connection id.</param>
+                <param index="3" label="Connection index" increment="1">Connection index.</param>
                 <param index="4">Empty</param>
                 <param index="5">Empty</param>
                 <param index="6">Empty</param>
                 <param index="7">Empty</param>
             </entry>
-            <entry value="50016" name="MAVL_CMD_SPEAKER_REMOVE_CONNECTION" hasLocation="false" isDestination="false">
-                <description>Remove connection.</description>
-                <param index="1" label="Connection id" increment="1">Connection id.</param>
-                <param index="2">Empty</param>
-                <param index="3">Empty</param>
-                <param index="4">Empty</param>
-                <param index="5">Empty</param>
-                <param index="6">Empty</param>
-                <param index="7">Empty</param>
-            </entry>
-            <entry value="50017" name="MAV_CMD_SPEAKER_REQUEST_CONNECTION_STATUS" hasLocation="false" isDestination="false">
-                <description>Request connection status.</description>
-                <param index="1" label="Connection id" increment="1">Connection id.</param>
-                <param index="2">Empty</param>
-                <param index="3">Empty</param>
-                <param index="4">Empty</param>
-                <param index="5">Empty</param>
-                <param index="6">Empty</param>
-                <param index="7">Empty</param>
-            </entry>
-            <entry value="50018" name="MAV_CMD_SPEAKER_APPLY_FILE_OPERATION_PERMISSION" hasLocation="false" isDestination="false">
+            <entry value="50016" name="MAV_CMD_SPEAKER_APPLY_FILE_OPERATION_PERMISSION" hasLocation="false" isDestination="false">
                 <description>File operation permission.</description>
                 <param index="1" label="Permission want" enum="SPEAKER_FILE_OPERATION_PERMISSION">0 is release, 1 is get.</param>
                 <param index="2">Empty</param>
@@ -298,10 +303,10 @@
     <messages>
         <message id="20000" name="SPEAKER_INFORMATION">
             <description>Information of speaker.</description>
-            <field type="char[64]" name="vendor_name">Name of the speaker vendor.</field>
-            <field type="char[64]" name="model_name">Name of the speaker model.</field>
-            <field type="uint32_t" name="max_volume">Max volume (in dB).</field>
-            <field type="uint32_t" name="max_power">Max power (in W).</field>
+            <field type="char[32]" name="vendor_name">Name of the speaker vendor.</field>
+            <field type="char[32]" name="model_name">Name of the speaker model.</field>
+            <field type="char[32]" name="serial_number">Serial number of the speaker.</field>
+            <field type="char[32]" name="firmware_version">Version of the speaker firmware.</field>
         </message>
         <message id="20001" name="SPEAKER_STATUS">
             <description>Information of audio file.</description>
@@ -338,7 +343,11 @@
         </message>
         <message id="20005" name="SPEAKER_CONNECTION_STATUS">
             <description>Status of connection.</description>
-            <field type="uint8_t" name="is_connected">The connection is connected.</field>
+            <field type="uint8_t" name="operation_ack" enum="SPEAKER_MULTI_CONNECTION_OPERATION_TYPE">Connection operation type.</field>
+            <field type="uint8_t" name="connection_amount">The connection amount.</field>
+            <field type="uint8_t" name="connection_index">The connection index.</field>
+            <field type="uint64_t" name="connection_id">The connection id.</field>
+            <field type="uint8_t" name="connection_status">The connection status.</field>
         </message>
 
         <message id="51000" name="TK_CUSTOM_DATA">
