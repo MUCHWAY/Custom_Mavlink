@@ -268,12 +268,12 @@
             </entry>
             <entry value="50015" name="MAV_CMD_SPEAKER_MULTI_CONNECTION_OPERATION" hasLocation="false" isDestination="false">
                 <description>Multi connection operation.</description>
-                <param index="1" label="Operation type" enum = "SPEAKER_MULTI_CONNECTION_OPERATION_TYPE">Operation type.</param>
+                <param index="1" label="Connection id" increment="1">Connection id.</param>
                 <param index="2" label="Connection id" increment="1">Connection id.</param>
-                <param index="3" label="Connection index" increment="1">Connection index.</param>
-                <param index="4">Empty</param>
-                <param index="5">Empty</param>
-                <param index="6">Empty</param>
+                <param index="3" label="Connection id" increment="1">Connection id.</param>
+                <param index="4" label="Connection id" increment="1">Connection id.</param>
+                <param index="5" label="Connection index" increment="1">Connection index.</param>
+                <param index="6" label="Operation type" enum = "SPEAKER_MULTI_CONNECTION_OPERATION_TYPE">Operation type.</param>
                 <param index="7">Empty</param>
             </entry>
             <entry value="50016" name="MAV_CMD_SPEAKER_APPLY_FILE_OPERATION_PERMISSION" hasLocation="false" isDestination="false">
