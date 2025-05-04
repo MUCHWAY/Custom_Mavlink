@@ -122,8 +122,86 @@
             <entry value="6" name="QUERY_CONNECTION_STATUS">
                 <description>Query status.</description>
             </entry>
-
         </enum>
+
+        <enum name="MAV_TK_STATUS">
+            <description>Indicate the switch status</description>
+            <entry value="0" name="TK_STATUS_OFF">
+                <description>Off</description>
+            </entry>
+            <entry value="1" name="TK_STATUS_ON">
+                <description>On</description>
+            </entry>
+        </enum>
+
+        <enum name="MAV_TK_IMAGE_FLIP">
+            <description>Indicate the image flip status</description>
+             <entry value="0" name="TK_HORIZONTAL_CLOCKWISE">
+            <description>Horizontal clockwise flip</description>
+            </entry>
+            <entry value="1" name="TK_HORIZONTAL_COUNTER_CLOCKWISE">
+            <description>Horizontal counter-clockwise flip</description>
+            </entry>
+            <entry value="2" name="TK_VERTICAL_CLOCKWISE">
+            <description>Vertical clockwise flip</description>
+            </entry>
+            <entry value="3" name="TK_VERTICAL_COUNTER_CLOCKWISE">
+            <description>Vertical counter-clockwise flip</description>
+            </entry>
+         </enum>  
+
+        <enum name="MAV_TK_TEMPERATURE_FLAG">
+            <description>Indicate the infrared temperature measurement flag</description>
+            <entry value="0" name="TK_TEMP_MEASUREMENT_STATUS">
+                <description>Infrared temperature measurement status</description>
+            </entry>
+            <entry value="1" name="TK_TEMP_MEASUREMENT_LEVEL">
+                <description>Infrared temperature measurement level</description>
+            </entry>         
+        </enum>  
+
+          <enum name="MAV_TK_TEMPERATURE_LEVEL">
+            <description>Indicate the infrared temperature measurement level</description>
+            <entry value="0" name="TK_TEMP_LEVEL_1">
+                <description>Level 1</description>
+            </entry>
+            <entry value="1" name="TK_TEMP_LEVEL_2">
+                <description>Level 2</description>
+            </entry>
+            <entry value="2" name="TK_TEMP_LEVEL_3">
+                <description>Level 3</description>
+            </entry>
+            <entry value="3" name="TK_TEMP_LEVEL_4">
+                <description>Level 4</description>
+            </entry>
+        </enum>  
+
+        <enum name = "MAV_TK_LASER_RANGE_FINDER">
+            <description>Indicate the laser range finder flag</description>
+            <entry value="0" name="TK_SINGLE_DISTANCE_MEASUREMENT">
+            <description>Single distance measurement</description>
+            </entry>
+            <entry value="1" name="TK_CONTINUOUS_DISTANCE_MEASUREMENT">
+            <description>Continuous distance measurement</description>
+            </entry>
+            <entry value="2" name="TK_STOP_MEASUREMENT">
+            <description>Stop distance measurement</description>
+            </entry>
+        </enum>
+
+        <enum name="FILL_LIGHT_FLAG">
+            <description>Status control</description>
+            <entry value="0" name="TK_FILL_LIGHT_STATUS">
+            <description>Status setting</description>
+            </entry>
+            <entry value="1" name="TK_FILL_LIGHT_BRIGHTNESS">
+            <description>Brightness setting</description>
+            </entry>
+            <entry value="2" name="TK_FILL_LIGHT_FACULA">
+            <description>Light spot control</description>
+            </entry>
+        </enum>
+
         <enum name="MAV_CMD">
         <!-- Custom specific MAV_CMD_* commands -->
             <entry value="50000" name="MAV_CMD_SPEAKER_START_PLAY_AUDIO" hasLocation="false" isDestination="false">
@@ -287,6 +365,8 @@
                 <param index="7">Empty</param>
             </entry>
 
+            <!-- 51000~51299 is gimbal-->
+
              <entry value="51031" name="MAV_CMD_TK_ENTER_UPGRADE_MODE">
                 <description>Enter upgrade mode</description>
                 <param index="1">Empty</param>   
@@ -297,6 +377,71 @@
                 <param index="1">Empty</param>
             </entry>  
 
+            <!-- 51200~51399 is Motor-->
+
+        
+            <!-- 51400~51599 is camera-->
+ 
+            <entry value="51400" name="MAV_CMD_TK_CAMERA_CHANGE_PIP">
+                <description>Change camera PIP</description>
+                <param index="1" label="PIP mode">PIP mode</param>
+            </entry> 
+
+            <entry value="51401" name="MAV_CMD_TK_CAMERA_CHANGE_PSEUDO_COLOR">
+                <description>Change camera pseudo color</description>
+                <param index="1" label="pseudo color">pseudo color</param>
+            </entry>
+
+            <entry value="51402" name="MAV_CMD_TK_CAMERA_OSD">
+                <description>Set camera OSD</description>
+                <param index="1" label="osd status" enum = "MAV_TK_STATUS">osd status</param>
+            </entry>
+
+
+            <entry value="51403" name="MAV_CMD_TK_CAMERA_IMAGE_FLIP">
+                <description>Set camera flip</description>
+                <param index="1" label="flip status" enum = "MAV_TK_IMAGE_FLIP">flip status</param>
+            </entry>
+
+            <entry value="51404" name="MAV_CMD_TK_CAMERA_ELECTRONIC_ZOOM">
+                <description>Set camera electronic zoom</description>
+                <param index="1" label="zoom status" enum = "MAV_TK_STATUS">zoom status</param>
+            </entry>
+
+            <entry value="51405" name="MAV_CMD_TK_CAMERA_ELECTRONIC_STABILIZATION">
+                <description>Set camera electronic stabilization</description>
+                <param index="1" label="stabilization status" enum = "MAV_TK_STATUS">camera electronic stabilization status</param>
+            </entry>
+
+            <entry value="51406" name="MAV_CMD_TK_CAMERA_INFRARED_TEMPERATURE">
+                <description>Infrared temperature measurement</description>
+                <param index="1" label="flag" enum="MAV_TK_TEMPERATURE_FLAG"></param>
+                <param index="2" label="Temperature status" enum="MAV_TK_STATUS">Infrared temperature measurement status</param>
+                <param index="3" label="Level" enum = "MAV_TK_TEMPERATURE_LEVEL">Temperature measurement level</param>
+            </entry>
+
+            <entry value="51407" name="MAV_CMD_TK_LASER_INDICATOR_LIGHT">
+                <description>Laser indicator light</description>
+                <param index="1" label="Laser indicator light status" enum="MAV_TK_STATUS">Laser indicator light status</param>
+            </entry>
+
+            <entry value="51408" name="MAV_CMD_TK_LASER_RANGE_FINDER">
+                <description>Laser range finder</description>
+                <param index="1" label="Laser range finder flag" enum="MAV_TK_LASER_RANGE_FINDER">Laser range finder flag</param>
+            </entry>
+
+            <entry value="51409" name="MAV_CMD_TK_HUMAN_VEHICLE_DETECTION">
+                <description>Human and vehicle detection</description>
+                <param index="1" label="Detection status" enum="MAV_TK_STATUS">Human and vehicle detection status</param>
+            </entry>
+
+            <entry value="51410" name="MAV_CMD_TK_FILL_LIGHT_CONTROL">
+                <description>Fill light control</description>
+                <param index="1" label="flag" enum="FILL_LIGHT_FLAG">Fill light control flag</param>
+                <param index="2" label="Light status">Fill light status</param>
+                <param index="3" label="Brightness" minValue = "0" maxValue = "255">Fill light brightness  minValue = "0" maxValue = "255" </param>
+                <param index="4" label="Light spot" minValue = "0" maxValue = "180">Fill light spot size minValue = "0" maxValue = "180"</param>
+            </entry>
         </enum>
     </enums>
 
