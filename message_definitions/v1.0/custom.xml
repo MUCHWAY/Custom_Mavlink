@@ -148,19 +148,19 @@
             <entry value="3" name="TK_VERTICAL_COUNTER_CLOCKWISE">
             <description>Vertical counter-clockwise flip</description>
             </entry>
-         </enum>  
+         </enum>   
 
         <enum name="MAV_TK_TEMPERATURE_FLAG">
             <description>Indicate the infrared temperature measurement flag</description>
-            <entry value="0" name="TK_TEMP_MEASUREMENT_STATUS">
+            <entry value="1" name="TK_TEMP_MEASUREMENT_STATUS">
                 <description>Infrared temperature measurement status</description>
             </entry>
-            <entry value="1" name="TK_TEMP_MEASUREMENT_LEVEL">
+            <entry value="2" name="TK_TEMP_MEASUREMENT_LEVEL">
                 <description>Infrared temperature measurement level</description>
             </entry>         
         </enum>  
 
-          <enum name="MAV_TK_TEMPERATURE_LEVEL">
+        <enum name="MAV_TK_TEMPERATURE_LEVEL">
             <description>Indicate the infrared temperature measurement level</description>
             <entry value="0" name="TK_TEMP_LEVEL_1">
                 <description>Level 1</description>
@@ -191,16 +191,45 @@
 
         <enum name="FILL_LIGHT_FLAG">
             <description>Status control</description>
-            <entry value="0" name="TK_FILL_LIGHT_STATUS">
+            <entry value="1" name="TK_FILL_LIGHT_STATUS">
             <description>Status setting</description>
             </entry>
-            <entry value="1" name="TK_FILL_LIGHT_BRIGHTNESS">
+            <entry value="2" name="TK_FILL_LIGHT_BRIGHTNESS">
             <description>Brightness setting</description>
             </entry>
-            <entry value="2" name="TK_FILL_LIGHT_FACULA">
+            <entry value="4" name="TK_FILL_LIGHT_SPOT">
             <description>Light spot control</description>
             </entry>
         </enum>
+
+        <enum name="PIP_MODE">
+            <description>Indicate the PIP mode</description>
+            <entry value="0" name="PIP_MODE_NULL">
+                <description>Null</description>
+            </entry>
+            <entry value="1" name="PIP_MAIN_WHITE_LIGHT">
+                <description>Main white light mode</description>
+            </entry>
+            <entry value="2" name="PIP_MAIN_THERMAL">
+                <description>Main thermal imaging mode</description>
+            </entry>
+            <entry value="3" name="PIP_MAIN_WHITE_SUB_THERMAL">
+                <description>Main white light + Secondary thermal imaging mode</description>
+            </entry>
+            <entry value="4" name="PIP_MAIN_THERMAL_SUB_WHITE">
+                <description>Main thermal + Secondary white light mode</description>
+            </entry>
+            <entry value="5" name="PIP_MAIN_WIDE_ANGLE">
+                <description>Main wide-angle mode</description>
+            </entry>
+            <entry value="6" name="PIP_MAIN_WHITE_SUB_WIDE">
+                <description>Main white light + Secondary wide-angle mode</description>
+            </entry>
+            <entry value="7" name="PIP_MAIN_WIDE_SUB_WHITE">
+                <description>Main wide-angle + Secondary white light mode</description>
+            </entry>
+        </enum>
+
 
         <enum name="MAV_CMD">
         <!-- Custom specific MAV_CMD_* commands -->
@@ -384,7 +413,7 @@
  
             <entry value="51400" name="MAV_CMD_TK_CAMERA_CHANGE_PIP">
                 <description>Change camera PIP</description>
-                <param index="1" label="PIP mode">PIP mode</param>
+                <param index="1" label="PIP mode" enum = "PIP_MODE">PIP mode</param>
             </entry> 
 
             <entry value="51401" name="MAV_CMD_TK_CAMERA_CHANGE_PSEUDO_COLOR">
