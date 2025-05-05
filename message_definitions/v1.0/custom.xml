@@ -471,6 +471,11 @@
                 <param index="3" label="Brightness" minValue = "0" maxValue = "255">Fill light brightness  minValue = "0" maxValue = "255" </param>
                 <param index="4" label="Light spot" minValue = "0" maxValue = "180">Fill light spot size minValue = "0" maxValue = "180"</param>
             </entry>
+
+            <entry value="51411" name="MAV_CMD_CAMREA_PARAM_SAVE">
+                <description>Save camera parameters</description>
+                <param index="1">Empty</param>
+            </entry>
         </enum>
     </enums>
 
