@@ -26,6 +26,9 @@
             <entry value="30" name="MAV_COMP_ID_SPEAKER6">
                 <description>SPEAKER #6.</description>
             </entry>
+            <entry value="31" name="MAV_COMP_ID_SKYLINK">
+                <description>SPEAKER #1.</description>
+            </entry>
         </enum>
         <enum name="SPEAKER_PLAY_AUDIO_MODE">
             <description>Mode of play audio.</description>
@@ -394,6 +397,48 @@
                 <param index="7">Empty</param>
             </entry>
 
+            <entry value="50017" name="MAV_CMD_NOTIFY_FILE_UPDATE" hasLocation="false" isDestination="false">
+                <description>Notify audio file updated.</description>
+                <param index="1" label="Update audio file type" enum="SPEAKER_UPDATE_AUDIO_FILE_TYPE">Update audio file type</param>
+                <param index="2">Empty</param>
+                <param index="3">Empty</param>
+                <param index="4">Empty</param>
+                <param index="5">Empty</param>
+                <param index="6">Empty</param>
+                <param index="7">Empty</param>
+            </entry>
+
+             <entry value="50030" name="MAV_CMD_SKYLINK_REQUEST_INFORMATION" hasLocation="false" isDestination="false">
+                <description>Request skylink infomation.</description>
+                <param index="1">Empty</param>
+                <param index="2">Empty</param>
+                <param index="3">Empty</param>
+                <param index="4">Empty</param>
+                <param index="5">Empty</param>
+                <param index="6">Empty</param>
+                <param index="7">Empty</param>
+            </entry>
+            <entry value="50031" name="MAV_CMD_SKYLINK_UPDATE_FIRMWARE" hasLocation="false" isDestination="false">
+                <description>Update skylink firmware.</description>
+                <param index="1">Empty</param>
+                <param index="2">Empty</param>
+                <param index="3">Empty</param>
+                <param index="4">Empty</param>
+                <param index="5">Empty</param>
+                <param index="6">Empty</param>
+                <param index="7">Empty</param>
+            </entry>
+            <entry value="50032" name="MAV_CMD_SKYLINK_RESTART" hasLocation="false" isDestination="false">
+                <description>Restart skylink.</description>
+                <param index="1">Empty</param>
+                <param index="2">Empty</param>
+                <param index="3">Empty</param>
+                <param index="4">Empty</param>
+                <param index="5">Empty</param>
+                <param index="6">Empty</param>
+                <param index="7">Empty</param>
+            </entry>
+
             <!-- 51000~51299 is gimbal-->
 
              <entry value="51031" name="MAV_CMD_TK_ENTER_UPGRADE_MODE">
@@ -528,6 +573,28 @@
             <field type="uint64_t" name="connection_id">The connection id.</field>
             <field type="uint8_t" name="connection_status">The connection status.</field>
         </message>
+
+        <message id="20006" name="FILE_INFORMATION_REQUEST">
+            <description>Request of audio file information.</description>
+            <field type="char[64]" name="audio_name">The name of audio file.</field>
+            <field type="int32_t" name="reserved">Reserved.</field>
+        </message>
+
+
+        <message id="20020" name="SKYLINK_INFORMATION">
+            <description>Information of skylink.</description>
+            <field type="char[32]" name="vendor_name">Name of the speaker vendor.</field>
+            <field type="char[32]" name="model_name">Name of the speaker model.</field>
+            <field type="char[32]" name="serial_number">Serial number of the speaker.</field>
+            <field type="char[32]" name="firmware_version">Version of the speaker firmware.</field>
+        </message>
+
+        <message id="20021" name="SKYLINK_FILE_INFORMATION">
+            <description>Information of audio file.</description>
+            <field type="char[64]" name="name">The name of audio file.</field>
+            <field type="uint32_t" name="index">Zero-based index of this audio since vehicle was armed.</field>
+        </message>
+
 
         <message id="51000" name="TK_CUSTOM_DATA">
             <description>Custom data.</description>
