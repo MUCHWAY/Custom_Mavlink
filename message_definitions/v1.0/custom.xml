@@ -228,7 +228,83 @@
             <entry value="7" name="PIP_MAIN_WIDE_SUB_WHITE">
                 <description>Main wide-angle + Secondary white light mode</description>
             </entry>
+
         </enum>
+        <enum name="MOTOR_STATUS">
+            <description>Indicate the motor status</description>
+            <entry value="0" name="MOTOR_STATUS_ON">
+                <description>On</description>
+            </entry>
+            <entry value="1" name="MOTOR_STATUS_OFF">
+                <description>Off</description>
+            </entry>
+        </enum>
+        <enum name="MOTOR_ERROR_STATUS">
+            <description>Indicate the motor error status</description>
+            <entry value="1" name="MOTOR_LOW_VOLTAGE_STATE">
+            <description>Low voltage status, 0:normal, 1:low voltage protection</description>
+            </entry>
+            <entry value="2" name="MOTOR_HIGH_VOLTAGE_STATE">
+            <description>High voltage status, 0:normal, 1:high voltage protection</description>
+            </entry>
+            <entry value="4" name="MOTOR_DRIVER_TEMPERATURE_STATE">
+            <description>Driver temperature status, 0:normal, 1:driver overheating</description>
+            </entry>
+            <entry value="8" name="MOTOR_TEMPERATURE_STATE">
+            <description>Motor temperature status, 0:normal, 1:motor overheating</description>
+            </entry>
+            <entry value="16" name="MOTOR_CURRENT_STATE">
+            <description>Motor current status, 0:normal, 1:motor overcurrent</description>
+            </entry>
+            <entry value="32" name="MOTOR_SHORT_CIRCUIT_STATE">
+            <description>Motor short circuit status, 0:normal, 1:motor short circuit</description>
+            </entry>
+            <entry value="64" name="MOTOR_STALL_STATE">
+            <description>Motor stall status, 0:normal, 1:motor stall</description>
+            </entry>
+            <entry value="128" name="MOTOR_INPUT_SIGNAL_STATE">
+            <description>Input signal status, 0:normal, 1:input signal loss timeout</description>
+            </entry>
+        </enum> 
+
+   
+        <enum name = "MOTOR_DIRECTION_CONTROL">
+            <description>Set motor rotation direction.</description>
+            <entry value="1" name="MOTOR_CW">
+            <description>Motor clockwise.</description>
+            </entry>
+            <entry value="2" name="MOTOR_CCW">
+            <description>Motor counterclockwise.</description>
+            </entry>
+        </enum> 
+
+        <enum name = "MOTOR_PARAMETER_CONTROL_TABLE">
+            <description>Motor parameter control table.</description>
+            <entry value="1" name="ANGLE_PID">
+            <description>Angle PID, contains 3 parameters, each parameter is float type..</description>
+            </entry>
+            <entry value="2" name="VELOCITY_PID">
+            <description> Velocity PID, contains 3 parameters, each parameter is float type.</description>
+            </entry>
+            <entry value="3" name="CURRENT_PID">
+            <description> Current PID, contains 3 parameters, each parameter is uint16_t type.</description>
+            </entry>
+            <entry value="4" name="MAX_TORQUE_CURRENT">
+            <description> Maximum torque current, contains 1 parameter of int16_t type.</description>
+            </entry>
+            <entry value="5" name="MAX_SPEED">
+            <description> Maximum speed, contains 1 parameter of int32_t type. </description>
+            </entry>
+            <entry value="6" name="ANGLE_LIMIT">
+            <description>Angle limit, contains 1 parameter of int32_t type.</description>
+            </entry>
+            <entry value="7" name="CURRENT_SLOPE">
+            <description> Current slope, contains 1 parameter of int32_t type.</description>
+            </entry>
+            <entry value="8" name="SPEED_SLOPE">
+            <description>Speed slope, contains 1 parameter of int32_t type. </description>
+            </entry>
+        </enum> 
 
 
         <enum name="MAV_CMD">
@@ -394,7 +470,12 @@
                 <param index="7">Empty</param>
             </entry>
 
-            <!-- 51000~51299 is gimbal-->
+            <!-- 51000~51399 is gimbal-->
+
+            <entry value="51000" name="MAV_CMD_TK_GIMBAL_REQUEST_INFORMATION" hasLocation="false" isDestination="false">
+                <description>Request custom gimbal infomation.</description>
+                <param index="1">Empty</param>
+            </entry>
 
              <entry value="51031" name="MAV_CMD_TK_ENTER_UPGRADE_MODE">
                 <description>Enter upgrade mode</description>
@@ -406,9 +487,7 @@
                 <param index="1">Empty</param>
             </entry>  
 
-            <!-- 51200~51399 is Motor-->
 
-        
             <!-- 51400~51599 is camera-->
  
             <entry value="51400" name="MAV_CMD_TK_CAMERA_CHANGE_PIP">
@@ -476,7 +555,130 @@
                 <description>Save camera parameters</description>
                 <param index="1">Empty</param>
             </entry>
+
+            <!-- 51600~51799 is motor-->
+
+            <entry value="51600" name="MAV_CMD_READ_MOTOR_STATUS_1" hasLocation="false" isDestination="false" >
+                <description>read motor status 1. </description>
+                <param index="1">Empty</param>
+            </entry>
+
+            <entry value="51601" name="MAV_CMD_CLEAR_MOTOR_ERR_SIGNS" hasLocation="false" isDestination="false" >
+                <description>clear motor err signs.  </description>
+                <param index="1">Empty</param>
+            </entry>
+
+            <entry value="51602" name="MAV_CMD_READ_MOTOR_STATUS_2" hasLocation="false" isDestination="false" >
+                <description>read motor status 2.  </description>
+                <param index="1">Empty</param>
+            </entry>
+
+            <entry value="51603" name="MAV_CMD_READ_MOTOR_STATUS_3" hasLocation="false" isDestination="false" >
+                <description>read motor status 3.  </description>
+                <param index="1">Empty</param>
+            </entry>
+
+            <entry value="51604" name="MAV_CMD_CLOSE_MOTOR" hasLocation="false" isDestination="false" >
+                <description>Switch the motor from the enabled state. </description>
+                <param index="1">Empty</param>
+            </entry>
+
+            <entry value="51605" name="MAV_CMD_OPEN_MOTOR" hasLocation="false" isDestination="false" >
+                <description>Switch the motor from disabled state to enabled state. </description>
+                <param index="1">Empty</param>
+            </entry>
+
+            <entry value="51606" name="MAV_CMD_STOP_MOTOR" hasLocation="false" isDestination="false" >
+                <description>Stop the motor without clearing its running state. Motor can be controlled again by sending control commands. </description>
+                <param index="1">Empty</param>
+            </entry>
+
+            <entry value="51607" name="MAV_CMD_MOTOR_OPEN_LOOP_CONTROL" hasLocation="false" isDestination="false" >
+                <description>Open loop control.</description>
+                <param index="1" label="powerControl">data type float, Range -850~850 (Motor current and torque varies by motor). </param>
+            </entry>
+
+            <entry value="51608" name="MAV_CMD_MOTOR_TORQUE_CLOSED_LOOP_CONTROL" hasLocation="false" isDestination="false" >
+                <description>Torque closed-loop control.</description>
+                <param index="1" label="iqControl">data type float ,The torque current output value range of the motor is -2048~2048, corresponding to the actual torque current range of -16.5A~16.5A for MF motors and -33A~33A for MG motors. The bus current and actual torque vary by motor. </param>
+            </entry>
+
+            <entry value="51609" name="MAV_CMD_MOTOR_SPEED_CLOSED_LOOP_CONTROL" hasLocation="false" isDestination="false" >
+                <description>speed closed-loop control.</description>
+                <param index="1" label="speedControl">Data type float, control the motor speed, the corresponding actual speed is 0.01dps/LSB. </param>
+            </entry>
+            
+            <entry value="51610" name="MAV_CMD_MOTOR_MULTI_TURN_POSITION_CLOSED_LOOP_CONTROL_1" hasLocation="false" isDestination="false" >
+                <description>Multi-turn position closed loop control.</description>
+                <param index="1" label="angleControl"> corresponding to actual position is 0.01degree/LSB, i.e. 36000 represents 360/deg. Motor rotation direction is determined by the difference between target position and current position. </param>
+            </entry>
+
+            <entry value="51611" name="MAV_CMD_MOTOR_MULTI_TURN_POSITION_CLOSED_LOOP_CONTROL_2" hasLocation="false" isDestination="false" >
+                <description>Multi-turn position closed loop contro2.</description>
+                <param index="1" label="angleControl">Data type float, control the motor speed, the corresponding actual speed is 0.01dps/LSB. </param>
+                <param index="2" label="maxSpeed">Control value maxSpeed limits the maximum motor rotation speed, float type, corresponding to actual speed 0.01dps/LSB. </param>
+            </entry>
+
+            <entry value="51612" name="MAV_CMD_MOTOR_SINGLE_TURN_POSITION_CLOSED_LOOP_CINTROL_1" hasLocation="false" isDestination="false" >
+                <description>Single turn position closed loop control.</description>
+                <param index="1" label="spinDirection" enum = "MOTOR_DIRECTION_CONTROL">Motor rotation direction, see MOTOR_DIRECTION_CONTROL enum</param>
+                <param index="2" label="angleControl">Control value angleControl is float type, value range 0~35999, corresponding to actual position is 0.01degree/LSB, actual angle range 0°~359.99°</param>
+            </entry>
+
+            <entry value="51613" name="MAV_CMD_MOTOR_SINGLE_TURN_POSITION_CLOSED_LOOP_CINTROL_2" hasLocation="false" isDestination="false" >
+                <description>Single turn position closed loop control.</description>
+                <param index="1" label="spinDirection" enum = "MOTOR_DIRECTION_CONTROL">Motor rotation direction, see MOTOR_DIRECTION_CONTROL enum</param>
+                <param index="2" label="angleControl">Control value angleControl is float type, value range 0~35999, corresponding to actual position is 0.01degree/LSB, actual angle range 0°~359.99°</param>
+                <param index="3" label="maxSpeed">Control value maxSpeed limits the maximum motor rotation speed, float type, corresponding to actual speed 0.01dps/LSB. </param>
+            </entry>
+
+            <entry value="51614" name="MAV_CMD_MOTOR_READ_CONTROL_PARAMETER" hasLocation="false" isDestination="false" >
+                <description>Read control parameter.</description>
+                <param index="1" label="controlParamI" enum = "MOTOR_PARAMETER_CONTROL_TABLE">The host sends this command to read the current motor control parameters. The parameter to read is determined by the ID controlParamID, see MOTOR_PARAMETER_CONTROL_TABLE.</param>
+            </entry>
+
+            <entry value="51615" name="MAV_CMD_MOTOR_WRITE_CONTROL_PARAMETER" hasLocation="false" isDestination="false" >
+                <description>Read control parameter.</description>
+                <param index="1" label="controlParamI" enum = "MOTOR_PARAMETER_CONTROL_TABLE">The host sends this command to read the current motor control parameters. The parameter to read is determined by the ID controlParamID, see MOTOR_PARAMETER_CONTROL_TABLE.</param>
+                <param index="2" label="param1">param1. </param>
+                <param index="3" label="param2">param2. </param>
+                <param index="4" label="param3">param3. </param>
+                <param index="5" label="param4">param4. </param>
+                <param index="6" label="param5">param5. </param>
+                <param index="7" label="param6">param6. </param>
+            </entry>
+
+            <entry value="51616" name="MAV_CMD_MOTOR_READ_ENCODER" hasLocation="false" isDestination="false" >
+                <description>Read control parameter.</description>
+                <param index="1">Empty</param>
+            </entry>
+
+            <entry value="51617" name="MAV_CMD_SET_MOTOR_ZERO_POSITION" hasLocation="false" isDestination="false" >
+                <description>Set motor zero position .</description>
+                <param index="1">Empty</param>
+            </entry>
+
+            <entry value="51618" name="MAV_CMD_READ_MULTI_TURN_ANGLES" hasLocation="false" isDestination="false" >
+                <description>Host sends this command to read the motor's current multi-turn absolute angle value. </description>
+                <param index="1">Empty</param>
+            </entry>
+
+            <entry value="51619" name="MAV_CMD_CLEAR_MOTOR_CYCLES" hasLocation="false" isDestination="false" >
+                <description> Host sends this command to clear the motor's current number of revolutions. </description>
+                <param index="1">Empty</param>
+            </entry>
+
+            <entry value="51620" name="MAV_CMD_MOTOR_READ_SINGLE_ANGLE" hasLocation="false" isDestination="false" >
+                <description>  Host sends this command to read the motor's current multi-turn absolute angle value.</description>
+                <param index="1">Empty</param>
+            </entry>
+
+            <entry value="51621" name="MAV_CMD_MOTOR_SET_CUR_POSITION_TO_ANY_ANGLE" hasLocation="false" isDestination="false" >
+                <description> Host sends this command to set the motor's current position as any angle (multi-turn). The multi-turn angle value motorAngle is int32_t type data, with unit 0.01°/LSB. |Multi-turn angle value.</description>
+                <param index="1" label="motorAngle">The multi-turn angle value motorAngle is float type data, with unit 0.01°/LSB.</param>
+            </entry>
         </enum>
+
     </enums>
 
     <messages>
@@ -529,11 +731,103 @@
             <field type="uint8_t" name="connection_status">The connection status.</field>
         </message>
 
+        <!-- 51000~51299 is Gimbal-->
         <message id="51000" name="TK_CUSTOM_DATA">
             <description>Custom data.</description>
             <field type="uint16_t" name="msg_id">The name of audio file.</field>
             <field type="uint8_t" name="len">Data length.</field>
             <field type="char[252]" name="data">Custom data area.</field>
+        </message>
+
+        <message id="51001" name="TK_GIMBAL_INFORMATION">
+            <description>Information of gimbal.</description>
+            <field type="char[32]" name="vendor_name">Name of the gimbal vendor.</field>
+            <field type="char[32]" name="model_name">Name of the gimbal model.</field>
+            <field type="char[32]" name="serial_number">Serial number of the gimbal.</field>
+            <field type="char[32]" name="firmware_version">Version of the gimbal firmware.</field>
+        </message>
+
+
+        <!-- 51300~51499 is Camera-->
+
+
+        <!-- 51500~51699 is Motor-->
+        <message id="51500" name="MOTOR_STATUS_INFO_1">
+
+            <description>motor status info 1.</description>
+            <field type="float" name="bus_voltage">  Bus voltage, unit: 0.01V/LSB.</field>
+            <field type="float" name="bus_current">Bus current, unit: 0.01A/LSB.</field>
+            <field type="float" name="motor_temperature">Motor temperature, unit: 1°C/LSB.</field>
+            <field type="uint8_t" name="motor_status" enum = "MOTOR_STATUS">Custom data ,area see MOTOR_STATUS.</field>
+            <field type="uint8_t" name="error_status" enum = "MOTOR_ERROR_STATUS">Custom data area,see MOTOR_ERR_STATUS.</field>
+
+        </message>
+
+        <message id="51501" name="MOTOR_STATUS_INFO_2">
+
+            <description>motor status info 2.</description>
+            <field type="float" name="motor_temperature">Motor temperature, unit: 1°C.</field>
+            <field type="float" name="torque_current">  For MG motor iq resolution is (66/4096 A)/LSB; For MF motor iq resolution is (33/4096 A)/LSB.</field>
+            <field type="float" name="output_power"> Output power,range:-1000~1000.</field>
+            <field type="float" name="motor_speed">Motor speed, unit: 1dps/LSB.</field> 
+            <field type="uint16_t" name="encoder_position">Encoder position.</field>
+
+        </message>
+
+        <message id="51502" name="MOTOR_STATUS_INFO_3">
+
+            <description>motor status info 3.</description>
+
+            <field type="float" name="motor_temperature">Motor temperature, unit: 1°C.</field>
+            <field type="float" name="phase_current_a">For MG motor phase current resolution is (66/4096 A)/LSB; For MF motor phase current resolution is (33/4096 A)/LSB.</field>
+            <field type="float" name="phase_current_b"> For MG motor phase current resolution is (66/4096 A)/LSB; For MF motor phase current resolution is (33/4096 A)/LSB.</field>
+            <field type="float" name="phase_current_c"> For MG motor phase current resolution is (66/4096 A)/LSB; For MF motor phase current resolution is (33/4096 A)/LSB.</field>
+        
+        </message>
+
+        <message id="51503" name="MOTOR_PARAMETER_INFO">
+
+            <description>motor parameters info.</description>
+            <field type="float" name="param1">param1.</field>
+            <field type="float" name="param2">param2.</field>
+            <field type="float" name="param3">param3.</field>
+            <field type="float" name="param4">param4.</field> 
+            <field type="float" name="param5">param5.</field> 
+            <field type="float" name="param6">param6.</field> 
+            <field type="uint8_t" name="controlParamID"> Parameter ID.</field> 
+
+        </message>
+
+        <message id="51504" name="MOTOR_ENCODER_INFO">
+
+            <description>motor encoder info.</description>
+            <field type="uint16_t" name="encoder">Encoder position (uint16_t type, value range depends on encoder resolution), which is the raw encoder position minus the encoder offset.</field>
+            <field type="uint16_t" name="encoderRaw">Raw encoder position (uint16_t type, value range depends on encoder resolution).</field>
+            <field type="uint16_t" name="encoderOffset">Encoder offset (uint16_t type, value range depends on encoder resolution), this point is the initial zero position after motor power-on.</field>
+        
+        </message>
+
+        <message id="51505" name="MOTOR_ENCODER_ZERO_POSITION_INFO">
+
+            <description>Encoder raw value of current position.</description>
+            <field type="uint16_t" name="encoderZero">Encoder raw value of current position.</field>
+         
+        </message>
+
+        
+        <message id="51506" name="MOTOR_MULTITURN_ANGLE_INFO">
+
+            <description>motor multi angle info.</description>
+            <field type="float" name="motorAngle">Angle position low. data type flaot ,units:0.01°/LSB </field>
+         
+        </message>
+
+
+        <message id="51507" name="MOTOR_SINGLE_TURN_ANGLE_INFO">
+
+            <description>motor single turn angle info.</description>
+            <field type="float" name="circleAngle"> Angle position low. units:0.01°/LSB </field>
+
         </message>
 
     </messages>
