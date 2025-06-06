@@ -9,25 +9,10 @@
         <enum name="MAV_USER_COMPONENT">
             <description>Cmponent ids (values) for the different types and instances of onboard hardware/software that might make up a MAVLink system.</description>
             <entry value="25" name="MAV_COMP_ID_SPEAKER">
-                <description>SPEAKER #1.</description>
+                <description>SPEAKER.</description>
             </entry>
-            <entry value="26" name="MAV_COMP_ID_SPEAKER2">
-                <description>SPEAKER #2.</description>
-            </entry>
-            <entry value="27" name="MAV_COMP_ID_SPEAKER3">
-                <description>SPEAKER #3.</description>
-            </entry>
-            <entry value="28" name="MAV_COMP_ID_SPEAKER4">
-                <description>SPEAKER #4.</description>
-            </entry>
-            <entry value="29" name="MAV_COMP_ID_SPEAKER5">
-                <description>SPEAKER #5.</description>
-            </entry>
-            <entry value="30" name="MAV_COMP_ID_SPEAKER6">
-                <description>SPEAKER #6.</description>
-            </entry>
-            <entry value="31" name="MAV_COMP_ID_SKYLINK">
-                <description>SPEAKER #1.</description>
+            <entry value="26" name="MAV_COMP_ID_SKYLINK">
+                <description>SKYLINK.</description>
             </entry>
         </enum>
         <enum name="SPEAKER_PLAY_AUDIO_MODE">
