@@ -708,6 +708,21 @@
                 <description> Host sends this command to set the motor's current position as any angle (multi-turn). The multi-turn angle value motorAngle is int32_t type data, with unit 0.01°/LSB. |Multi-turn angle value.</description>
                 <param index="1" label="motorAngle">The multi-turn angle value motorAngle is float type data, with unit 0.01°/LSB.</param>
             </entry>
+
+            <entry value="51622" name="MAV_CMD_MOTOR_SET_SYS_ID" hasLocation="false" isDestination="false" >
+                <description>update motor sys id.</description>
+                <param index="1" label="sysId">motor sys id.</param>
+            </entry>
+            
+            <entry value="51623" name="MAV_CMD_MOTOR_SET_COMP_ID" hasLocation="false" isDestination="false" >
+                <description>update motor comp id.</description>
+                <param index="1" label="compId">motor comp id.</param>
+            </entry>
+
+            <entry value="51624" name="MAV_CMD_MOTOR_QUERY_ID" hasLocation="false" isDestination="false" >
+                <description>Query motor comp id.</description>
+                <param index="1" label="Empty">.</param>
+            </entry>
         </enum>
 
     </enums>
@@ -876,11 +891,16 @@
 
 
         <message id="51507" name="MOTOR_SINGLE_TURN_ANGLE_INFO">
-
             <description>motor single turn angle info.</description>
             <field type="float" name="circleAngle"> Angle position low. units:0.01°/LSB </field>
-
         </message>
+
+        <message id="51508" name="MOTOR_SYS_COMP_ID_INFO">
+            <description>motor system component ID info.</description>
+            <field type="uint8_t" name="sysId">System ID.</field>
+            <field type="uint8_t" name="compId">Component ID.</field>
+        </message>
+
 
     </messages>
 
