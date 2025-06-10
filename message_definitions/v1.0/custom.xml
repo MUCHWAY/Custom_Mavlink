@@ -292,6 +292,9 @@
             <entry value="8" name="SPEED_SLOPE">
             <description>Speed slope, contains 1 parameter of int32_t type. </description>
             </entry>
+            <entry value="9" name="MOTOR_CALIBRATION">
+            <description>motor calibration ,line sequential,endoer type,direction wait. </description>
+            </entry>
         </enum> 
 
 
@@ -723,6 +726,12 @@
                 <description>Query motor comp id.</description>
                 <param index="1" label="Empty">.</param>
             </entry>
+
+            <entry value="51625" name="MAV_CMD_MOTOR_FLASH_SAVE" hasLocation="false" isDestination="false" >
+                <description>QFlash Parameter save.</description>
+                <param index="1" label="Empty">.</param>
+            </entry>
+
         </enum>
 
     </enums>
