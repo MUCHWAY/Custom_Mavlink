@@ -732,6 +732,21 @@
                 <param index="1" label="Empty">.</param>
             </entry>
 
+            <entry value="51626" name="MAV_CMD_MOTOR_CALIBRATION" hasLocation="false" isDestination="false" >
+                <description>motor calibration.</description>
+                <param index="1" label="Empty">.</param>
+            </entry>
+
+            <entry value="51627" name="MAV_CMD_MOTOR_SET_CAN_ID" hasLocation="false" isDestination="false" >
+                <description>Set motor CAN ID.</description>
+                <param index="1" label="canId">set motor can id.</param>
+            </entry>
+
+            <entry value="51628" name="MAV_CMD_MOTOR_READ_CAN_ID" hasLocation="false" isDestination="false" >
+                <description>Read motor CAN ID.</description>
+                <param index="1" label="canId">read motor can id.</param>
+            </entry>
+
         </enum>
 
     </enums>
@@ -846,6 +861,7 @@
             <field type="float" name="torque_current">  For MG motor iq resolution is (66/4096 A)/LSB; For MF motor iq resolution is (33/4096 A)/LSB.</field>
             <field type="float" name="output_power"> Output power,range:-1000~1000.</field>
             <field type="float" name="motor_speed">Motor speed, unit: 1dps/LSB.</field> 
+            <field type="float" name="motor_angle">Motor angle.</field> 
             <field type="uint16_t" name="encoder_position">Encoder position.</field>
 
         </message>
@@ -890,12 +906,9 @@
          
         </message>
 
-        
         <message id="51506" name="MOTOR_MULTITURN_ANGLE_INFO">
-
             <description>motor multi angle info.</description>
-            <field type="float" name="motorAngle">Angle position low. data type flaot ,units:0.01°/LSB </field>
-         
+            <field type="float" name="motorAngle">Angle position low. data type float ,units:0.01°/LSB </field>
         </message>
 
 
@@ -908,6 +921,11 @@
             <description>motor system component ID info.</description>
             <field type="uint8_t" name="sysId">System ID.</field>
             <field type="uint8_t" name="compId">Component ID.</field>
+        </message>
+
+        <message id="51509" name="MOTOR_CAN_ID_INFO">
+            <description>motor CAN ID info.</description>
+            <field type="uint8_t" name="canId">can ID.</field>
         </message>
 
 
