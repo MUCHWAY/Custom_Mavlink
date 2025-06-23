@@ -26,6 +26,9 @@
             <entry value="2" name="LOOP_PLAY">
                 <description>Loop play.</description>
             </entry>
+            <entry value="3" name="REAL_TIME_VOICE">
+                <description>Real time voice.</description>
+            </entry>
         </enum>
         <enum name="SPEAKER_PLAY_AUDIO_STATUS">
             <description>Status of audio play.</description>
@@ -109,6 +112,15 @@
             </entry>
             <entry value="6" name="QUERY_CONNECTION_STATUS">
                 <description>Query status.</description>
+            </entry>
+        </enum>
+        <enum name="SPEAKER_REAL_TIME_VOICE_OPERATION">
+            <description>Start/Stop real time voice.</description>
+            <entry value="0" name="START_REAL_TIME_VOICE">
+                <description>Off.</description>
+            </entry>
+            <entry value="1" name="STOP_REAL_TIME_VOICE">
+                <description>On.</description>
             </entry>
         </enum>
 
@@ -460,6 +472,16 @@
                 <param index="6">Empty</param>
                 <param index="7">Empty</param>
             </entry>
+            <entry value="50017" name="MAV_CMD_SPEAKER_REAL_TIME_VOICE_OPERATION" hasLocation="false" isDestination="false">
+                <description>Speaker real time voice operation.</description>
+                <param index="1" label="Permission want" enum="SPEAKER_REAL_TIME_VOICE_OPERATION">0 is start, 1 is stop.</param>
+                <param index="2">Empty</param>
+                <param index="3">Empty</param>
+                <param index="4">Empty</param>
+                <param index="5">Empty</param>
+                <param index="6">Empty</param>
+                <param index="7">Empty</param>
+            </entry>
 
             <!-- 51000~51399 is gimbal-->
 
@@ -467,7 +489,7 @@
                 <description>Request custom gimbal infomation.</description>
                 <param index="1">Empty</param>
             </entry>
-            <entry value="50017" name="MAV_CMD_NOTIFY_FILE_UPDATE" hasLocation="false" isDestination="false">
+            <entry value="50018" name="MAV_CMD_NOTIFY_FILE_UPDATE" hasLocation="false" isDestination="false">
                 <description>Notify audio file updated.</description>
                 <param index="1" label="Update audio file type" enum="SPEAKER_UPDATE_AUDIO_FILE_TYPE">Update audio file type</param>
                 <param index="2">Empty</param>
