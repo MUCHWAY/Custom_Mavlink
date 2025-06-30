@@ -309,7 +309,7 @@
             </entry>
         </enum>
 
-        <enum name="MOTOR_LINE_REVERSE">
+        <enum name="MOTOR_LINE_REVERSE_ENUM">
             <description>Motor line reverse control.</description>
             <entry value="0" name="MOTOR_LINE_NOT_REVERSE">
                 <description>Motor line not reverse.</description>
@@ -319,7 +319,7 @@
             </entry>
         </enum>
 
-        <enum name="MOTOR_ANGLE_REVERSE">
+        <enum name="MOTOR_ANGLE_REVERSE_ENUM">
             <description>Motor angle reverse control.</description>
             <entry value="0" name="MOTOR_ANGLE_NOT_REVERSE">
                 <description>Motor angle not reverse.</description>
@@ -329,7 +329,7 @@
             </entry>
         </enum> 
 
-        <enum name="MOTOR_FORCE_REVERSE">
+        <enum name="MOTOR_FORCE_REVERSE_ENUM">
             <description>Motor force reverse control.</description>
             <entry value="0" name="MOTOR_FORCE_NOT_REVERSE">
                 <description>Motor force not reverse.</description>
