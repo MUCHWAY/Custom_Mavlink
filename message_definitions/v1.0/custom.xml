@@ -148,7 +148,7 @@
             <entry value="3" name="TK_VERTICAL_COUNTER_CLOCKWISE">
             <description>Vertical counter-clockwise flip</description>
             </entry>
-         </enum>   
+         </enum>
 
         <enum name="MAV_TK_TEMPERATURE_FLAG">
             <description>Indicate the infrared temperature measurement flag</description>
@@ -157,8 +157,8 @@
             </entry>
             <entry value="2" name="TK_TEMP_MEASUREMENT_LEVEL">
                 <description>Infrared temperature measurement level</description>
-            </entry>         
-        </enum>  
+            </entry>
+        </enum>
 
         <enum name="MAV_TK_TEMPERATURE_LEVEL">
             <description>Indicate the infrared temperature measurement level</description>
@@ -174,7 +174,7 @@
             <entry value="3" name="TK_TEMP_LEVEL_4">
                 <description>Level 4</description>
             </entry>
-        </enum>  
+        </enum>
 
         <enum name = "MAV_TK_LASER_RANGE_FINDER">
             <description>Indicate the laser range finder flag</description>
@@ -265,9 +265,9 @@
             <entry value="128" name="MOTOR_INPUT_SIGNAL_STATE">
             <description>Input signal status, 0:normal, 1:input signal loss timeout</description>
             </entry>
-        </enum> 
+        </enum>
 
-   
+
         <enum name = "MOTOR_DIRECTION_CONTROL">
             <description>Set motor rotation direction.</description>
             <entry value="1" name="MOTOR_CW">
@@ -276,7 +276,7 @@
             <entry value="2" name="MOTOR_CCW">
             <description>Motor counterclockwise.</description>
             </entry>
-        </enum> 
+        </enum>
 
         <enum name = "MOTOR_PARAMETER_CONTROL_TABLE">
             <description>Motor parameter control table.</description>
@@ -307,8 +307,37 @@
             <entry value="9" name="MOTOR_CALIBRATION">
             <description>motor calibration ,line sequential,endoer type,direction wait. </description>
             </entry>
+        </enum>
+
+        <enum name="MOTOR_LINE_REVERSE">
+            <description>Motor line reverse control.</description>
+            <entry value="0" name="MOTOR_LINE_NOT_REVERSE">
+                <description>Motor line not reverse.</description>
+            </entry>
+            <entry value="1" name="MOTOR_LINE_REVERSE">
+                <description>Motor line reverse.</description>
+            </entry>
+        </enum>
+
+        <enum name="MOTOR_ANGLE_REVERSE">
+            <description>Motor angle reverse control.</description>
+            <entry value="0" name="MOTOR_ANGLE_NOT_REVERSE">
+                <description>Motor angle not reverse.</description>
+            </entry>
+            <entry value="1" name="MOTOR_ANGLE_REVERSE">
+                <description>Motor angle reverse.</description>
+            </entry>
         </enum> 
 
+        <enum name="MOTOR_FORCE_REVERSE">
+            <description>Motor force reverse control.</description>
+            <entry value="0" name="MOTOR_FORCE_NOT_REVERSE">
+                <description>Motor force not reverse.</description>
+            </entry>
+            <entry value="1" name="MOTOR_FORCE_REVERSE">
+                <description>Motor force reverse.</description>
+            </entry>
+        </enum> 
 
         <enum name="MAV_CMD">
         <!-- Custom specific MAV_CMD_* commands -->
@@ -530,26 +559,36 @@
                 <param index="6">Empty</param>
                 <param index="7">Empty</param>
             </entry>
+            <entry value="50033" name="MAV_CMD_ENTER_DEV_MODE">
+                <description>Enter developer mode.</description>
+                <param index="1" label="Password" >password</param>
+                <param index="2">Empty</param>
+                <param index="3">Empty</param>
+                <param index="4">Empty</param>
+                <param index="5">Empty</param>
+                <param index="6">Empty</param>
+                <param index="7">Empty</param>
+            </entry>
 
             <!-- 51000~51299 is gimbal-->
 
              <entry value="51031" name="MAV_CMD_TK_ENTER_UPGRADE_MODE">
                 <description>Enter upgrade mode</description>
-                <param index="1">Empty</param>   
-            </entry> 
+                <param index="1">Empty</param>
+            </entry>
 
             <entry value="51032" name="MAV_CMD_TK_EXIT_UPGRADE_MODE">
                 <description>Exit upgrade mode</description>
                 <param index="1">Empty</param>
-            </entry>  
+            </entry>
 
 
             <!-- 51400~51599 is camera-->
- 
+
             <entry value="51400" name="MAV_CMD_TK_CAMERA_CHANGE_PIP">
                 <description>Change camera PIP</description>
                 <param index="1" label="PIP mode" enum = "PIP_MODE">PIP mode</param>
-            </entry> 
+            </entry>
 
             <entry value="51401" name="MAV_CMD_TK_CAMERA_CHANGE_PSEUDO_COLOR">
                 <description>Change camera pseudo color</description>
@@ -663,7 +702,7 @@
                 <description>speed closed-loop control.</description>
                 <param index="1" label="speedControl">Data type float, control the motor speed, the corresponding actual speed is 0.01dps/LSB. </param>
             </entry>
-            
+
             <entry value="51610" name="MAV_CMD_MOTOR_MULTI_TURN_POSITION_CLOSED_LOOP_CONTROL_1" hasLocation="false" isDestination="false" >
                 <description>Multi-turn position closed loop control.</description>
                 <param index="1" label="angleControl"> corresponding to actual position is 0.01degree/LSB, i.e. 36000 represents 360/deg. Motor rotation direction is determined by the difference between target position and current position. </param>
@@ -738,7 +777,7 @@
                 <description>update motor sys id.</description>
                 <param index="1" label="sysId">motor sys id.</param>
             </entry>
-            
+
             <entry value="51623" name="MAV_CMD_MOTOR_SET_COMP_ID" hasLocation="false" isDestination="false" >
                 <description>update motor comp id.</description>
                 <param index="1" label="compId">motor comp id.</param>
@@ -768,6 +807,49 @@
                 <description>Read motor CAN ID.</description>
                 <param index="1" label="canId">read motor can id.</param>
             </entry>
+
+
+            <entry value="51629" name="MAV_CMD_MOTOR_LINE_REVERSE" hasLocation="false" isDestination="false" >
+                <description>Set motor line reverse.</description>
+                <param index="1" label="lineReverse" enum = "MOTOR_LINE_REVERSE">Set motor line reverse, 0 is not reverse, 1 is reverse.</param>
+            </entry>
+
+            <entry value="51630" name="MAV_CMD_MOTOR_ANG_REVERSE" hasLocation="false" isDestination="false" >
+                <description>Set motor angle reverse.</description>
+                <param index="1" label="angleReverse" enum = "MOTOR_ANGLE_REVERSE">Set motor angle reverse, 0 is not reverse, 1 is reverse.</param>
+            </entry>
+
+            <entry value="51631" name="MAV_CMD_MOTOR_ZERO_CALIBRATION" hasLocation="false" isDestination="false" >
+                <description>Set motor zero calibration.</description>
+                <param index="1" label="Empty">Set current angle as zero offset</param>
+            </entry>
+
+            <entry value="51632" name="MAV_CMD_MOTOR_FORCE_REVERSE" hasLocation="false" isDestination="false" >
+                <description>Force motor reverse.</description>
+                <param index="1" label="forceReverse" enum = "MOTOR_FORCE_REVERSE">Force motor reverse, 0 is not reverse, 1 is reverse.</param>
+            </entry>
+
+            <entry value="51633" name="MAV_CMD_MOTOR_SELECT_DRIVE" hasLocation="false" isDestination="false" >
+                <description>Select motor drive.</description>
+                <param index="1" label="driveType">Select motor drive type</param>
+            </entry>
+
+
+            <!-- 51800~51899 is public-->
+
+            <entry value="51800" name="MAV_CMD_TK_WRITE_BOOT_STATION_TYPE" hasLocation="false" isDestination="false" >
+                <description>Read boot station type.</description>
+                <param index="1" label="stationType">read boot station type.</param>
+            </entry>
+
+            <entry value="51801" name="MAV_CMD_TK_READ_BOOT_STATION_TYPE" hasLocation="false" isDestination="false" >
+                <description>Read boot station type.</description>
+                <param index="1" label="Empty">.</param>
+            </entry>
+
+
+
+
 
         </enum>
 
@@ -882,8 +964,8 @@
             <field type="float" name="motor_temperature">Motor temperature, unit: 1°C.</field>
             <field type="float" name="torque_current">  For MG motor iq resolution is (66/4096 A)/LSB; For MF motor iq resolution is (33/4096 A)/LSB.</field>
             <field type="float" name="output_power"> Output power,range:-1000~1000.</field>
-            <field type="float" name="motor_speed">Motor speed, unit: 1dps/LSB.</field> 
-            <field type="float" name="motor_angle">Motor angle.</field> 
+            <field type="float" name="motor_speed">Motor speed, unit: 1dps/LSB.</field>
+            <field type="float" name="motor_angle">Motor angle.</field>
             <field type="uint16_t" name="encoder_position">Encoder position.</field>
 
         </message>
@@ -896,7 +978,7 @@
             <field type="float" name="phase_current_a">For MG motor phase current resolution is (66/4096 A)/LSB; For MF motor phase current resolution is (33/4096 A)/LSB.</field>
             <field type="float" name="phase_current_b"> For MG motor phase current resolution is (66/4096 A)/LSB; For MF motor phase current resolution is (33/4096 A)/LSB.</field>
             <field type="float" name="phase_current_c"> For MG motor phase current resolution is (66/4096 A)/LSB; For MF motor phase current resolution is (33/4096 A)/LSB.</field>
-        
+
         </message>
 
         <message id="51503" name="MOTOR_PARAMETER_INFO">
@@ -905,10 +987,10 @@
             <field type="float" name="param1">param1.</field>
             <field type="float" name="param2">param2.</field>
             <field type="float" name="param3">param3.</field>
-            <field type="float" name="param4">param4.</field> 
-            <field type="float" name="param5">param5.</field> 
-            <field type="float" name="param6">param6.</field> 
-            <field type="uint8_t" name="controlParamID"> Parameter ID.</field> 
+            <field type="float" name="param4">param4.</field>
+            <field type="float" name="param5">param5.</field>
+            <field type="float" name="param6">param6.</field>
+            <field type="uint8_t" name="controlParamID"> Parameter ID.</field>
 
         </message>
 
@@ -918,14 +1000,14 @@
             <field type="uint16_t" name="encoder">Encoder position (uint16_t type, value range depends on encoder resolution), which is the raw encoder position minus the encoder offset.</field>
             <field type="uint16_t" name="encoderRaw">Raw encoder position (uint16_t type, value range depends on encoder resolution).</field>
             <field type="uint16_t" name="encoderOffset">Encoder offset (uint16_t type, value range depends on encoder resolution), this point is the initial zero position after motor power-on.</field>
-        
+
         </message>
 
         <message id="51505" name="MOTOR_ENCODER_ZERO_POSITION_INFO">
 
             <description>Encoder raw value of current position.</description>
             <field type="uint16_t" name="encoderZero">Encoder raw value of current position.</field>
-         
+
         </message>
 
         <message id="51506" name="MOTOR_MULTITURN_ANGLE_INFO">
@@ -948,6 +1030,14 @@
         <message id="51509" name="MOTOR_CAN_ID_INFO">
             <description>motor CAN ID info.</description>
             <field type="uint8_t" name="canId">can ID.</field>
+        </message>
+
+
+
+        <!-- 51700~51700 is Public-->
+        <message id="51700" name="BOOT_STATION_INFORMATION">
+            <description>Boot station information.</description>
+            <field type="uint8_t" name="station_type">station type.</field>
         </message>
 
 
