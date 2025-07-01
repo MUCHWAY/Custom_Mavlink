@@ -339,6 +339,16 @@
             </entry>
         </enum> 
 
+        <enum name="MOTOR_ENABLE_ENUM">
+            <description>Motor enable control.</description>
+            <entry value="0" name="MOTOR_ENABLE_NOT">
+                <description>Motor not enabled.</description>
+            </entry>
+            <entry value="1" name="MOTOR_ENABLE">
+                <description>Motor enabled.</description>
+            </entry>
+        </enum> 
+
         <enum name="MAV_CMD">
         <!-- Custom specific MAV_CMD_* commands -->
             <entry value="50000" name="MAV_CMD_SPEAKER_START_PLAY_AUDIO" hasLocation="false" isDestination="false">
@@ -834,6 +844,10 @@
                 <param index="1" label="driveType">Select motor drive type</param>
             </entry>
 
+            <entry value="51634" name="MAV_CMD_MOTOR_ENABLE" hasLocation="false" isDestination="false" >
+                <description>Enable motor.</description>
+                <param index="1" label="enable" enum = "MOTOR_ENABLE_ENUM">Enable motor, 0 is not enabled, 1 is enabled.</param>
+            </entry>
 
             <!-- 51800~51899 is public-->
 
