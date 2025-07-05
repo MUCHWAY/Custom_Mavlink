@@ -14,6 +14,9 @@
             <entry value="26" name="MAV_COMP_ID_SKYLINK">
                 <description>SKYLINK.</description>
             </entry>
+            <entry value="27" name="MAV_COMP_ID_LIGHT">
+                <description>LIGHT.</description>
+            </entry>
         </enum>
 
 
@@ -583,6 +586,40 @@
             </entry>
 
 
+            <!-- 50500~50599 is light-->
+
+            <entry value="50500" name="MAV_CMD_LIGHT_REQUEST_INFORMATION" hasLocation="false" isDestination="false">
+                <description>Request light infomation.</description>
+                <param index="1">Empty</param>
+                <param index="2">Empty</param>
+                <param index="3">Empty</param>
+                <param index="4">Empty</param>
+                <param index="5">Empty</param>
+                <param index="6">Empty</param>
+                <param index="7">Empty</param>
+            </entry>
+            <entry value="50501" name="MAV_CMD_LIGHT_SET_MODE" hasLocation="false" isDestination="false">
+                <description>Set speaker light mode.</description>
+                <param index="1" label="ID of light" minValue="0" increment="1">ID of light(in persentage)</param>
+                <param index="2" label="Light mode" enum="LIGHT_MODE">Mode of light, total number is 10.</param>
+                <param index="3">Empty</param>
+                <param index="4">Empty</param>
+                <param index="5">Empty</param>
+                <param index="6">Empty</param>
+                <param index="7">Empty</param>
+            </entry>
+            <entry value="50502" name="MAV_CMD_LIGHT_SET_ON_OFF" hasLocation="false" isDestination="false">
+                <description>Set speaker light on/off.</description>
+                <param index="1" label="ID of light" minValue="0" increment="1">ID of light(in persentage)</param>
+                <param index="2" label="Light on/off" enum="LIGHT_ON_OFF">0 is off, 1 is on.</param>
+                <param index="3">Empty</param>
+                <param index="4">Empty</param>
+                <param index="5">Empty</param>
+                <param index="6">Empty</param>
+                <param index="7">Empty</param>
+            </entry>
+
+
             <!-- 51000~51399 is gimbal-->
 
             <entry value="51000" name="MAV_CMD_TK_GIMBAL_REQUEST_INFORMATION" hasLocation="false" isDestination="false">
@@ -934,7 +971,23 @@
             <field type="char[32]" name="firmware_version">Version of the speaker firmware.</field>
         </message>
         <message id="20401" name="SKYLINK_FILE_INFORMATION">
-            <description>Information of audio file.</description>
+            <description>Information of skylink's file.</description>
+            <field type="char[64]" name="name">The name of audio file.</field>
+            <field type="uint32_t" name="index">Zero-based index of this audio since vehicle was armed.</field>
+        </message>
+
+
+        <!-- 20500~50599 is light-->
+
+        <message id="20500" name="LIGHT_INFORMATION">
+            <description>Information of light.</description>
+            <field type="char[32]" name="vendor_name">Name of the speaker vendor.</field>
+            <field type="char[32]" name="model_name">Name of the speaker model.</field>
+            <field type="char[32]" name="serial_number">Serial number of the speaker.</field>
+            <field type="char[32]" name="firmware_version">Version of the speaker firmware.</field>
+        </message>
+        <message id="20501" name="LIGHT_FILE_INFORMATION">
+            <description>Information of light's file.</description>
             <field type="char[64]" name="name">The name of audio file.</field>
             <field type="uint32_t" name="index">Zero-based index of this audio since vehicle was armed.</field>
         </message>
