@@ -327,7 +327,7 @@
             <entry value="1" name="MOTOR_ANGLE_REVERSE">
                 <description>Motor angle reverse.</description>
             </entry>
-        </enum> 
+        </enum>
 
         <enum name="MOTOR_FORCE_REVERSE_ENUM">
             <description>Motor force reverse control.</description>
@@ -337,7 +337,7 @@
             <entry value="1" name="MOTOR_FORCE_REVERSE">
                 <description>Motor force reverse.</description>
             </entry>
-        </enum> 
+        </enum>
 
         <enum name="MOTOR_ENABLE_ENUM">
             <description>Motor enable control.</description>
@@ -347,7 +347,7 @@
             <entry value="1" name="MOTOR_ENABLE">
                 <description>Motor enabled.</description>
             </entry>
-        </enum> 
+        </enum>
 
         <enum name="MAV_CMD">
         <!-- Custom specific MAV_CMD_* commands -->
@@ -579,6 +579,19 @@
                 <param index="6">Empty</param>
                 <param index="7">Empty</param>
             </entry>
+
+            <entry value="50034" name="MAV_CMD_DIS_BY_USER">
+                <description>Disconnected by user.</description>
+                <param index="1">Empty</param>
+                <param index="2">Empty</param>
+                <param index="3">Empty</param>
+                <param index="4">Empty</param>
+                <param index="5">Empty</param>
+                <param index="6">Empty</param>
+                <param index="7">Empty</param>
+            </entry>
+
+
 
             <!-- 51000~51299 is gimbal-->
 
