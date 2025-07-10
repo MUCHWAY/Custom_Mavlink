@@ -400,6 +400,34 @@
         </enum>
 
 
+        <enum name="IMU_CONSTANT_TEMPERATURE_ENUM">
+            <description>IMU open/close constant temperature.</description>
+            <entry value="0" name="IMU_CONSTANT_TEMPERATURE_CLOSE">
+                <description>IMU constant temperature close .</description>
+            </entry>
+            <entry value="1" name="IMU_CONSTANT_TEMPERATURE_OPEN">
+                <description>IMU constant temperature open .</description>
+            </entry>
+        </enum>
+
+
+        <enum name="TK_DEVICE_TYPE">
+            <description>Similar to MAV_TYPE, used to differentiate heartbeat device types. Dynamically adjusts target component IDs in CMD (target component ID must match the team ID in ACK to be recognized and unpacked by mavsdk).
+            Reference official MAV_TYPE definition.
+            </description>
+            <entry value="100" name="TK_GIMBAL">
+            <description>Gimbal device.</description>
+            </entry>
+            <entry value="101" name="TK_CAMERA">
+            <description>Camera device.</description>
+            </entry>
+            <entry value="102" name="TK_MOTOR">
+            <description>Motor device.</description>
+            </entry>
+            <entry value="103" name="TK_PUBLIC">
+            <description>Public device.</description>
+            </entry>
+        </enum>
 
         <enum name="MAV_CMD">
         <!-- Custom specific MAV_CMD_* commands -->
@@ -906,10 +934,49 @@
                 <param index="1" label="Empty">.</param>
             </entry>
 
+            <entry value="51802" name="MAV_CMD_SET_CAN_ID" hasLocation="false" isDestination="false" >
+                <description>Set  CAN ID.</description>
+                <param index="1" label="canId">set  can id</param>
+            </entry>
 
+            <entry value="51803" name="MAV_CMD_READ_CAN_ID" hasLocation="false" isDestination="false" >
+                <description>Read  CAN ID.</description>
+                <param index="1" label="canId">read  can id</param>
+            </entry>
 
+            <!-- IMU -->
+            <entry value="51804" name="MAV_CMD_IMU_CONSTANT_TEMPERATURE_STATE" hasLocation="false" isDestination="false" >
+                <description>open / closed IMU.</description>
+                <param index="1" label="state" enum = "IMU_CONSTANT_TEMPERATURE_ENUM"></param>
+            </entry>
 
+            <entry value="51805" name="MAV_CMD_IMU_SET_CONSTANT_TEMPERATURE" hasLocation="false" isDestination="false" >
+                <description>set imu constant temperature.</description>
+                <param index="1" label="constantTemperature"></param>
+            </entry>
 
+            <entry value="51806" name="MAV_CMD_IMU_SAVE_PARAMETER" hasLocation="false" isDestination="false" >
+                <description>save imu parameter.</description>
+                <param index="1" label="Empty"></param>
+            </entry>
+
+            <entry value="51807" name="MAV_CMD_IMU_READ_PARAMETER" hasLocation="false" isDestination="false" >
+                <description>Read IMU parameter.</description>
+                <param index="1" label="Empty"></param>
+            </entry>
+
+            <entry value="51808" name="MAV_CMD_IMU_HORIZONTAL_ALIGNMENT" hasLocation="false" isDestination="false" >
+                <description>IMU horizontal alignment.</description>
+                <param index="1" label="Empty"></param>
+            </entry>
+
+            <entry value="51809" name="MAV_CMD_IMU_ORIENTATION_ALIGNMENT" hasLocation="false" isDestination="false" >
+                <description>IMU orientation alignment.</description>
+                <param index="1" label="x_axis"></param>
+                <param index="2" label="y_axis"></param>
+                <param index="3" label="z_axis"></param>
+            </entry>
+            <!-- IMU -->
         </enum>
 
     </enums>
@@ -1104,6 +1171,24 @@
         <message id="51700" name="BOOT_STATION_INFORMATION">
             <description>Boot station information.</description>
             <field type="uint8_t" name="station_type">station type.</field>
+        </message>
+
+        
+        <message id="51701" name="CAN_ID_INFO">
+            <description> CAN ID info.</description>
+            <field type="uint8_t" name="canId">can ID.</field>
+        </message>
+
+        <message id="51702" name="IMU_INFO">
+            <description>IMU calibration info.</description>
+
+            <field type="float" name="temperature">IMU temperature in Celsius.</field>
+
+            <field type="float[3]" name="gyro_offset">Gyroscope offset [X, Y, Z].</field>
+            <field type="float[3]" name="acc_norm">Accelerometer offset [X, Y, Z].</field>
+            <field type="float[9]" name="acc_matrix">3x3 accelerometer calibration matrix (row-major).</field>
+
+            <field type="uint8_t" name="flag">Calibration complete flag (1 = done).</field>
         </message>
 
 
