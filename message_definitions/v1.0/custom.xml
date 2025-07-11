@@ -31,7 +31,7 @@
             <entry value="2" name="LOOP_PLAY">
                 <description>Loop play.</description>
             </entry>
-            <entry value="3" name="REAL_TIME_VOICE">
+            <entry value="3" name="REAL_TIME_SPEAK">
                 <description>Real time voice.</description>
             </entry>
         </enum>
@@ -121,11 +121,29 @@
         </enum>
         <enum name="SPEAKER_REAL_TIME_VOICE_OPERATION">
             <description>Start/Stop real time voice.</description>
-            <entry value="0" name="START_REAL_TIME_VOICE">
+            <entry value="0" name="START_REAL_TIME_LISTEN">
                 <description>Off.</description>
             </entry>
-            <entry value="1" name="STOP_REAL_TIME_VOICE">
+            <entry value="1" name="STOP_REAL_TIME_LISTEN">
+                <description>Off.</description>
+            </entry>
+            <entry value="2" name="START_REAL_TIME_SPEAK">
+                <description>Off.</description>
+            </entry>
+            <entry value="3" name="STOP_REAL_TIME_SPEAK">
                 <description>On.</description>
+            </entry>
+        </enum>
+        <enum name="SPEAKER_REAL_TIME_VOICE_STATUS">
+            <description>Status of real time voice.</description>
+            <entry value="0" name="VOICE_OFF">
+                <description>Off.</description>
+            </entry>
+            <entry value="1" name="VOIDE_ON">
+                <description>On.</description>
+            </entry>
+            <entry value="2" name="VOICE_ERROR">
+                <description>Error.</description>
             </entry>
         </enum>
 
@@ -1010,6 +1028,8 @@
             <field type="float" name="yaw">Value of speaker yaw.</field>
             <field type="uint8_t" name="light_mode" enum="SPEAKER_LIGHT_MODE">Mode of speaker light.</field>
             <field type="uint8_t" name="light_on_off" enum="SPEAKER_LIGHT_ON_OFF">On/off of speaker light.</field>
+            <field type="uint8_t" name="real_time_listen_status" enum="SPEAKER_REAL_TIME_VOICE_STATUS">Status of real time listen.</field>
+            <field type="uint8_t" name="real_time_speak_status" enum="SPEAKER_REAL_TIME_VOICE_STATUS">Status of real time speak.</field>
         </message>
         <message id="20302" name="SPEAKER_AUDIO_INFO">
             <description>Information of audio file.</description>
