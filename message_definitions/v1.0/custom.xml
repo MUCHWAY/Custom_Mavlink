@@ -994,7 +994,16 @@
                 <param index="2" label="y_axis"></param>
                 <param index="3" label="z_axis"></param>
             </entry>
+
+            <entry value="51810" name="MAV_CMD_IMU_STATIC_CALIBRATION" hasLocation="false" isDestination="false" >
+                <description>IMU static calibration,Calibration of the zero bias of angular velocity for IMU.</description>
+                <param index="1" label="Empty"></param>
+            </entry>
+
             <!-- IMU -->
+
+            
+
         </enum>
 
     </enums>
@@ -1210,8 +1219,6 @@
 
             <field type="uint8_t" name="flag">Calibration complete flag (1 = done).</field>
         </message>
-
-
     </messages>
 
 </mavlink>
