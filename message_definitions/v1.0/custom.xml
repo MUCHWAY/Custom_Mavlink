@@ -1056,7 +1056,7 @@
             <field type="float" name="playing_time_s">Elapsed time since starting the audio playing (in seconds).</field>
             <field type="float" name="current_volume">Current volume level (in persentage).</field>
             <field type="int32_t" name="network_module_signal_quality">Current network signal quality.</field>
-            <field type="uint32_t" name="network_module_latency">Current network latency (in milliseconds).</field>
+            <field type="float" name="network_module_latency">Current network latency (in milliseconds).</field>
             <field type="float" name="roll">Value of speaker roll.</field>
             <field type="float" name="pitch">Value of speaker pitch.</field>
             <field type="float" name="yaw">Value of speaker yaw.</field>
