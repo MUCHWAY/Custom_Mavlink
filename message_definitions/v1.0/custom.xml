@@ -646,7 +646,7 @@
             </entry>
             <entry value="50501" name="MAV_CMD_LIGHT_SET_MODE" hasLocation="false" isDestination="false">
                 <description>Set speaker light mode.</description>
-                <param index="1" label="ID of light" minValue="0" increment="1">ID of light(in persentage)</param>
+                <param index="1" label="ID of light" minValue="0" increment="1">ID of light</param>
                 <param index="2" label="Light mode" enum="LIGHT_MODE">Mode of light, total number is 10.</param>
                 <param index="3">Empty</param>
                 <param index="4">Empty</param>
@@ -656,8 +656,28 @@
             </entry>
             <entry value="50502" name="MAV_CMD_LIGHT_SET_ON_OFF" hasLocation="false" isDestination="false">
                 <description>Set speaker light on/off.</description>
-                <param index="1" label="ID of light" minValue="0" increment="1">ID of light(in persentage)</param>
+                <param index="1" label="ID of light" minValue="0" increment="1">ID of light</param>
                 <param index="2" label="Light on/off" enum="LIGHT_ON_OFF">0 is off, 1 is on.</param>
+                <param index="3">Empty</param>
+                <param index="4">Empty</param>
+                <param index="5">Empty</param>
+                <param index="6">Empty</param>
+                <param index="7">Empty</param>
+            </entry>
+            <entry value="50503" name="MAV_CMD_LIGHT_SET_BRIGHTNESS" hasLocation="false" isDestination="false">
+                <description>Set speaker light brightness.</description>
+                <param index="1" label="ID of light" minValue="0" increment="1">ID of light</param>
+                <param index="2" label="Light brightness"> Brightness of light.</param> 
+                <param index="3">Empty</param>
+                <param index="4">Empty</param>
+                <param index="5">Empty</param>
+                <param index="6">Empty</param>
+                <param index="7">Empty</param>
+            </entry>
+            <entry value="50504" name="MAV_CMD_LIGHT_REQUEST_STATUS" hasLocation="false" isDestination="false">
+                <description>Set speaker light on/off.</description>
+                <param index="1" label="ID of light" minValue="0" increment="1">ID of light</param>
+                <param index="2">Empty</param>
                 <param index="3">Empty</param>
                 <param index="4">Empty</param>
                 <param index="5">Empty</param>
@@ -1035,7 +1055,8 @@
             <field type="uint8_t" name="play_status" enum="SPEAKER_PLAY_AUDIO_STATUS">Whether audio playing is currently in process.</field>
             <field type="float" name="playing_time_s">Elapsed time since starting the audio playing (in seconds).</field>
             <field type="float" name="current_volume">Current volume level (in persentage).</field>
-            <field type="int32_t" name="network_module_status">Current network status.</field>
+            <field type="int32_t" name="network_module_signal_quality">Current network signal quality.</field>
+            <field type="uint32_t" name="network_module_latency">Current network latency (in milliseconds).</field>
             <field type="float" name="roll">Value of speaker roll.</field>
             <field type="float" name="pitch">Value of speaker pitch.</field>
             <field type="float" name="yaw">Value of speaker yaw.</field>
@@ -1090,6 +1111,13 @@
             <description>Information of light's file.</description>
             <field type="char[64]" name="name">The name of audio file.</field>
             <field type="uint32_t" name="index">Zero-based index of this audio since vehicle was armed.</field>
+        </message>
+        <message id="20502" name="LIGHT_STATUS">
+            <description>Status of light.</description>
+            <field type="uint32_t" name="id">The light id.</field>
+            <field type="uint8_t" name="on_off" enum="LIGHT_ON_OFF">On/off of light.</field>
+            <field type="uint8_t" name="mode" enum="LIGHT_MODE">Mode of light.</field>
+            <field type="float" name="brightness">Brightness of light.</field>
         </message>
 
         <!-- 51000~51200 is gimbal-->
