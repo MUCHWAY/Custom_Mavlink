@@ -683,6 +683,10 @@
                 <param index="1">Empty</param>
             </entry>
 
+            <entry value="51033" name="MAV_CMD_QUERY_GIMBAL_IP_ADDRESS">
+                <description>Query IP address</description>
+                <param index="1">Empty</param>
+            </entry>
 
             <!-- 51400~51599 is camera-->
 
@@ -939,7 +943,6 @@
                 <description>Enable motor.</description>
                 <param index="1" label="enable" enum = "MOTOR_ENABLE_ENUM">Enable motor, 0 is not enabled, 1 is enabled.</param>
             </entry>
-
             <!-- 51800~51899 is public-->
 
             <entry value="51800" name="MAV_CMD_TK_WRITE_BOOT_STATION_TYPE" hasLocation="false" isDestination="false" >
@@ -999,11 +1002,12 @@
                 <description>IMU static calibration,Calibration of the zero bias of angular velocity for IMU.</description>
                 <param index="1" label="Empty"></param>
             </entry>
-
             <!-- IMU -->
 
+            <entry value="51811" name="MAV_CMD_SUBSCRIPTION_LOG_INFO" hasLocation="false" isDestination="false" >
+                <description>Subscription log information.</description>
+            </entry>
             
-
         </enum>
 
     </enums>
@@ -1088,7 +1092,7 @@
             <field type="uint32_t" name="index">Zero-based index of this audio since vehicle was armed.</field>
         </message>
 
-
+        <!-- 51000~51200 is gimbal-->
         <message id="51000" name="TK_CUSTOM_DATA">
             <description>Custom data.</description>
             <field type="uint16_t" name="msg_id">The name of audio file.</field>
@@ -1212,13 +1216,27 @@
             <description>IMU calibration info.</description>
 
             <field type="float" name="temperature">IMU temperature in Celsius.</field>
-
+        
             <field type="float[3]" name="gyro_offset">Gyroscope offset [X, Y, Z].</field>
             <field type="float[3]" name="acc_norm">Accelerometer offset [X, Y, Z].</field>
             <field type="float[9]" name="acc_matrix">3x3 accelerometer calibration matrix (row-major).</field>
 
             <field type="uint8_t" name="flag">Calibration complete flag (1 = done).</field>
         </message>
+
+        <message id="51703" name="IP_ADDRESS_INFO">
+            <description>IP address information.</description>
+            <field type="uint32_t" name="ipAddress">IP address.</field>
+            <field type="uint16_t" name="ipPort">IP port.</field>
+        </message>
+
+        <message id="51704" name="TK_LOG_INFO">
+            <description>TK log information.</description>
+            <field type="uint8_t" name="type">Log type.</field>
+            <field type="uint8_t" name="level">Log level.</field>
+            <field type="char[128]" name="message">Log message.</field>
+        </message>
+
     </messages>
 
 </mavlink>
