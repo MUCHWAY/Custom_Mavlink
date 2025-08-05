@@ -8,13 +8,22 @@
     <enums>
         <enum name="MAV_USER_COMPONENT">
             <description>Cmponent ids (values) for the different types and instances of onboard hardware/software that might make up a MAVLink system.</description>
-            <entry value="25" name="MAV_COMP_ID_SPEAKER">
+            <entry value="25" name="MAV_COMP_ID_CUSTOM_CAMERA">
+                <description>Custom Camera.</description>
+            </entry>
+            <entry value="28" name="MAV_COMP_ID_CUSTOM_GIMBAL">
+                <description>Custom Gimbal.</description>
+            </entry>
+            <entry value="31" name="MAV_COMP_ID_CUSTOM_MOTOR">
+                <description>LIGHT.</description>
+            </entry>
+            <entry value="34" name="MAV_COMP_ID_SPEAKER">
                 <description>SPEAKER.</description>
             </entry>
-            <entry value="26" name="MAV_COMP_ID_SKYLINK">
+            <entry value="37" name="MAV_COMP_ID_SKYLINK">
                 <description>SKYLINK.</description>
             </entry>
-            <entry value="27" name="MAV_COMP_ID_LIGHT">
+            <entry value="40" name="MAV_COMP_ID_LIGHT">
                 <description>LIGHT.</description>
             </entry>
         </enum>
@@ -773,6 +782,11 @@
 
             <entry value="51411" name="MAV_CMD_CAMREA_PARAM_SAVE">
                 <description>Save camera parameters</description>
+                <param index="1">Empty</param>
+            </entry>
+
+            <entry value="51412" name="MAV_CMD_TK_SWITCH_CAMERA_LENS">
+                <description>Switch camera lens</description>
                 <param index="1">Empty</param>
             </entry>
 
