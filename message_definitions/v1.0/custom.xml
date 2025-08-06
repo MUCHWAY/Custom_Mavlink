@@ -1040,9 +1040,9 @@
             <field type="int32_t" name="reserved">Reserved.</field>
         </message>
         <message id="20001" name="LOG_INFORMATION">
-            <description>Log information from server.</description>
+            <description>Log information.</description>
             <field type="char[200]" name="text">information text</field>
-            <field type="int32_t" name="log_level"> log level</field>
+            <field type="int32_t" name="log_level">log level</field>
         </message>
 
 
