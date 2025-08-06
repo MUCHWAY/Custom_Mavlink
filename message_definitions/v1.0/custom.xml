@@ -360,7 +360,7 @@
             <entry value="1" name="MOTOR_ANGLE_REVERSE">
                 <description>Motor angle reverse.</description>
             </entry>
-        </enum> 
+        </enum>
 
         <enum name="MOTOR_FORCE_REVERSE_ENUM">
             <description>Motor force reverse control.</description>
@@ -370,7 +370,7 @@
             <entry value="1" name="MOTOR_FORCE_REVERSE">
                 <description>Motor force reverse.</description>
             </entry>
-        </enum> 
+        </enum>
 
         <enum name="MOTOR_ENABLE_ENUM">
             <description>Motor enable control.</description>
@@ -380,7 +380,7 @@
             <entry value="1" name="MOTOR_ENABLE">
                 <description>Motor enabled.</description>
             </entry>
-        </enum> 
+        </enum>
 
 
         <enum name="LIGHT_MODE">
@@ -460,7 +460,7 @@
         <!-- Custom specific MAV_CMD_* commands -->
 
             <!-- 50000~50299 is custom common-->
-                
+
             <entry value="50001" name="MAV_CMD_NOTIFY_FILE_UPDATE" hasLocation="false" isDestination="false">
                 <description>Notify audio file updated.</description>
                 <param index="1" label="Update audio file type" enum="SPEAKER_UPDATE_AUDIO_FILE_TYPE">Update audio file type</param>
@@ -676,7 +676,7 @@
             <entry value="50503" name="MAV_CMD_LIGHT_SET_BRIGHTNESS" hasLocation="false" isDestination="false">
                 <description>Set speaker light brightness.</description>
                 <param index="1" label="ID of light" minValue="0" increment="1">ID of light</param>
-                <param index="2" label="Light brightness"> Brightness of light.</param> 
+                <param index="2" label="Light brightness"> Brightness of light.</param>
                 <param index="3">Empty</param>
                 <param index="4">Empty</param>
                 <param index="5">Empty</param>
@@ -1041,7 +1041,7 @@
             <entry value="51811" name="MAV_CMD_SUBSCRIPTION_LOG_INFO" hasLocation="false" isDestination="false" >
                 <description>Subscription log information.</description>
             </entry>
-            
+
         </enum>
 
     </enums>
@@ -1053,6 +1053,12 @@
             <field type="char[64]" name="file_name">The name of audio file.</field>
             <field type="int32_t" name="reserved">Reserved.</field>
         </message>
+        <message id="20001" name="LOG_INFORMATION">
+            <description>Log information.</description>
+            <field type="char[200]" name="text">information text</field>
+            <field type="int32_t" name="log_level">log level</field>
+        </message>
+
 
 
         <!-- 20300~50399 is speaker-->
@@ -1248,7 +1254,7 @@
             <field type="uint8_t" name="station_type">station type.</field>
         </message>
 
-        
+
         <message id="51701" name="CAN_ID_INFO">
             <description> CAN ID info.</description>
             <field type="uint8_t" name="canId">can ID.</field>
@@ -1258,7 +1264,7 @@
             <description>IMU calibration info.</description>
 
             <field type="float" name="temperature">IMU temperature in Celsius.</field>
-        
+
             <field type="float[3]" name="gyro_offset">Gyroscope offset [X, Y, Z].</field>
             <field type="float[3]" name="acc_norm">Accelerometer offset [X, Y, Z].</field>
             <field type="float[9]" name="acc_matrix">3x3 accelerometer calibration matrix (row-major).</field>
