@@ -7,24 +7,24 @@
 
     <enums>
         <enum name="MAV_USER_COMPONENT">
-            <description>Cmponent ids (values) for the different types and instances of onboard hardware/software that might make up a MAVLink system.</description>
+            <description>Component ids (values) for the different types and instances of onboard hardware/software that might make up a MAVLink system.</description>
             <entry value="25" name="MAV_COMP_ID_CUSTOM_GIMBAL">
-                <description>Custom Gimbal.</description>
+                <description>Custom Gimbal,#1~3.</description>
             </entry>
             <entry value="28" name="MAV_COMP_ID_CUSTOM_CAMERA">
-                <description>Custom Camera.</description>
+                <description>Custom Camera,#1~3.</description>
             </entry>
             <entry value="31" name="MAV_COMP_ID_CUSTOM_MOTOR">
-                <description>LIGHT.</description>
+                <description>Custom Motor,#1~5.</description>
             </entry>
-            <entry value="34" name="MAV_COMP_ID_SPEAKER">
-                <description>SPEAKER.</description>
+            <entry value="41" name="MAV_COMP_ID_SPEAKER">
+                <description>Speaker,#1~3.</description>
             </entry>
-            <entry value="37" name="MAV_COMP_ID_SKYLINK">
-                <description>SKYLINK.</description>
+            <entry value="44" name="MAV_COMP_ID_SKYLINK">
+                <description>SKYLINK,#1~3.</description>
             </entry>
-            <entry value="40" name="MAV_COMP_ID_LIGHT">
-                <description>LIGHT.</description>
+            <entry value="47" name="MAV_COMP_ID_LIGHT">
+                <description>LIGHT,#1~3.</description>
             </entry>
         </enum>
 
