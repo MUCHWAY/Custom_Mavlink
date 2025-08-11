@@ -15,7 +15,7 @@
                 <description>Custom Camera,#1~3.</description>
             </entry>
             <entry value="31" name="MAV_COMP_ID_CUSTOM_MOTOR">
-                <description>Custom Motor,#1~5.</description>
+                <description>Custom Motor,#1~10.</description>
             </entry>
             <entry value="41" name="MAV_COMP_ID_SPEAKER">
                 <description>Speaker,#1~3.</description>
@@ -1036,6 +1036,12 @@
                 <description>IMU static calibration,Calibration of the zero bias of angular velocity for IMU.</description>
                 <param index="1" label="Empty"></param>
             </entry>
+
+            <entry value="51812" name="MAV_CMD_READ_IMU_PARAMETER" hasLocation="false" isDestination="false" >
+                <description>read IMU parameter.</description>
+                <param index="1" label="Empty"></param>
+            </entry>
+
             <!-- IMU -->
 
             <entry value="51811" name="MAV_CMD_SUBSCRIPTION_LOG_INFO" hasLocation="false" isDestination="false" >
@@ -1154,6 +1160,7 @@
             <field type="char[32]" name="model_name">Name of the gimbal model.</field>
             <field type="char[32]" name="serial_number">Serial number of the gimbal.</field>
             <field type="char[32]" name="firmware_version">Version of the gimbal firmware.</field>
+            <field type="char[32]" name="protocol_version">Version of the protocol firmware.</field>
         </message>
 
 
