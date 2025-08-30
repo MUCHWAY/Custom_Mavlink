@@ -1091,34 +1091,27 @@
 
             <!-- IMU -->
 
-
-            <!-- Servo control -->
             <entry value="51813" name="MAV_CMD_CONTROL_SERVO" hasLocation="false" isDestination="false" >
-                <description>Control servo.</description>
-                <param index="1" label="ServoNum">Servo number, value:1,2,3,4...</param>
-                <param index="2" label="position">Angle value, ±180</param>
+                <description>contorl servo.</description>
+                <param index="1" label="ServoNum"></param>
+                <param index="2" label="position"></param>
             </entry>
             
-            <!-- Clutch control -->
             <entry value="51814" name="MAV_CMD_CONTROL_CLUTCH" hasLocation="false" isDestination="false" >
-                <description>Control clutch.</description>
-                <param index="1" label="ClutchNum">Clutch number, value:1,2,3,4...</param>
-                <param index="2" label="status" enum="TK_CLUTCH_STATUS">Clutch status: 0 / 1, 0:off, 1:on</param>
+                <description>control clutch.</description>
+                <param index="1" label="ClutchNum"></param>
+                <param index="2" label="status" enum="TK_CLUTCH_STATUS"></param>
             </entry>
 
-            <!-- data collection -->
             <entry value="51815" name="MAV_CMD_CONTROL_DATA_COLLECTION" hasLocation="false" isDestination="false" >
-                <description>Control data collection.</description>
-                <param index="1" label="state" enum="TK_DATA_COLLECTION_STATUS">Data collection status: 0 / 1, 0:off, 1:on</param>
+                <description>cotrol data collection.</description>
+                <param index="1" label="state" enum="TK_DATA_COLLECTION_STATUS"></param>
             </entry>
 
-            <!--Subscribe to strain gauge data -->
             <entry value="51816" name="MAV_CMD_SUBSCRIBE_STRAIN_GAUGE_DATA" hasLocation="false" isDestination="false" >
-                <description>Subscribe to strain gauge data.</description>
+                <description>Subscribe stram gauge data.</description>
                 <param index="1" label="Empty"></param>
             </entry>
-
-
         </enum>
 
     </enums>
