@@ -26,6 +26,9 @@
             <entry value="47" name="MAV_COMP_ID_LIGHT">
                 <description>LIGHT,#1~3.</description>
             </entry>
+            <entry value="50" name="MAV_COMP_ID_PLANE">
+                <description>PLANE,#1,only one.</description>
+            </entry>
         </enum>
 
 
@@ -272,6 +275,30 @@
                 <description>Off</description>
             </entry>
         </enum>
+
+        <enum name="TK_CLUTCH_STATUS">
+            <description>Clutch status</description>
+            <entry value="0" name="CLUTCH_STATUS_ON">
+                <description>On</description>
+            </entry>
+            <entry value="1" name="CLUTCH_STATUS_OFF">
+                <description>Off</description>
+            </entry>
+        </enum>
+
+        <enum name="TK_DATA_COLLECTION_STATUS">
+            <description>data collection status</description>
+            <entry value="0" name="DATA_COLLECTION_ON">
+                <description>On</description>
+            </entry>
+            <entry value="1" name="DATA_COLLECTION_OFF">
+                <description>Off</description>
+            </entry>
+        </enum>
+
+        
+
+
         <enum name="MOTOR_ERROR_STATUS">
             <description>Indicate the motor error status</description>
             <entry value="1" name="MOTOR_LOW_VOLTAGE_STATE">
@@ -1052,6 +1079,11 @@
                 <param index="1" label="Empty"></param>
             </entry>
 
+            <entry value="51811" name="MAV_CMD_SUBSCRIPTION_LOG_INFO" hasLocation="false" isDestination="false" >
+                <description>Subscription log information.</description>
+            </entry>
+
+
             <entry value="51812" name="MAV_CMD_READ_IMU_PARAMETER" hasLocation="false" isDestination="false" >
                 <description>read IMU parameter.</description>
                 <param index="1" label="Empty"></param>
@@ -1059,9 +1091,33 @@
 
             <!-- IMU -->
 
-            <entry value="51811" name="MAV_CMD_SUBSCRIPTION_LOG_INFO" hasLocation="false" isDestination="false" >
-                <description>Subscription log information.</description>
+
+            <!-- Servo control -->
+            <entry value="51813" name="MAV_CMD_CONTROL_SERVO" hasLocation="false" isDestination="false" >
+                <description>Control servo.</description>
+                <param index="1" label="ServoNum">Servo number, value:1,2,3,4...</param>
+                <param index="2" label="position">Angle value, ±180</param>
             </entry>
+            
+            <!-- Clutch control -->
+            <entry value="51814" name="MAV_CMD_CONTROL_CLUTCH" hasLocation="false" isDestination="false" >
+                <description>Control clutch.</description>
+                <param index="1" label="ClutchNum">Clutch number, value:1,2,3,4...</param>
+                <param index="2" label="status" enum="TK_CLUTCH_STATUS">Clutch status: 0 / 1, 0:off, 1:on</param>
+            </entry>
+
+            <!-- data collection -->
+            <entry value="51815" name="MAV_CMD_CONTROL_DATA_COLLECTION" hasLocation="false" isDestination="false" >
+                <description>Control data collection.</description>
+                <param index="1" label="state" enum="TK_DATA_COLLECTION_STATUS">Data collection status: 0 / 1, 0:off, 1:on</param>
+            </entry>
+
+            <!--Subscribe to strain gauge data -->
+            <entry value="51816" name="MAV_CMD_SUBSCRIBE_STRAIN_GAUGE_DATA" hasLocation="false" isDestination="false" >
+                <description>Subscribe to strain gauge data.</description>
+                <param index="1" label="Empty"></param>
+            </entry>
+
 
         </enum>
 
@@ -1371,6 +1427,13 @@
             <field type="char[128]" name="message">Log message.</field>
         </message>
 
+        
+        <message id="51705" name="TK_STRAIN_GAGE_DATA_COLLECTION">
+            <description>Aircraft strain gauge data collection.</description>
+            <field type="uint8_t[210]" name="data">Strain gauge data.</field>
+        </message>
+
+    
     </messages>
 
 </mavlink>
