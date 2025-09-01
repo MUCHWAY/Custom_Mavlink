@@ -1106,6 +1106,9 @@
             <entry value="51815" name="MAV_CMD_CONTROL_DATA_COLLECTION" hasLocation="false" isDestination="false" >
                 <description>cotrol data collection.</description>
                 <param index="1" label="state" enum="TK_DATA_COLLECTION_STATUS"></param>
+                <param index="2" label="hour" >Fill in the time, minute and second in Beijing Time.</param>
+                <param index="3" label="minute" >Fill in the time, minute and second in Beijing Time.</param>
+                <param index="4" label="second" >Fill in the time, minute and second in Beijing Time.</param>
             </entry>
 
             <entry value="51816" name="MAV_CMD_SUBSCRIBE_STRAIN_GAUGE_DATA" hasLocation="false" isDestination="false" >
