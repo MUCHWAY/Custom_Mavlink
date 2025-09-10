@@ -296,8 +296,25 @@
             </entry>
         </enum>
 
-        
 
+        <enum name = "TK_DATA_COLLECTION_FREQUENCY">
+            <description>Data collection frequency</description>
+            <entry value="0" name="DATA_COLLECTION_FREQUENCY_50HZ">
+                <description>50 Hz</description>
+            </entry>
+            <entry value="1" name="DATA_COLLECTION_FREQUENCY_100HZ">
+                <description>100 Hz</description>
+            </entry>
+            <entry value="2" name="DATA_COLLECTION_FREQUENCY_200HZ">
+                <description>200 Hz</description>
+            </entry>
+            <entry value="3" name="DATA_COLLECTION_FREQUENCY_500HZ">
+                <description>500 Hz</description>
+            </entry>
+            <entry value="4" name="DATA_COLLECTION_FREQUENCY_1000HZ">
+                <description>1000 Hz</description>
+            </entry>
+        </enum>
 
         <enum name="MOTOR_ERROR_STATUS">
             <description>Indicate the motor error status</description>
@@ -1115,6 +1132,23 @@
                 <description>Subscribe stram gauge data.</description>
                 <param index="1" label="Empty"></param>
             </entry>
+
+            <entry value="51817" name="MAV_CMD_UPDATE_COLLECTION_FREQUENCY" hasLocation="false" isDestination="false" >
+                <description>update collection frequency.</description>
+                <param index="1" enum ="TK_DATA_COLLECTION_FREQUENCY" label="hz"> collection frequency. </param>
+            </entry>
+
+            <entry value="51818" name="MAV_CMD_GAUGE_CALIBRATION" hasLocation="false" isDestination="false" >
+                <description>Calibrate data collection gauge parameters.</description>
+                <param index="1"  label="value"> calibration value , min = 0, max  = 4096 . </param>
+            </entry>
+
+            <entry value="51819" name="MAV_CMD_PLANE_PARAMS_SAVE" hasLocation="false" isDestination="false" >
+                <description>Save data collection gauge parameters.</description> 
+                <param index="1"  label="Empty"> </param>
+            </entry>
+
+     
         </enum>
 
     </enums>
