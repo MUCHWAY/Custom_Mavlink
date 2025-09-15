@@ -1293,12 +1293,12 @@
             <field type="uint8_t" name="gimbal_status_two"> .</field>
             <field type="uint8_t" name="gimbal_status_three"> .</field>
 
-            <field type="int16_t" name="pitch_frame_angle" units= "0.1X"> Pitch frame angle, unit 0.1��.</field>
-            <field type="int16_t" name="yaw_frame_angle" units= "0.1X"> Yaw frame angle, unit 0.1��.</field>
-            <field type="int16_t" name="roll_frame_angle" units= "0.1X"> Roll frame angle, unit 0.1��.</field>
+            <field type="int16_t" name="pitch_frame_angle" units= "0.1X"> Pitch frame angle, unit 0.1 degree.</field>
+            <field type="int16_t" name="yaw_frame_angle" units= "0.1X"> Yaw frame angle, unit 0.1 degree.</field>
+            <field type="int16_t" name="roll_frame_angle" units= "0.1X"> Roll frame angle, unit 0.1 degree.</field>
 
-            <field type="int16_t" name="x_deviation_quantity" units= " Pixels"> X-axis deviation amount, unit pixels, ��960 (image center as origin).</field>
-            <field type="int16_t" name="y_deviation_quantity" units= " Pixels"> Y-axis deviation amount, unit pixels, ��540 (image center as origin).</field>
+            <field type="int16_t" name="x_deviation_quantity" units= " Pixels"> X-axis deviation amount, unit pixels, plus or minus 960 (image center as origin).</field>
+            <field type="int16_t" name="y_deviation_quantity" units= " Pixels"> Y-axis deviation amount, unit pixels, plus or minus 540 (image center as origin).</field>
 
             <field type="uint16_t" name="laser_distance" units= "dm"> Laser ranging distance, unit dm.</field>
             <field type="uint16_t" name="zoom" units= "0.1X"> Zoom ratio, unit 0.1X.</field>
@@ -1315,6 +1315,11 @@
             <field type="int16_t" name="infrared_temperature_max" units= "0.1X"> Maximum infrared temperature, unit 0.1X.</field>
             <field type="int16_t" name="infrared_temperature_min" units= "0.1X"> Minimum infrared temperature, unit 0.1X.</field>
             <field type="int16_t" name="infrared_temperature_avg" units= "0.1X"> Average infrared temperature, unit 0.1X.</field>
+
+            <field type="int16_t" name="x_Motor_angular_velocity" units= "0.1X"> X-axis motor angular velocity, unit 0.1X.</field>
+            <field type="int16_t" name="y_Motor_angular_velocity" units= "0.1X"> Y-axis motor angular velocity, unit 0.1X.</field>
+            <field type="int16_t" name="z_Motor_angular_velocity" units= "0.1X"> Z-axis motor angular velocity, unit 0.1X.</field>
+
         </message>
 
         <message id="51004" name="TK_IMU_INFO">
@@ -1325,7 +1330,7 @@
             <field type="float" name="angular_velocity_z" units= "°/s">Angular velocity Z-axis.</field> 
             <field type="float" name="acceleration_x" units= "m/s">Acceleration X-axis.</field>   
             <field type="float" name="acceleration_y" units= "m/s">Acceleration Y-axis.</field>   
-            <field type="float" name="acceleration_z" units= "m/s">Acceleration Z-axis.</field>    
+            <field type="float" name="acceleration_z" units= "m/s">Acceleration Z-axis.</field>   
         </message>
 
 
