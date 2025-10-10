@@ -500,6 +500,65 @@
             </entry>
         </enum>
 
+        <enum name="TK_TRACK_STATUS">
+            <description>Gimbal tracking status</description>
+            <entry value="0" name="TK_NOT_TRACKING">
+                <description>Not tracking</description>
+            </entry>
+            <entry value="1" name="TK_TRACKING">
+                <description>Tracking</description>
+            </entry>
+            <entry value="2" name="TK_SEARCHING">
+                <description>Searching</description>
+            </entry>
+        </enum>
+
+        <enum name="TK_GIMBAL_MODE">
+            <description>Gimbal working mode</description>
+            <entry value="0" name="TK_MODE_LOCK">
+                <description>Lock mode</description>
+            </entry>
+            <entry value="1" name="TK_MODE_YAW_FOLLOW">
+                <description>Yaw follow mode</description>
+            </entry>
+        </enum>  
+
+        <enum name="TK_PERIPHERAL_DEVICE_STATUS_FLAG">
+
+            <description>Peripheral device status flag</description>
+
+            <entry value="1" name="TK_VIDEO_RECORDING_STATUS">
+                <description>Video recording status, 0: not recording, 1: recording</description>
+            </entry>
+
+            <entry value="2" name="TK_DEVICE_LASER_LIGHT_STATUS">
+                <description>Laser light status, 0: off, 1: on</description>
+            </entry>
+
+            <entry value="4" name="TK_DEVICE_FILL_LIGHT_STATUS">
+                <description>Fill light status, 0: off, 1: on</description>
+            </entry>
+
+            <entry value="8" name="TK_DEVICE_LASER_RANGEFINDER_STATUS">
+                <description>Laser rangefinder status, 0: not measuring, 1: measuring</description>
+            </entry>
+
+            <entry value="16" name="TK_DEVICE_TARGET_RECOGNITION_STATUS">
+                <description>Target recognition status, 0: not recognizing, 1: recognizing</description>
+            </entry>
+
+            <entry value="32" name="TK_TRIGGER_STATUS">
+                <description>Trigger status, 0: not triggered, 1: triggered</description>
+            </entry>
+
+            <entry value="64" name="TK_ELECTRIC_LOCK_STATUS">
+                <description>Electric lock status, 0: locked, 1: unlocked</description>
+            </entry>
+
+        </enum>  
+
+        
+
         <enum name="MAV_CMD">
         <!-- Custom specific MAV_CMD_* commands -->
 
@@ -775,6 +834,14 @@
                 <description>Query IMU information.</description>
                 <param index="1">Empty</param>
             </entry>
+
+            <!-- <entry value="51037" name="MAV_CMD_SUBSCRIBE_GLOBAL_POSITION_INT">
+                <description>Subscribe to global position updates.</description>
+                <param index="1">Empty</param>
+            </entry> -->
+
+
+
 
             <!-- 51400~51599 is camera-->
 
@@ -1333,6 +1400,59 @@
             <field type="float" name="acceleration_z" units= "m/s">Acceleration Z-axis.</field>   
         </message>
 
+
+        <message id="51005" name="TK_GLOBAL_POSITION">
+            <description>Local / Target Gps data.</description>
+            <field type="int32_t" name="longitude" units= "degE7">Longitude, unit [degE7].</field>   
+            <field type="int32_t" name="latitude" units= "degE7">Latitude, unit [degE7].</field>   
+            <field type="int32_t" name="altitude" units= "mm">Altitude, unit [mm].</field>   
+            <field type="int32_t" name="relative_altitude" units= "mm">Relative altitude, unit [mm].</field>
+
+            <field type="int32_t" name="target_longitude" units= "degE7">Target longitude, unit [degE7].</field>   
+            <field type="int32_t" name="target_latitude" units= "degE7">Target latitude, unit [degE7].</field>   
+            <field type="int32_t" name="target_altitude" units= "mm">Target altitude, unit [mm].</field>   
+            <field type="uint16_t" name="target_distance" units= "dm"> Target horizontal distance, unit [dm].</field> 
+        </message>
+
+
+        <message id="51006" name="TK_ATTITUDE">
+            <description>Including three-axis angles and angular velocities.</description>
+            <field type="float" name="mode" enum = "TK_GIMBAL_MODE" >Current mode.</field>
+            <field type="float" name="pitch" units= "°">Pitch, unit degree.</field>
+            <field type="float" name="roll" units= "°">Roll, unit degree.</field>
+            <field type="float" name="yaw" units= "°">Yaw, unit degree.</field>
+
+            <field type="float" name="pitch_speed" units= "°/s">Pitch speed, unit degree per second.</field>
+            <field type="float" name="roll_speed" units= "°/s">Roll speed, unit degree per second.</field>
+            <field type="float" name="yaw_speed" units= "°/s">Yaw speed, unit degree per second.</field>
+        </message>
+
+
+        <message id="51007" name="TK_TRACKING_STATUS">
+            <description>Tracking status.</description>
+            <field type="uint8_t" name="tracking_status" enum = "TK_TRACK_STATUS">Tracking status, area see GIMBAL_TRACKING_STATUS.</field>
+            <field type="int16_t" name="x_deviation_quantity" units= " Pixels"> x-axis deviation amount, unit pixels, plus or minus 960 (image center as origin).</field>
+            <field type="int16_t" name="y_deviation_quantity" units= " Pixels"> Y-axis deviation amount, unit pixels, plus or minus 540 (image center as origin).</field>
+        </message>
+
+
+        <message id="51008" name="TK_INFRARED_TEMPERATURE">
+            <description>Infrared temperature data.</description>
+            <field type="float" name="infrared_temperature_max"> Maximum infrared temperature.</field>
+            <field type="float" name="infrared_temperature_min"> Minimum infrared temperature.</field>
+            <field type="float" name="infrared_temperature_avg"> Average infrared temperature.</field>
+        </message>
+
+
+        <message id="51009" name="TK_PERIPHERAL_DEVICE_STATUS">
+            <description>Peripheral device status data.</description>
+            <field type="uint16_t" name="camera_zoom">camera zoom.</field>
+            <field type="uint16_t" name="laser_distance" units= "dm"> Laser ranging distance, unit dm.</field>
+            <field type="uint16_t" name="photos_cnt"> Photo count.</field>
+            <field type="uint32_t" name="status_flag" enum = "TK_PERIPHERAL_DEVICE_STATUS_FLAG">Peripheral device status flag, area see TK_PERIPHERAL_DEVICE_STATUS_FLAG.</field>
+        </message>
+
+        
 
         <!-- 51300~51499 is Camera-->
 
