@@ -1407,6 +1407,7 @@
             <field type="int32_t" name="latitude" units= "degE7">Latitude, unit [degE7].</field>   
             <field type="int32_t" name="altitude" units= "mm">Altitude, unit [mm].</field>   
             <field type="int32_t" name="relative_altitude" units= "mm">Relative altitude, unit [mm].</field>
+            <field type="uint16_t" name="heading" units= "cdeg">Vehicle heading (yaw angle), 0.0..359.99 degrees. If unknown, set to: UINT16_MAX</field>
 
             <field type="int32_t" name="target_longitude" units= "degE7">Target longitude, unit [degE7].</field>   
             <field type="int32_t" name="target_latitude" units= "degE7">Target latitude, unit [degE7].</field>   
@@ -1417,14 +1418,21 @@
 
         <message id="51006" name="TK_ATTITUDE">
             <description>Including three-axis angles and angular velocities.</description>
-            <field type="float" name="mode" enum = "TK_GIMBAL_MODE" >Current mode.</field>
-            <field type="float" name="pitch" units= "°">Pitch, unit degree.</field>
-            <field type="float" name="roll" units= "°">Roll, unit degree.</field>
-            <field type="float" name="yaw" units= "°">Yaw, unit degree.</field>
 
-            <field type="float" name="pitch_speed" units= "°/s">Pitch speed, unit degree per second.</field>
-            <field type="float" name="roll_speed" units= "°/s">Roll speed, unit degree per second.</field>
-            <field type="float" name="yaw_speed" units= "°/s">Yaw speed, unit degree per second.</field>
+            <field type="uint8_t" name="mode" enum = "TK_GIMBAL_MODE" >Current mode.</field>
+
+            <field type="float" name="pitchAngle" units= "°">Pitch, unit degree.</field>
+            <field type="float" name="rollAngle" units= "°">Roll, unit degree.</field>
+            <field type="float" name="yawAngle" units= "°">Yaw, unit degree.</field>
+
+            <field type="float" name="angular_velocity_x" units= "°/s">Angular velocity X-axis, unit degree per second.</field>
+            <field type="float" name="angular_velocity_y" units= "°/s">Angular velocity Y-axis, unit degree per second.</field>
+            <field type="float" name="angular_velocity_z" units= "°/s">Angular velocity Z-axis, unit degree per second.</field>
+
+            <field type="float" name="acceleration_x" units= "m/s²">Acceleration X-axis, unit m/s².</field>
+            <field type="float" name="acceleration_y" units= "m/s²">Acceleration Y-axis, unit m/s².</field>
+            <field type="float" name="acceleration_z" units= "m/s²">Acceleration Z-axis, unit m/s².</field>
+
         </message>
 
 
@@ -1450,6 +1458,7 @@
             <field type="uint16_t" name="laser_distance" units= "dm"> Laser ranging distance, unit dm.</field>
             <field type="uint16_t" name="photos_cnt"> Photo count.</field>
             <field type="uint32_t" name="status_flag" enum = "TK_PERIPHERAL_DEVICE_STATUS_FLAG">Peripheral device status flag, area see TK_PERIPHERAL_DEVICE_STATUS_FLAG.</field>
+            <field type="uint32_t" name="reserved">Reserved.</field>
         </message>
 
         
