@@ -1429,9 +1429,9 @@
             <field type="float" name="angular_velocity_y" units= "°/s">Angular velocity Y-axis, unit degree per second.</field>
             <field type="float" name="angular_velocity_z" units= "°/s">Angular velocity Z-axis, unit degree per second.</field>
 
-            <field type="float" name="acceleration_x" units= "m/s²">Acceleration X-axis, unit m/s².</field>
-            <field type="float" name="acceleration_y" units= "m/s²">Acceleration Y-axis, unit m/s².</field>
-            <field type="float" name="acceleration_z" units= "m/s²">Acceleration Z-axis, unit m/s².</field>
+            <field type="float" name="acceleration_x" units= "m/s">Acceleration X-axis, unit m/s.</field>
+            <field type="float" name="acceleration_y" units= "m/s">Acceleration Y-axis, unit m/s.</field>
+            <field type="float" name="acceleration_z" units= "m/s">Acceleration Z-axis, unit m/s.</field>
 
         </message>
 
