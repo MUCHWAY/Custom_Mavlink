@@ -1594,7 +1594,7 @@
         
         <message id="51705" name="TK_STRAIN_GAGE_DATA_COLLECTION">
             <description>Aircraft strain gauge data collection.</description>
-            <field type="uint8_t[210]" name="data">Strain gauge data.</field>
+            <field type="uint8_t[230]" name="data">Strain gauge data.</field>
         </message>
 
     
