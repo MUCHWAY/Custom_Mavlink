@@ -1657,6 +1657,18 @@
             <description>Aircraft strain gauge data collection.</description>
             <field type="uint8_t[230]" name="data">Strain gauge data.</field>
         </message>
+
+
+        <!-- 51800~51850 is unitree dog-->
+        <message id="51800" name="UNITREE_DOG_JOYSTICK">
+           <description>Unitree dog joystick channel values.</description>
+            <field type="float" name="Lx">Joystick channel values.</field>
+            <field type="float" name="Ly">Joystick channel values.</field>
+            <field type="float" name="Rx">Joystick channel values.</field>
+            <field type="float" name="Ry">Joystick channel values.</field>
+        </message>
+
+
     </messages>
 
 
