@@ -61,16 +61,16 @@
         </enum>
         <enum name="SPEAKER_UPDATE_AUDIO_FILE_TYPE">
             <description>Type of update audio file.</description>
-            <entry value="0" name="NONE_TYPE">
+            <entry value="0" name="AUDIO_FILE_NONE_TYPE">
                 <description>None.</description>
             </entry>
-            <entry value="1" name="ADD">
+            <entry value="1" name="AUDIO_FILE_ADD">
                 <description>Add a audio file.</description>
             </entry>
-            <entry value="2" name="REMOVE">
+            <entry value="2" name="AUDIO_FILE_REMOVE">
                 <description>Delete a audio file.</description>
             </entry>
-            <entry value="3" name="RENAME">
+            <entry value="3" name="AUDIO_FILE_RENAME">
                 <description>Rename a audio file.</description>
             </entry>
         </enum>
@@ -524,7 +524,7 @@
             <entry value="1" name="TK_MODE_YAW_FOLLOW">
                 <description>Yaw follow mode</description>
             </entry>
-        </enum>  
+        </enum>
 
         <enum name="TK_PERIPHERAL_DEVICE_STATUS_FLAG">
 
@@ -558,7 +558,8 @@
                 <description>Electric lock status, 0: locked, 1: unlocked</description>
             </entry>
 
-        </enum>  
+        </enum>
+
 
     
         <enum name="UNITREE_DOG_BASIC_ACTION">
@@ -1205,7 +1206,7 @@
                 <param index="1" label="ServoNum"></param>
                 <param index="2" label="position"></param>
             </entry>
-            
+
             <entry value="51814" name="MAV_CMD_CONTROL_CLUTCH" hasLocation="false" isDestination="false" >
                 <description>control clutch.</description>
                 <param index="1" label="ClutchNum"></param>
@@ -1236,7 +1237,7 @@
             </entry>
 
             <entry value="51819" name="MAV_CMD_PLANE_PARAMS_SAVE" hasLocation="false" isDestination="false" >
-                <description>Save data collection gauge parameters.</description> 
+                <description>Save data collection gauge parameters.</description>
                 <param index="1"  label="Empty"> </param>
             </entry>
 
@@ -1451,28 +1452,28 @@
 
         <message id="51004" name="TK_IMU_INFO">
             <description>IMU info.</description>
-            <field type="float" name="temperature" units= "°c">Temperature.</field>   
-            <field type="float" name="angular_velocity_x" units= "°/s">Angular velocity X-axis.</field>   
-            <field type="float" name="angular_velocity_y" units= "°/s">Angular velocity Y-axis.</field>   
-            <field type="float" name="angular_velocity_z" units= "°/s">Angular velocity Z-axis.</field> 
-            <field type="float" name="acceleration_x" units= "m/s">Acceleration X-axis.</field>   
-            <field type="float" name="acceleration_y" units= "m/s">Acceleration Y-axis.</field>   
-            <field type="float" name="acceleration_z" units= "m/s">Acceleration Z-axis.</field>   
+            <field type="float" name="temperature" units= "°c">Temperature.</field>
+            <field type="float" name="angular_velocity_x" units= "°/s">Angular velocity X-axis.</field>
+            <field type="float" name="angular_velocity_y" units= "°/s">Angular velocity Y-axis.</field>
+            <field type="float" name="angular_velocity_z" units= "°/s">Angular velocity Z-axis.</field>
+            <field type="float" name="acceleration_x" units= "m/s">Acceleration X-axis.</field>
+            <field type="float" name="acceleration_y" units= "m/s">Acceleration Y-axis.</field>
+            <field type="float" name="acceleration_z" units= "m/s">Acceleration Z-axis.</field>
         </message>
 
 
         <message id="51005" name="TK_GLOBAL_POSITION">
             <description>Local / Target Gps data.</description>
-            <field type="int32_t" name="longitude" units= "degE7">Longitude, unit [degE7].</field>   
-            <field type="int32_t" name="latitude" units= "degE7">Latitude, unit [degE7].</field>   
-            <field type="int32_t" name="altitude" units= "mm">Altitude, unit [mm].</field>   
+            <field type="int32_t" name="longitude" units= "degE7">Longitude, unit [degE7].</field>
+            <field type="int32_t" name="latitude" units= "degE7">Latitude, unit [degE7].</field>
+            <field type="int32_t" name="altitude" units= "mm">Altitude, unit [mm].</field>
             <field type="int32_t" name="relative_altitude" units= "mm">Relative altitude, unit [mm].</field>
             <field type="uint16_t" name="heading" units= "cdeg">Vehicle heading (yaw angle), 0.0..359.99 degrees. If unknown, set to: UINT16_MAX</field>
 
-            <field type="int32_t" name="target_longitude" units= "degE7">Target longitude, unit [degE7].</field>   
-            <field type="int32_t" name="target_latitude" units= "degE7">Target latitude, unit [degE7].</field>   
-            <field type="int32_t" name="target_altitude" units= "mm">Target altitude, unit [mm].</field>   
-            <field type="uint16_t" name="target_distance" units= "dm"> Target horizontal distance, unit [dm].</field> 
+            <field type="int32_t" name="target_longitude" units= "degE7">Target longitude, unit [degE7].</field>
+            <field type="int32_t" name="target_latitude" units= "degE7">Target latitude, unit [degE7].</field>
+            <field type="int32_t" name="target_altitude" units= "mm">Target altitude, unit [mm].</field>
+            <field type="uint16_t" name="target_distance" units= "dm"> Target horizontal distance, unit [dm].</field>
         </message>
 
 
@@ -1521,7 +1522,7 @@
             <field type="uint32_t" name="reserved">Reserved.</field>
         </message>
 
-        
+
 
         <!-- 51300~51499 is Camera-->
 
@@ -1651,7 +1652,7 @@
             <field type="char[128]" name="message">Log message.</field>
         </message>
 
-        
+
         <message id="51705" name="TK_STRAIN_GAGE_DATA_COLLECTION">
             <description>Aircraft strain gauge data collection.</description>
             <field type="uint8_t[230]" name="data">Strain gauge data.</field>
