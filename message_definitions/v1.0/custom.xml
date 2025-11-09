@@ -861,13 +861,10 @@
                 <param index="1">Empty</param>
             </entry>
 
-            <!-- <entry value="51037" name="MAV_CMD_SUBSCRIBE_GLOBAL_POSITION_INT">
-                <description>Subscribe to global position updates.</description>
-                <param index="1">Empty</param>
-            </entry> -->
-
-
-
+            <entry value="51037" name="MAV_CMD_TK_SET_GIMBAL_MODE">
+                <description>Set gimbal working mode</description>
+                <param index="1" label="Gimbal mode" enum="TK_GIMBAL_MODE">Gimbal working mode</param>
+            </entry>
 
             <!-- 51400~51599 is camera-->
 
