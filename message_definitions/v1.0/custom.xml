@@ -915,6 +915,10 @@
                 <description>Switch camera lens</description>
                 <param index="1">Empty</param>
             </entry>
+            <entry value="51413" name="MAV_CMD_TK_SET_NETWORK_PARAMS">
+                <description>Set network params of camera</description>
+                <param index="1">Empty</param>
+            </entry>
 
             <!-- 51600~51799 is motor-->
 
