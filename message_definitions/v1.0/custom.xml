@@ -919,6 +919,16 @@
                 <description>Set network params of camera</description>
                 <param index="1">Empty</param>
             </entry>
+            <entry value="51414" name="MAV_CMD_TK_GET_NETWORK_PARAMS">
+                <description>Get network params of camera</description>
+                <param index="1">IP byte 0</param>
+                <param index="2">IP byte 1</param>
+                <param index="3">IP byte 2</param>
+                <param index="4">IP byte 3</param>
+                <param index="5">Bitrate</param>
+                <param index="6">Resolution</param>
+                <param index="7">Encoding</param>
+            </entry>
 
             <!-- 51600~51799 is motor-->
 
@@ -1277,6 +1287,16 @@
             <field type="uint8_t" name="connection_index">The connection index.</field>
             <field type="uint64_t" name="connection_id">The connection id.</field>
             <field type="uint8_t" name="connection_status">The connection status.</field>
+        </message>
+        <message id="20304" name="SPEAKER_CAMMERA_NETWORK_PARAMS">
+            <description>Camera network params response.</description>
+            <field type="uint8_t" name="ip_byte_0">IP byte 0</field>
+            <field type="uint8_t" name="ip_byte_1">IP byte 1</field>
+            <field type="uint8_t" name="ip_byte_2">IP byte 2</field>
+            <field type="uint8_t" name="ip_byte_3">IP byte 3</field>
+            <field type="uint8_t" name="bitrate">Bitrate</field>
+            <field type="uint8_t" name="resolution">Resolution</field>
+            <field type="uint8_t" name="encoding">Encoding</field>
         </message>
 
 
