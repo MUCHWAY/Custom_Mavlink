@@ -29,6 +29,9 @@
             <entry value="50" name="MAV_COMP_ID_PLANE">
                 <description>PLANE,#1,only one.</description>
             </entry>
+            <entry value="51" name="MAV_COMP_ID_CUSTOM_UNITREE_DOG">
+                <description>Custom Unitree Dog,only one.</description>
+            </entry>
         </enum>
 
 
@@ -558,6 +561,29 @@
         </enum>
 
 
+    
+        <enum name="UNITREE_DOG_BASIC_ACTION">
+            <description>Unitree dog basic action</description>
+            <entry value="0" name="UNITREE_DOG_ACTION_UNLOCK">
+            <description>Unlock</description>
+            </entry>
+            <entry value="1" name="UNITREE_DOG_ACTION_SIT_DOWN_UP">
+            <description>Sit / Stand</description>
+            </entry>
+            <entry value="2" name="UNITREE_DOG_ACTION_RECOVER">
+            <description>Self-right / Recover</description>
+            </entry>
+            <entry value="3" name="UNITREE_DOG_ACTION_LIGHT_SWITCH">
+            <description>Toggle lights</description>
+            </entry>
+            <entry value="4" name="UNITREE_DOG_ACTION_DANCE">
+            <description>Dance</description>
+            </entry>
+            <entry value="5" name="UNITREE_DOG_ACTION_JUMP">
+            <description>Jump</description>
+            </entry>
+        </enum>
+
 
         <enum name="MAV_CMD">
         <!-- Custom specific MAV_CMD_* commands -->
@@ -849,13 +875,10 @@
                 <param index="1">Empty</param>
             </entry>
 
-            <!-- <entry value="51037" name="MAV_CMD_SUBSCRIBE_GLOBAL_POSITION_INT">
-                <description>Subscribe to global position updates.</description>
-                <param index="1">Empty</param>
-            </entry> -->
-
-
-
+            <entry value="51037" name="MAV_CMD_TK_SET_GIMBAL_MODE">
+                <description>Set gimbal working mode</description>
+                <param index="1" label="Gimbal mode" enum="TK_GIMBAL_MODE">Gimbal working mode</param>
+            </entry>
 
             <!-- 51400~51599 is camera-->
 
@@ -1227,6 +1250,41 @@
             <entry value="51819" name="MAV_CMD_PLANE_PARAMS_SAVE" hasLocation="false" isDestination="false" >
                 <description>Save data collection gauge parameters.</description>
                 <param index="1"  label="Empty"> </param>
+            </entry>
+
+            <!-- 51900~51999 is Unitree Robotics Dog-->
+
+            <!-- Basic left and right joystick control -->
+            <entry value="51900" name="MAV_CMD_UNITREE_DOG_BASIC_MOVE_CONTROL" hasLocation="false" isDestination="false" >
+                <description>Basic move control of Unitree Robotics Dog.</description>
+                <param index="1"  label="Lx"> Left joystick X axis control, float type, range -1.0~1.0 </param>
+                <param index="2"  label="Ly"> Left joystick Y axis control, float type, range -1.0~1.0 </param>
+                <param index="3"  label="Rx"> Right joystick X axis control, float type, range -1.0~1.0 </param>
+                <param index="4"  label="Ry"> Right joystick Y axis control, float type, range -1.0~1.0 </param>
+            </entry>
+
+            <!-- General key command instructions -->
+            <entry value="51901" name="MAV_CMD_UNITREE_DOG_COMMON_KEY_CONTROL" hasLocation="false" isDestination="false" >
+                <description>Common key control of Unitree Robotics Dog.</description>
+                <param index="1"  label="key"> Key value to control.</param>
+            </entry>
+
+            <!-- unlock -->
+            <entry value="51902" name="MAV_CMD_UNITREE_DOG_UNLOCK" hasLocation="false" isDestination="false" >
+                <description>Unlock Unitree Robotics Dog.</description>
+                <param index="1"  label="Empty"> </param>
+            </entry>
+        
+            <!--Squatting and standing up -->
+            <entry value="51903" name="MAV_CMD_UNITREE_DOG_SIT_STAND_CONTROL" hasLocation="false" isDestination="false" >
+                <description>Sit/Stand control of Unitree Robotics Dog.</description>
+                <param index="1"  label="Empty" > Sit/Stand control. </param>
+            </entry>
+
+            <!-- Basic action commands for the robot dog, e.g.: sit/stand, heart gesture, dance, etc. -->
+            <entry value="51904" name="MAV_CMD_UNITREE_DOG_BASIC_ACTION_CONTROL" hasLocation="false" isDestination="false" >
+                <description>Basic action control of Unitree Robotics Dog.</description>
+                <param index="1"  label="action" enum = "UNITREE_DOG_BASIC_ACTION"> Basic action control, e.g., sit/stand, heart sign, dance, etc ,see UNITREE_DOG_BASIC_ACTION enum. </param>
             </entry>
 
 
@@ -1622,6 +1680,19 @@
         </message>
 
 
+        <!-- 51800~51850 is unitree dog-->
+        <message id="51800" name="UNITREE_DOG_JOYSTICK">
+           <description>Unitree dog joystick channel values.</description>
+            <field type="float" name="Lx">Joystick channel values.</field>
+            <field type="float" name="Ly">Joystick channel values.</field>
+            <field type="float" name="Rx">Joystick channel values.</field>
+            <field type="float" name="Ry">Joystick channel values.</field>
+        </message>
+
+
     </messages>
+
+
+
 
 </mavlink>
