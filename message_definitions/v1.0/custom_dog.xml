@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<mavlink>
+    <include>common.xml</include>
+    <version>0</version>
+    <dialect>0</dialect>
+
+    <enums>
+        <!-- Custom Dog Component ID (to be merged with MAV_USER_COMPONENT) -->
+        <enum name="MAV_USER_COMPONENT">
+            <entry value="52" name="MAV_COMP_ID_CUSTOM_DOG">
+                <description>Custom Dog Controller.</description>
+            </entry>
+        </enum>
+
+        <!-- Custom Dog Control Command Values -->
+        <enum name="CUSTOM_DOG_CONTROL_CMD_VALUE">
+            <description>Custom dog control command values.</description>
+            <entry value="0" name="CUSTOM_DOG_CMD_VALUE_ENTER_STAND_UP">
+                <description>Enter stand up mode.</description>
+            </entry>
+            <entry value="1" name="CUSTOM_DOG_CMD_VALUE_LIE_DOWN">
+                <description>Lie down mode.</description>
+            </entry>
+            <entry value="2" name="CUSTOM_DOG_CMD_VALUE_CROUCH">
+                <description>Crouch mode.</description>
+            </entry>
+            <entry value="3" name="CUSTOM_DOG_CMD_VALUE_ENTER_POSE_CONTROL">
+                <description>Enter pose control mode.</description>
+            </entry>
+            <entry value="4" name="CUSTOM_DOG_CMD_VALUE_ENTER_MOVE">
+                <description>Enter move mode.</description>
+            </entry>
+        </enum>
+
+        <!-- Custom Dog Control Commands (to be merged with MAV_CMD) -->
+        <enum name="MAV_CMD">
+            <entry value="51950" name="MAV_CMD_CUSTOM_DOG_CONTROL_CMD">
+                <description>Custom dog control command.</description>
+                <param index="1">Command value (CUSTOM_DOG_CONTROL_CMD_VALUE).</param>
+            </entry>
+            <entry value="51951" name="MAV_CMD_CUSTOM_DOG_SELECT_MODEL">
+                <description>Select dog model.</description>
+                <param index="1">Dog model value.</param>
+            </entry>
+        </enum>
+    </enums>
+
+    <messages>
+        <!-- Custom Dog Joy Data Message -->
+        <message id="51850" name="CUSTOM_DOG_JOY_DATA">
+            <description>Custom dog joystick channel values.</description>
+            <field type="float" name="lx">Left joystick x-axis value.</field>
+            <field type="float" name="ly">Left joystick y-axis value.</field>
+            <field type="float" name="rx">Right joystick x-axis value.</field>
+            <field type="float" name="ry">Right joystick y-axis value.</field>
+        </message>
+    </messages>
+
+</mavlink>
