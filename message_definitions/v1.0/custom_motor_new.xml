@@ -1,0 +1,709 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mavlink>
+    <enums>
+
+    </enums>
+    <messages>
+        <message id="30000" name="READ_PARAM">
+            <description>This is a message for reading parameters</description>
+            <field type="uint32_t" name="struct_id" />
+        </message>
+        <message id="30001" name="PmsmConfig">
+            <description>This is a message for PmsmConfig</description>
+            <field type="float" name="b" />
+            <field type="float" name="fc" />
+            <field type="float" name="flux" />
+            <field type="float" name="j" />
+            <field type="float" name="ld" />
+            <field type="float" name="lq" />
+            <field type="float" name="peak_current" />
+            <field type="float" name="pn" />
+            <field type="float" name="r" />
+            <field type="float" name="rated_current" />
+            <field type="float" name="speed_max_rpm" />
+            <field type="float" name="tp_s" />
+            <field type="float" name="tc_s" />
+            <field type="uint32_t" name="enc_line_p_n" />
+            <field type="float" name="kt" />
+        </message>
+        <message id="30002" name="ElecIdSinInput">
+            <description>This is a message for ElecIdSinInput</description>
+            <field type="float[3]" name="i_abc_now_A" />
+        </message>
+        <message id="30003" name="ElecIdSinOutput">
+            <description>This is a message for ElecIdSinOutput</description>
+            <field type="int8_t" name="state_now" />
+            <field type="float[3]" name="u_abc_tar_V" />
+            <field type="float" name="u_alpha_now_V" />
+            <field type="float" name="i_alpha_now_A" />
+        </message>
+        <message id="30004" name="ElecIdSinConfig">
+            <description>This is a message for ElecIdSinConfig</description>
+            <field type="float" name="dt_s" />
+            <field type="float" name="end_fs_Hz" />
+            <field type="float" name="i_max_A" />
+            <field type="float" name="init_fs_Hz" />
+            <field type="float" name="target_time_s" />
+            <field type="float" name="u_max_V" />
+            <field type="float" name="wait_time_s" />
+        </message>
+        <message id="30005" name="MecIdOutput">
+            <description>This is a message for MecIdOutput</description>
+            <field type="float" name="iq_tar_A" />
+            <field type="int8_t" name="state_now" />
+        </message>
+        <message id="30006" name="MecIdConfig">
+            <description>This is a message for MecIdConfig</description>
+            <field type="float" name="dt_s" />
+            <field type="float" name="end_fs_Hz" />
+            <field type="float" name="start_fs_Hz" />
+            <field type="float" name="target_time_s" />
+            <field type="float" name="i_max_A" />
+            <field type="float" name="search_speed_max_rad_s" />
+            <field type="float" name="wait_time_s" />
+            <field type="uint8_t" name="signal_type" />
+        </message>
+        <message id="30007" name="NotchFilterInput">
+            <description>This is a message for NotchFilterInput</description>
+            <field type="float" name="iq_tar_A" />
+        </message>
+        <message id="30008" name="NotchFilterInternal">
+            <description>This is a message for NotchFilterInternal</description>
+            <field type="float[6]" name="u0" />
+            <field type="float[6]" name="u1" />
+            <field type="float[6]" name="u2" />
+            <field type="float[6]" name="y0" />
+            <field type="float[6]" name="y1" />
+        </message>
+        <message id="30009" name="NotchFilterOutput">
+            <description>This is a message for NotchFilterOutput</description>
+            <field type="float" name="iq_tar_filter_A" />
+        </message>
+        <message id="30010" name="MecIdInput">
+            <description>This is a message for MecIdInput</description>
+            <field type="float" name="speed_now_rad_s" />
+        </message>
+        <message id="30011" name="InputShapingInput">
+            <description>This is a message for InputShapingInput</description>
+            <field type="int64_t" name="pos_cmd_p" />
+            <field type="int64_t" name="pos_cmd_p_init" />
+        </message>
+        <message id="30012" name="InputShapingConfig">
+            <description>This is a message for InputShapingConfig</description>
+            <field type="float" name="wn_Hz" />
+            <field type="float" name="run_frq_Hz" />
+            <field type="uint8_t" name="enable" />
+        </message>
+        <message id="30013" name="InputShapingOutput">
+            <description>This is a message for InputShapingOutput</description>
+            <field type="int64_t" name="pos_cmd_shaping_p" />
+        </message>
+        <message id="30014" name="ScopeConfig">
+            <description>This is a message for ScopeConfig</description>
+            <field type="uint32_t[16]" name="channel_map" />
+            <field type="uint16_t" name="channel_switch" />
+            <field type="uint8_t" name="sample_interval" />
+            <field type="uint32_t" name="sample_points" />
+            <field type="uint8_t" name="trigger_delay" />
+            <field type="uint8_t" name="trigger_mode" />
+            <field type="uint32_t" name="trigger_source" />
+            <field type="int32_t" name="trigger_threshold" />
+        </message>
+        <message id="30015" name="ScopeControl">
+            <description>This is a message for ScopeControl</description>
+            <field type="uint16_t" name="control_word" />
+            <field type="uint32_t" name="frame_info" />
+            <field type="uint16_t[16]" name="frame_num" />
+            <field type="uint16_t" name="status_word" />
+        </message>
+        <message id="30016" name="ScopeData">
+            <description>This is a message for ScopeData</description>
+            <field type="uint8_t[128]" name="frame_data" />
+        </message>
+        <message id="30017" name="WaveformData">
+            <description>This is a message for WaveformData</description>
+            <field type="int64_t[6]" name="waveform_data_array" />
+        </message>
+        <message id="30018" name="WaveformMap">
+            <description>This is a message for WaveformMap</description>
+            <field type="int32_t[6]" name="waveform_map_info" />
+        </message>
+        <message id="30019" name="PosSpeedCtlInput">
+            <description>This is a message for PosSpeedCtlInput</description>
+            <field type="int64_t" name="pos_tar_p" />
+            <field type="int64_t" name="pos_now_p" />
+            <field type="float" name="iq_max_A" />
+            <field type="float" name="speed_tar_p_s" />
+            <field type="float" name="acc_tar_p_ss" />
+            <field type="float" name="speed_now_rad_s" />
+            <field type="int64_t" name="position_offset_p" />
+            <field type="float" name="speed_offset_p_s" />
+        </message>
+        <message id="30020" name="PosSpeedCtlOutput">
+            <description>This is a message for PosSpeedCtlOutput</description>
+            <field type="float" name="iq_tar_A" />
+            <field type="int32_t" name="pos_ctl_error_p" />
+            <field type="float" name="dob_iq_com_A" />
+        </message>
+        <message id="30021" name="PosSpeedCtlConfig">
+            <description>This is a message for PosSpeedCtlConfig</description>
+            <field type="float" name="aff" />
+            <field type="float" name="vff" />
+            <field type="float" name="enc_line_inv_p_n" />
+            <field type="float" name="j_kt" />
+            <field type="float" name="ki_s" />
+            <field type="float" name="kp_p" />
+            <field type="float" name="kp_s" />
+            <field type="float" name="speed_max_rad_s" />
+            <field type="float" name="tp_s" />
+            <field type="float" name="mode" />
+            <field type="float" name="dob_wn_Hz" />
+            <field type="uint8_t" name="dob_enable" />
+            <field type="uint8_t" name="dynamic_integration_enable" />
+        </message>
+        <message id="30022" name="MotorCtlSmConfig">
+            <description>This is a message for MotorCtlSmConfig</description>
+            <field type="int8_t" name="mode" />
+            <field type="float" name="under_voltage_protection_V" />
+            <field type="float" name="over_voltage_protection_V" />
+            <field type="float" name="over_speed_protection_rad_s" />
+            <field type="float" name="under_temperature_protection_d" />
+            <field type="float" name="over_temperature_protection_d" />
+            <field type="int32_t" name="position_following_error_protection" />
+            <field type="uint32_t" name="error_enable" />
+            <field type="float" name="over_current_protection_A" />
+        </message>
+        <message id="30023" name="MotorCtlSmInput">
+            <description>This is a message for MotorCtlSmInput</description>
+            <field type="uint8_t" name="motor_enable" />
+            <field type="uint8_t" name="hw_ready_state" />
+        </message>
+        <message id="30024" name="MotorCtlSmOutput">
+            <description>This is a message for MotorCtlSmOutput</description>
+            <field type="int8_t" name="state" />
+            <field type="uint32_t" name="error" />
+            <field type="uint32_t" name="warning" />
+            <field type="int8_t" name="mode_now" />
+            <field type="uint8_t" name="motor_enable_last" />
+            <field type="int8_t" name="state_last" />
+        </message>
+        <message id="30025" name="CurrentCtlInput">
+            <description>This is a message for CurrentCtlInput</description>
+            <field type="float[2]" name="idq_tar_A" />
+            <field type="float[3]" name="iabc_now_A" />
+            <field type="float" name="elec_theta_rad" />
+            <field type="float" name="dc_bus_now_V" />
+            <field type="uint8_t" name="mode" />
+            <field type="float[3]" name="uabc_tar_V" />
+            <field type="float" name="driver_temp" />
+            <field type="float" name="elec_angle_speed_rad_s" />
+            <field type="float" name="iq_offset_A" />
+        </message>
+        <message id="30026" name="CurrentCtlConfig">
+            <description>This is a message for CurrentCtlConfig</description>
+            <field type="float" name="i_noise_A" />
+            <field type="float" name="comp_du_V" />
+            <field type="float" name="bandwidth_percentage" />
+            <field type="float" name="dt_s" />
+            <field type="float" name="flux_wb" />
+            <field type="float" name="kp_ld" />
+            <field type="float" name="ki_ld" />
+            <field type="float" name="kp_lq" />
+            <field type="float" name="ki_lq" />
+            <field type="float" name="pwm_duty_cycle_max" />
+            <field type="float" name="elec_angle_compensation" />
+            <field type="int8_t" name="phase_dir" />
+        </message>
+        <message id="30027" name="CurrentCtlOutput">
+            <description>This is a message for CurrentCtlOutput</description>
+            <field type="float[3]" name="uabc_tar_comp_V" />
+            <field type="float[2]" name="idq_now_A" />
+            <field type="float[3]" name="uabc_tar_org_V" />
+        </message>
+        <message id="30028" name="NotchFilterConfig">
+            <description>This is a message for NotchFilterConfig</description>
+            <field type="float[6]" name="frq" />
+            <field type="float[6]" name="width" />
+            <field type="float[6]" name="depth" />
+        </message>
+        <message id="30029" name="SpeedObsPllInput">
+            <description>This is a message for SpeedObsPllInput</description>
+            <field type="int64_t" name="pos_now_p" />
+        </message>
+        <message id="30030" name="SpeedObsPllConfig">
+            <description>This is a message for SpeedObsPllConfig</description>
+            <field type="float" name="tp_s" />
+            <field type="float" name="wn_Hz" />
+            <field type="float" name="enc_line_inv_p_n" />
+            <field type="float" name="speed_obs_max_rad_s" />
+        </message>
+        <message id="30031" name="SpeedObsPllOutput">
+            <description>This is a message for SpeedObsPllOutput</description>
+            <field type="float" name="ev_rad_s" />
+        </message>
+        <message id="30032" name="ElecAngleIdConfig">
+            <description>This is a message for ElecAngleIdConfig</description>
+            <field type="float" name="id_max_A" />
+            <field type="float" name="dt_s" />
+            <field type="uint8_t" name="method" />
+            <field type="float" name="angle_add_rad" />
+            <field type="float" name="wait_time_s" />
+            <field type="float" name="test_angle_rad" />
+            <field type="float" name="current_slope_percentage" />
+        </message>
+        <message id="30033" name="ElecAngleIdOutput">
+            <description>This is a message for ElecAngleIdOutput</description>
+            <field type="float" name="id_tar_A" />
+            <field type="float" name="elec_bias_rad" />
+            <field type="int8_t" name="state_now" />
+            <field type="float[2]" name="elec_bias_buff_rad" />
+            <field type="uint8_t" name="step_num" />
+        </message>
+        <message id="30034" name="ElecAngleIdInput">
+            <description>This is a message for ElecAngleIdInput</description>
+            <field type="float" name="pos_now_rad" />
+        </message>
+        <message id="30035" name="DirectionIdInput">
+            <description>This is a message for DirectionIdInput</description>
+            <field type="int64_t" name="enc_counts_sum_p" />
+        </message>
+        <message id="30036" name="DirectionIdConfig">
+            <description>This is a message for DirectionIdConfig</description>
+            <field type="float" name="elec_angle_add_rad" />
+            <field type="float" name="current_slope_percentage" />
+            <field type="float" name="id_tar_max_A" />
+        </message>
+        <message id="30037" name="DirectionIdOutput">
+            <description>This is a message for DirectionIdOutput</description>
+            <field type="float" name="elec_angle_tar_rad" />
+            <field type="int8_t" name="direction" />
+            <field type="int8_t" name="state_now" />
+            <field type="float" name="id_tar_A" />
+        </message>
+        <message id="30038" name="MotorPosSensorInput">
+            <description>This is a message for MotorPosSensorInput</description>
+            <field type="uint32_t" name="enc_counts_now_p" />
+        </message>
+        <message id="30039" name="MotorPosSensorConfig">
+            <description>This is a message for MotorPosSensorConfig</description>
+            <field type="uint32_t" name="enc_line_p_n" />
+            <field type="int64_t" name="init_pos_p" />
+            <field type="uint32_t" name="pn" />
+            <field type="float" name="elec_angle_bias_rad" />
+            <field type="int8_t" name="dir" />
+        </message>
+        <message id="30040" name="MotorPosSensorOutput">
+            <description>This is a message for MotorPosSensorOutput</description>
+            <field type="int64_t" name="enc_sum_p" />
+            <field type="float" name="elec_angle_now_rad" />
+        </message>
+        <message id="30041" name="PolePairsIdInput">
+            <description>This is a message for PolePairsIdInput</description>
+            <field type="int64_t" name="enc_counts_sum_p" />
+        </message>
+        <message id="30042" name="PolePairsIdConfig">
+            <description>This is a message for PolePairsIdConfig</description>
+            <field type="float" name="elec_angle_add" />
+            <field type="uint32_t" name="enc_line_p_n" />
+            <field type="float" name="id_tar_max_A" />
+            <field type="float" name="current_slope_percentage" />
+        </message>
+        <message id="30043" name="PolePairsIdOutput">
+            <description>This is a message for PolePairsIdOutput</description>
+            <field type="uint32_t" name="pn_id" />
+            <field type="int8_t" name="state_now" />
+            <field type="float" name="elec_angle_tar_rad" />
+            <field type="float" name="id_tar_A" />
+        </message>
+        <message id="30044" name="NonVolatileParam">
+            <description>This is a message for NonVolatileParam</description>
+            <field type="uint32_t" name="encoder_res" />
+            <field type="float" name="rated_current" />
+        </message>
+        <message id="30045" name="SystemConfig">
+            <description>This is a message for SystemConfig</description>
+            <field type="int8_t" name="param_save" />
+            <field type="int8_t" name="system_reset" />
+            <field type="uint32_t" name="current_loop_freq" />
+            <field type="uint32_t" name="position_loop_freq" />
+        </message>
+        <message id="30046" name="TqFcIdInput">
+            <description>This is a message for TqFcIdInput</description>
+            <field type="float" name="iq_com_A" />
+            <field type="uint32_t" name="pos_abs_p" />
+            <field type="int64_t" name="pos_init_p" />
+            <field type="uint8_t" name="start" />
+        </message>
+        <message id="30047" name="TqFcIdConfig">
+            <description>This is a message for TqFcIdConfig</description>
+            <field type="uint32_t" name="enc_line_p_n" />
+            <field type="uint8_t" name="iq_com_enable" />
+            <field type="uint8_t" name="tq_com_enable" />
+            <field type="uint8_t" name="fc_com_enable" />
+            <field type="float" name="fc_p_com" />
+            <field type="float" name="fc_n_com" />
+        </message>
+        <message id="30048" name="TqFcIdOutput">
+            <description>This is a message for TqFcIdOutput</description>
+            <field type="int64_t" name="pos_cmd_p" />
+            <field type="int8_t" name="state_now" />
+        </message>
+        <message id="30049" name="ObjectDictionary">
+            <description>This is a message for ObjectDictionary</description>
+            <field type="uint16_t" name="index" />
+            <field type="uint8_t" name="sub_index" />
+            <field type="uint32_t" name="data" />
+            <field type="uint8_t" name="rw" />
+        </message>
+        <message id="30050" name="ReciprocalMotionConfig">
+            <description>This is a message for ReciprocalMotionConfig</description>
+            <field type="int64_t" name="pos_tar1_p" />
+            <field type="int64_t" name="pos_tar2_p" />
+            <field type="float" name="dwell_time_s" />
+            <field type="float" name="profile_velocity_p_s" />
+            <field type="float" name="profile_acc_p_ss" />
+            <field type="float" name="profile_dec_p_ss" />
+            <field type="float" name="dt_s" />
+        </message>
+        <message id="30051" name="ReciprocalMotionOutput">
+            <description>This is a message for ReciprocalMotionOutput</description>
+            <field type="int64_t" name="pos_tar_p" />
+            <field type="float" name="v_tar_p_s" />
+            <field type="float" name="acc_tar_p_ss" />
+            <field type="int8_t" name="state_now" />
+        </message>
+        <message id="30052" name="ReferenceSignalConfig">
+            <description>This is a message for ReferenceSignalConfig</description>
+            <field type="float" name="dt_s" />
+            <field type="uint8_t" name="signal_type" />
+            <field type="float" name="amp" />
+            <field type="float" name="frq_Hz" />
+            <field type="float" name="bias" />
+            <field type="uint8_t" name="signal_target" />
+            <field type="int64_t" name="signal_start_pos" />
+        </message>
+        <message id="30053" name="ReferenceSignalOutput">
+            <description>This is a message for ReferenceSignalOutput</description>
+            <field type="float" name="signal_out" />
+            <field type="int64_t" name="signal_pos" />
+            <field type="float" name="signal_vel" />
+            <field type="float" name="signal_acc" />
+        </message>
+        <message id="30054" name="AppControlWord">
+            <description>This is a message for AppControlWord</description>
+            <field type="uint16_t" name="Controlword" />
+            <field type="uint8_t" name="Halt_running_cmd" />
+        </message>
+        <message id="30055" name="AppStatusInfo">
+            <description>This is a message for AppStatusInfo</description>
+            <field type="uint32_t" name="Statusword" />
+            <field type="uint32_t" name="Error_word" />
+            <field type="float" name="DC_link_circuit_voltage" />
+            <field type="float" name="Drive_accumulated_heat" />
+            <field type="float" name="Drive_temperature" />
+            <field type="uint32_t" name="Alarm_word" />
+            <field type="int8_t" name="Modes_of_operation_display" />
+            <field type="uint32_t" name="Version" />
+            <field type="float" name="Motor_temperature" />
+            <field type="float" name="Motor_power" />
+            <field type="float" name="Mcu_temperature" />
+            <field type="uint32_t" name="Digital_io_inputs_status" />
+            <field type="uint8_t" name="Brake_state" />
+        </message>
+        <message id="30056" name="AppOpMode">
+            <description>This is a message for AppOpMode</description>
+            <field type="int8_t" name="Modes_of_operation" />
+        </message>
+        <message id="30057" name="AppEncoderConfig">
+            <description>This is a message for AppEncoderConfig</description>
+            <field type="uint32_t" name="Load_encoder_resolution" />
+            <field type="uint32_t" name="Motor_encoder_resolution" />
+            <field type="uint8_t" name="Motor_encoder_type" />
+            <field type="uint8_t" name="Load_encoder_type" />
+            <field type="uint8_t" name="Motor_encoder_options" />
+            <field type="float" name="Load_pps_2_rpm" />
+            <field type="float" name="Load_rpm_2_pps" />
+            <field type="float" name="Motor_pps_2_rpm" />
+            <field type="float" name="Motor_rpm_2_pps" />
+            <field type="float" name="P_load_2_motor" />
+            <field type="float" name="P_motor_2_load" />
+            <field type="uint32_t" name="Load_control_resolution" />
+            <field type="uint32_t" name="Motor_control_resolution" />
+            <field type="uint8_t" name="Load_encoder_options" />
+        </message>
+        <message id="30058" name="AppBaseConfig">
+            <description>This is a message for AppBaseConfig</description>
+            <field type="uint8_t" name="Polarity" />
+            <field type="int64_t" name="Home_position_offset_value" />
+            <field type="uint32_t" name="Can_id" />
+            <field type="uint32_t" name="Can_baudrate" />
+            <field type="int16_t" name="Quick_stop_option_code" />
+            <field type="float" name="Brake_engage_time" />
+            <field type="float" name="Brake_release_time" />
+            <field type="float" name="Dynamic_brake_speed_threshold" />
+            <field type="float" name="Brake_release_hold_voltage" />
+            <field type="uint32_t" name="Digital_io_outputs_phys" />
+            <field type="uint32_t" name="Digital_io_outputs_mask" />
+            <field type="uint8_t" name="Brake_control_mode" />
+            <field type="float" name="Brake_rated_voltage" />
+            <field type="float" name="Brake_release_action_voltage" />
+            <field type="uint16_t" name="Brake_release_pwm_freq" />
+            <field type="float" name="Brake_engage_delay_time" />
+            <field type="float" name="Brake_release_delay_time" />
+        </message>
+        <message id="30059" name="AppMotionParam">
+            <description>This is a message for AppMotionParam</description>
+            <field type="int64_t" name="Target_position" />
+            <field type="float" name="Profile_velocity" />
+            <field type="float" name="Profile_acceleration" />
+            <field type="float" name="Profile_deceleration" />
+            <field type="float" name="Quick_stop_deceleration" />
+            <field type="int32_t" name="Motion_profile_type" />
+            <field type="int64_t" name="Home_offset" />
+            <field type="int8_t" name="Homing_method" />
+            <field type="float" name="Target_velocity" />
+            <field type="float" name="Target_torque" />
+            <field type="float" name="Torque_slope" />
+            <field type="float" name="Encoder_calibration_speed" />
+            <field type="float" name="MIT_feedforward_torque" />
+            <field type="int64_t" name="MIT_target_position" />
+            <field type="float" name="MIT_max_current" />
+            <field type="float" name="MIT_target_velocity" />
+            <field type="float" name="MIT_kp" />
+            <field type="float" name="MIT_kd" />
+            <field type="uint8_t" name="Interp_time_value" />
+            <field type="int8_t" name="Interp_time_index" />
+        </message>
+        <message id="30060" name="AppRestrictParam">
+            <description>This is a message for AppRestrictParam</description>
+            <field type="int64_t" name="Position_range_limit_Minimal_position_limit" />
+            <field type="int64_t" name="Position_range_limit_Maximal_position_limit" />
+            <field type="int64_t" name="Software_position_limit_Minimal_position_limit" />
+            <field type="int64_t" name="Software_position_limit_Maximal_position_limit" />
+            <field type="float" name="Max_profile_velocity" />
+            <field type="float" name="Max_motor_speed" />
+            <field type="float" name="Max_acceleration" />
+            <field type="float" name="Max_deceleration" />
+            <field type="float" name="Max_current" />
+            <field type="uint8_t" name="Position_limit_enable" />
+        </message>
+        <message id="30061" name="AppMotionInfo">
+            <description>This is a message for AppMotionInfo</description>
+            <field type="int64_t" name="Position_demand_value" />
+            <field type="int64_t" name="Position_actual_value_inc" />
+            <field type="int64_t" name="Position_actual_value" />
+            <field type="int64_t" name="Following_error_actual_value" />
+            <field type="float" name="Velocity_demand_value" />
+            <field type="float" name="Velocity_actual_value" />
+            <field type="float" name="Torque_demand_value" />
+            <field type="float" name="Torque_actual_value" />
+            <field type="float" name="Current_actual_value" />
+            <field type="float" name="D_current_actual_value" />
+            <field type="float" name="U_current_actual_value" />
+            <field type="float" name="V_current_actual_value" />
+            <field type="float" name="W_current_actual_value" />
+            <field type="int64_t" name="Motor_position_demand_value" />
+            <field type="int64_t" name="Motor_position_actual_value" />
+            <field type="int64_t" name="Motor_following_error_actual_value" />
+            <field type="float" name="Motor_velocity_demand_value" />
+            <field type="float" name="Motor_velocity_actual_value" />
+            <field type="uint16_t" name="U_adc_mid_val" />
+            <field type="uint16_t" name="V_adc_mid_val" />
+            <field type="uint16_t" name="W_adc_mid_val" />
+            <field type="float" name="Current_loop_time" />
+            <field type="float" name="Position_loop_time" />
+            <field type="float" name="Current_loop_cycle" />
+            <field type="float" name="Position_loop_cycle" />
+            <field type="float" name="Interp_period" />
+            <field type="uint8_t" name="Emergency_brake_requested" />
+            <field type="uint8_t" name="Target_update_state" />
+        </message>
+        <message id="30062" name="AppWindowParam">
+            <description>This is a message for AppWindowParam</description>
+            <field type="int64_t" name="Following_error_window" />
+            <field type="float" name="Following_error_time_out" />
+            <field type="uint32_t" name="Position_window" />
+            <field type="float" name="Position_window_time" />
+            <field type="float" name="Velocity_window" />
+            <field type="float" name="Velocity_window_time" />
+            <field type="float" name="Velocity_threshold" />
+            <field type="float" name="Velocity_threshold_time" />
+        </message>
+        <message id="30063" name="AppMotorConfig">
+            <description>This is a message for AppMotorConfig</description>
+            <field type="float" name="Motor_rated_current" />
+            <field type="float" name="Motor_rated_torque" />
+            <field type="float" name="Motor_peak_current" />
+            <field type="float" name="Motor_pole_pairs" />
+            <field type="float" name="Motor_maximum_speed" />
+            <field type="float" name="Resistance" />
+            <field type="float" name="Inductance" />
+            <field type="uint32_t" name="Reduction_ratio_num" />
+            <field type="uint32_t" name="Reduction_ratio_den" />
+            <field type="float" name="Torque_constant" />
+            <field type="float" name="Reduction_ratio" />
+            <field type="float" name="Reduction_ratio_inv" />
+            <field type="float" name="Motor_rotor_inertia" />
+        </message>
+        <message id="30064" name="AppProtectConfig">
+            <description>This is a message for AppProtectConfig</description>
+            <field type="float" name="Bus_under_voltage_threshold" />
+            <field type="float" name="Bus_over_voltage_threshold" />
+            <field type="float" name="Drive_overload_current_duration" />
+            <field type="float" name="Drive_peak_current_duration" />
+            <field type="float" name="Drive_temperature_threshold_time" />
+            <field type="float" name="Drive_low_temperature_fault_threshold" />
+            <field type="float" name="Drive_high_temperature_fault_threshold" />
+            <field type="float" name="Overspeed_threshold" />
+            <field type="float" name="Drive_overcurrent_threshold" />
+            <field type="uint32_t" name="Protection_enable" />
+            <field type="float" name="Motor_low_temperature_fault_threshold" />
+            <field type="float" name="Motor_high_temperature_fault_threshold" />
+            <field type="float" name="Can_timeout" />
+            <field type="float" name="Motor_low_temperature_warning_threshold" />
+            <field type="float" name="Motor_high_temperature_warning_threshold" />
+            <field type="float" name="Mcu_temperature_threshold_time" />
+            <field type="float" name="Mcu_low_temperature_fault_threshold" />
+            <field type="float" name="Mcu_high_temperature_fault_threshold" />
+            <field type="float" name="Mcu_low_temperature_warning_threshold" />
+            <field type="float" name="Mcu_high_temperature_warning_threshold" />
+            <field type="float" name="Drive_low_temperature_warning_threshold" />
+            <field type="float" name="Drive_high_temperature_warning_threshold" />
+        </message>
+        <message id="30065" name="MitCtlInput">
+            <description>This is a message for MitCtlInput</description>
+            <field type="float" name="tq_set_NM" />
+            <field type="int64_t" name="pos_tar_p" />
+            <field type="int64_t" name="pos_now_p" />
+            <field type="float" name="iq_max_A" />
+            <field type="float" name="speed_tar_p_s" />
+            <field type="float" name="speed_now_rad_s" />
+        </message>
+        <message id="30066" name="MitCtlConfig">
+            <description>This is a message for MitCtlConfig</description>
+            <field type="float" name="kp_pos_NM_rad" />
+            <field type="float" name="kd_spd_NM_rad_s" />
+            <field type="float" name="enc_line_inv_p_n" />
+            <field type="float" name="kt_NM_A" />
+        </message>
+        <message id="30067" name="MitCtlOutput">
+            <description>This is a message for MitCtlOutput</description>
+            <field type="float" name="iq_tar_A" />
+        </message>
+        <message id="30068" name="AppPermissionConfig">
+            <description>This is a message for AppPermissionConfig</description>
+            <field type="uint8_t" name="Comm_control_authority" />
+            <field type="uint8_t" name="Internal_control_authority" />
+        </message>
+        <message id="30069" name="SystemCmd">
+            <description>This is a message for SystemCmd</description>
+            <field type="uint8_t" name="Sys_cmd" />
+        </message>
+        <message id="30070" name="LoadPosSensorInput">
+            <description>This is a message for LoadPosSensorInput</description>
+            <field type="uint32_t" name="enc_counts_now_p" />
+        </message>
+        <message id="30071" name="LoadPosSensorConfig">
+            <description>This is a message for LoadPosSensorConfig</description>
+            <field type="uint32_t" name="enc_line_p_n" />
+            <field type="int64_t" name="init_pos_p" />
+            <field type="int8_t" name="dir" />
+        </message>
+        <message id="30072" name="LoadPosSensorOutput">
+            <description>This is a message for LoadPosSensorOutput</description>
+            <field type="int64_t" name="enc_sum_p" />
+        </message>
+        <message id="30073" name="SystemStatus">
+            <description>This is a message for SystemStatus</description>
+            <field type="int8_t" name="Storage_status" />
+            <field type="uint8_t" name="Storage_cmd" />
+        </message>
+        <message id="30074" name="EncoderCalibrationCmd">
+            <description>This is a message for EncoderCalibrationCmd</description>
+            <field type="uint16_t" name="Calibration_cmd" />
+            <field type="uint16_t" name="Calibration_time" />
+        </message>
+        <message id="30075" name="EncoderCalibrationStatus">
+            <description>This is a message for EncoderCalibrationStatus</description>
+            <field type="uint16_t" name="Calibration_status" />
+        </message>
+        <message id="30076" name="CustomInfo">
+            <description>This is a message for CustomInfo</description>
+            <field type="uint64_t" name="User_module_code" />
+        </message>
+        <message id="30077" name="HeartBit">
+            <description>This is a message for HeartBit</description>
+            <field type="uint8_t" name="Sys_init_flag" />
+        </message>
+        <message id="30078" name="HistoricalInfo">
+            <description>This is a message for HistoricalInfo</description>
+            <field type="uint32_t[16]" name="Error_records_list" />
+        </message>
+        <message id="30079" name="SimPlantInput">
+            <description>This is a message for SimPlantInput</description>
+            <field type="float[3]" name="uabc_tar_V" />
+            <field type="float" name="tl_Nm" />
+        </message>
+        <message id="30080" name="SimPlantOutput">
+            <description>This is a message for SimPlantOutput</description>
+            <field type="float[3]" name="iabc_now_A" />
+            <field type="uint32_t" name="enc_counts_P" />
+            <field type="uint8_t" name="hall_state" />
+            <field type="float" name="dc_bus_V" />
+        </message>
+        <message id="30081" name="SimPlantConfig">
+            <description>This is a message for SimPlantConfig</description>
+            <field type="float" name="b" />
+            <field type="float" name="fc" />
+            <field type="float" name="flux" />
+            <field type="float" name="kt" />
+            <field type="float" name="j" />
+            <field type="float" name="ld" />
+            <field type="float" name="lq" />
+            <field type="float" name="peak_current_A" />
+            <field type="float" name="pn" />
+            <field type="float" name="r" />
+            <field type="float" name="rated_current_A" />
+            <field type="float" name="speed_max_rpm" />
+            <field type="float" name="dt_s" />
+            <field type="uint32_t" name="enc_line_p_n" />
+            <field type="float" name="j_inv" />
+            <field type="float" name="ld_inv" />
+            <field type="float" name="lq_inv" />
+            <field type="int64_t" name="enc_line_init_pos_P" />
+            <field type="float" name="enc_noise" />
+        </message>
+        <message id="30082" name="AppDebugParam">
+            <description>This is a message for AppDebugParam</description>
+            <field type="float[16]" name="Debug_float" />
+            <field type="uint32_t[16]" name="Debug_uint32" />
+            <field type="int32_t[16]" name="Debug_int32" />
+        </message>
+        <message id="30083" name="TableData">
+            <description>This is a message for TableData</description>
+            <field type="float[20]" name="table_data" />
+        </message>
+        <message id="30084" name="TableConfig">
+            <description>This is a message for TableConfig</description>
+            <field type="uint8_t" name="table_id" />
+            <field type="uint8_t" name="table_index_offset" />
+        </message>
+        <message id="30085" name="AppMavlinkConfig">
+            <description>This is a message for AppMavlinkConfig</description>
+            <field type="uint8_t" name="Sys_id" />
+            <field type="uint8_t" name="Comp_id" />
+        </message>
+        <message id="30086" name="MotorHallSensor">
+            <description>This is a message for MotorHallSensor</description>
+            <field type="float" name="Hall_A_Adc" />
+            <field type="float" name="Hall_A_Adc_Bias" />
+            <field type="float" name="Hall_B_Adc" />
+            <field type="float" name="Hall_B_Adc_Bias" />
+            <field type="float" name="HALL_Angle" />
+            <field type="float" name="hall_a_basi" />
+            <field type="float" name="hall_b_basi" />
+            <field type="float" name="norm_a" />
+            <field type="float" name="norm_b" />
+        </message>
+    </messages>
+</mavlink>

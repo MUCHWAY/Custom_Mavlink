@@ -2,7 +2,7 @@
 <mavlink>
 
     <include>common.xml</include>
-
+    <include>custom_motor_new.xml</include>
     <dialect>8</dialect>
 
     <enums>
