@@ -2,6 +2,7 @@
 <mavlink>
 
     <include>common.xml</include>
+    <include>custom_dog.xml</include>
 
     <dialect>8</dialect>
 
@@ -561,7 +562,7 @@
         </enum>
 
 
-    
+
         <enum name="UNITREE_DOG_BASIC_ACTION">
             <description>Unitree dog basic action</description>
             <entry value="0" name="UNITREE_DOG_ACTION_UNLOCK">
@@ -1252,7 +1253,7 @@
                 <param index="1"  label="Empty"> </param>
             </entry>
 
-            <!-- 51900~51999 is Unitree Robotics Dog-->
+            <!-- 51900~51949 is Unitree Robotics Dog-->
 
             <!-- Basic left and right joystick control -->
             <entry value="51900" name="MAV_CMD_UNITREE_DOG_BASIC_MOVE_CONTROL" hasLocation="false" isDestination="false" >
@@ -1274,7 +1275,7 @@
                 <description>Unlock Unitree Robotics Dog.</description>
                 <param index="1"  label="Empty"> </param>
             </entry>
-        
+
             <!--Squatting and standing up -->
             <entry value="51903" name="MAV_CMD_UNITREE_DOG_SIT_STAND_CONTROL" hasLocation="false" isDestination="false" >
                 <description>Sit/Stand control of Unitree Robotics Dog.</description>
@@ -1680,7 +1681,7 @@
         </message>
 
 
-        <!-- 51800~51850 is unitree dog-->
+        <!-- 51800~51849 is unitree dog-->
         <message id="51800" name="UNITREE_DOG_JOYSTICK">
            <description>Unitree dog joystick channel values.</description>
             <field type="float" name="Lx">Joystick channel values.</field>
