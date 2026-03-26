@@ -5,6 +5,8 @@
     <include>ardupilotmega.xml</include>
     <include>storm32.xml</include>
 
+    <include>custom_dog.xml</include>
+    <include>custom_motor_new.xml</include>
     <dialect>8</dialect>
 
     <enums>
@@ -563,7 +565,7 @@
         </enum>
 
 
-    
+
         <enum name="UNITREE_DOG_BASIC_ACTION">
             <description>Unitree dog basic action</description>
             <entry value="0" name="UNITREE_DOG_ACTION_UNLOCK">
@@ -756,6 +758,20 @@
                 <param index="6">Empty</param>
                 <param index="7">Empty</param>
             </entry>
+            <entry value="50312" name="MAV_CMD_SPEAKER_SET_CAMERA_NETWORK_PARAMS">
+                <description>Set network params of camera</description>
+                <param index="1">Empty</param>
+            </entry>
+            <entry value="50313" name="MAV_CMD_SPEAKER_GET_CAMERA_NETWORK_PARAMS">
+                <description>Get network params of camera</description>
+                <param index="1">IP byte 0</param>
+                <param index="2">IP byte 1</param>
+                <param index="3">IP byte 2</param>
+                <param index="4">IP byte 3</param>
+                <param index="5">Bitrate</param>
+                <param index="6">Resolution</param>
+                <param index="7">Encoding</param>
+            </entry>
 
 
             <!-- 50400~50499 is skylink-->
@@ -863,13 +879,10 @@
                 <param index="1">Empty</param>
             </entry>
 
-            <!-- <entry value="51037" name="MAV_CMD_SUBSCRIBE_GLOBAL_POSITION_INT">
-                <description>Subscribe to global position updates.</description>
-                <param index="1">Empty</param>
-            </entry> -->
-
-
-
+            <entry value="51037" name="MAV_CMD_TK_SET_GIMBAL_MODE">
+                <description>Set gimbal working mode</description>
+                <param index="1" label="Gimbal mode" enum="TK_GIMBAL_MODE">Gimbal working mode</param>
+            </entry>
 
             <!-- 51400~51599 is camera-->
 
@@ -1243,7 +1256,7 @@
                 <param index="1"  label="Empty"> </param>
             </entry>
 
-            <!-- 51900~51999 is Unitree Robotics Dog-->
+            <!-- 51900~51949 is Unitree Robotics Dog-->
 
             <!-- Basic left and right joystick control -->
             <entry value="51900" name="MAV_CMD_UNITREE_DOG_BASIC_MOVE_CONTROL" hasLocation="false" isDestination="false" >
@@ -1265,7 +1278,7 @@
                 <description>Unlock Unitree Robotics Dog.</description>
                 <param index="1"  label="Empty"> </param>
             </entry>
-        
+
             <!--Squatting and standing up -->
             <entry value="51903" name="MAV_CMD_UNITREE_DOG_SIT_STAND_CONTROL" hasLocation="false" isDestination="false" >
                 <description>Sit/Stand control of Unitree Robotics Dog.</description>
@@ -1336,6 +1349,16 @@
             <field type="uint8_t" name="connection_index">The connection index.</field>
             <field type="uint64_t" name="connection_id">The connection id.</field>
             <field type="uint8_t" name="connection_status">The connection status.</field>
+        </message>
+        <message id="20304" name="SPEAKER_CAMERA_NETWORK_PARAMS">
+            <description>Camera network params response.</description>
+            <field type="uint8_t" name="ip_byte_0">IP byte 0</field>
+            <field type="uint8_t" name="ip_byte_1">IP byte 1</field>
+            <field type="uint8_t" name="ip_byte_2">IP byte 2</field>
+            <field type="uint8_t" name="ip_byte_3">IP byte 3</field>
+            <field type="uint8_t" name="bitrate">Bitrate</field>
+            <field type="uint8_t" name="resolution">Resolution</field>
+            <field type="uint8_t" name="encoding">Encoding</field>
         </message>
 
 
@@ -1661,7 +1684,7 @@
         </message>
 
 
-        <!-- 51800~51850 is unitree dog-->
+        <!-- 51800~51849 is unitree dog-->
         <message id="51800" name="UNITREE_DOG_JOYSTICK">
            <description>Unitree dog joystick channel values.</description>
             <field type="float" name="Lx">Joystick channel values.</field>

@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<mavlink>
+    <include>common.xml</include>
+    <version>0</version>
+    <dialect>0</dialect>
+
+    <enums>
+        <!-- Custom Dog Component ID -->
+        <enum name="MAV_USER_COMPONENT">
+            <entry value="52" name="MAV_COMP_ID_CUSTOM_DOG">
+                <description>Custom Dog Controller.</description>
+            </entry>
+        </enum>
+
+        <!-- Dog Model Enum -->
+        <enum name="CUSTOM_DOG_MODEL">
+            <description>Supported dog models.</description>
+            <entry value="0" name="CUSTOM_DOG_MODEL_UNDEFINED">
+                <description>Undefined dog model.</description>
+            </entry>
+            <entry value="1" name="CUSTOM_DOG_MODEL_DEEPROBOTICS_X30">
+                <description>Deeprobotics X30.</description>
+            </entry>
+            <entry value="2" name="CUSTOM_DOG_MODEL_ZSI_ZSL1">
+                <description>ZSI ZSL-1.</description>
+            </entry>
+        </enum>
+
+        <!-- Dog Command Values (used as bitmask for capability check) -->
+        <enum name="CUSTOM_DOG_ALL_ABILITY">
+            <description>Dog command values (used as bitmask for capability check).</description>
+            <entry value="1" name="STAND_UP">
+                <description>Enter stand up mode.</description>
+            </entry>
+            <entry value="2" name="LIE_DOWN">
+                <description>Lie down mode.</description>
+            </entry>
+            <entry value="4" name="CROUCH">
+                <description>Crouch mode.</description>
+            </entry>
+            <entry value="8" name="ENTER_POSE_CONTROL">
+                <description>Enter pose control mode.</description>
+            </entry>
+            <entry value="16" name="ENTER_MOVE_CONTROL">
+                <description>Enter move mode.</description>
+            </entry>
+            <entry value="32" name="EmergencyStop">
+                <description>EmergencyStop.</description>
+            </entry>
+        </enum>
+
+        <!-- Custom Dog Control Commands -->
+        <enum name="MAV_CMD">
+            <!-- Server register a cb to handle, client send it proactively-->
+            <entry value="51950" name="MAV_CMD_CUSTOM_DOG_CONTROL_CMD">
+                <description>Custom dog control command.</description>
+                <param index="1">Command value (CUSTOM_DOG_ALL_ABILITY).</param>
+            </entry>
+            <!-- The client send the cmd proactively, and Server response seccess or not-->
+            <entry value="51951" name="MAV_CMD_CUSTOM_DOG_SELECT_MODEL">
+                <description>Select dog model.</description>
+                <param index="1" enum="CUSTOM_DOG_MODEL">Dog model value.</param>
+            </entry>
+            <!-- The client send the cmd proactively, then server return a CUSTOM_DOG_SUPPORT_ABILITY msg -->
+            <entry value="51952" name="MAV_CMD_CUSTOM_DOG_ASK_ABILITY">
+                <description>Ask the dog ability from client.</description>
+            </entry>
+            <!-- The client send the cmd proactively, then server return a CUSTOM_DOG_CURRENT_AVAILABLE_CMD msg -->
+            <entry value="51953" name="MAV_CMD_CUSTOM_DOG_CURRENT_AVAILABLE_CMD">
+                <description>Ask the dog available cmd currently from client.</description>
+            </entry>
+        </enum>
+    </enums>
+
+    <messages>
+        <!-- Custom Dog Joy Data Message -->
+        <!-- The clinet send the data proactively the server register a cb to handle it -->
+        <message id="51850" name="CUSTOM_DOG_JOY_DATA">
+            <description>Custom dog joystick channel values.</description>
+            <field type="float" name="lx">Left joystick x-axis value.</field>
+            <field type="float" name="ly">Left joystick y-axis value.</field>
+            <field type="float" name="rx">Right joystick x-axis value.</field>
+            <field type="float" name="ry">Right joystick y-axis value.</field>
+        </message>
+
+        <!-- Dog Support Ability - returned when model is selected -->
+        <!-- client send the MAV_CMD_CUSTOM_DOG_ASK_ABILITY cmd then server return this msg -->
+        <message id="51851" name="CUSTOM_DOG_SUPPORT_ABILITY">
+            <description>Dog capability.</description>
+            <field type="uint32_t" name="capability_bitmask">Supported commands (bitmask of CUSTOM_DOG_ALL_ABILITY).</field>
+        </message>
+
+        <!-- Current Available Commands - real-time based on current state -->
+        <!-- the client can  send MAV_CMD_CUSTOM_DOG_CURRENT_AVAILABLE_CMD to get this msg -->
+        <!-- or server can send this msg proactively and client register a cb to handle thisi -->
+        <message id="51852" name="CUSTOM_DOG_CURRENT_AVAILABLE_CMD">
+            <description>Real-time available commands based on current state.</description>
+            <field type="uint32_t" name="available_cmd_bitmask">Currently available commands (bitmask of CUSTOM_DOG_ALL_ABILITY).</field>
+        </message>
+        <message id="51853" name="CUSTOM_DOG_BATTERY_LEVEL">
+            <description>battery level of dog.</description>
+            <field type="uint32_t" name="battery_level">Current battery level</field>
+        </message>
+    </messages>
+
+</mavlink>
