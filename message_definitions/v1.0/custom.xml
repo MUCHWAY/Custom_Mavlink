@@ -2,6 +2,8 @@
 <mavlink>
 
     <include>common.xml</include>
+    <include>ardupilotmega.xml</include>
+    <include>storm32.xml</include>
 
     <dialect>8</dialect>
 
