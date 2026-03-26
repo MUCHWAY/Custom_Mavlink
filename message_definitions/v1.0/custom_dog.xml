@@ -24,6 +24,9 @@
             <entry value="2" name="CUSTOM_DOG_MODEL_ZSI_ZSL1">
                 <description>ZSI ZSL-1.</description>
             </entry>
+            <entry value="3" name="CUSTOM_DOG_MODEL_ASTRALL_A01">
+                <description>Astrall A01.</description>
+            </entry>
         </enum>
 
         <!-- Dog Command Values (used as bitmask for capability check) -->
