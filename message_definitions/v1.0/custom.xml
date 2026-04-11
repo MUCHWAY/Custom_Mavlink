@@ -884,6 +884,12 @@
                 <param index="1" label="Gimbal mode" enum="TK_GIMBAL_MODE">Gimbal working mode</param>
             </entry>
 
+            <entry value="51038" name="MAV_CMD_TK_SERVO_CONTROL">
+                <description>Control gimbal servo</description>
+                <param index="1" label="Servo ID" minValue="0" increment="1">ID of servo to control</param>
+                <param index="2" label="Servo State" minValue="0" maxValue="1" >Servo state,0:off,1:on</param>
+            </entry>
+
             <!-- 51400~51599 is camera-->
 
             <entry value="51400" name="MAV_CMD_TK_CAMERA_CHANGE_PIP">
@@ -1547,6 +1553,11 @@
             <field type="uint32_t" name="reserved">Reserved.</field>
         </message>
 
+        <message id="51010" name="TK_SERVO_STATUS">
+            <description>Servo status data.</description>
+            <field type="uint32_t" name="timestamp_ms">Time stamp: used to determine if the data is expired/timeout.</field>
+            <field type="uint8_t" name="states_mask">Actual status bits: Each bit represents a servo motor on/off.</field>
+        </message>
 
 
         <!-- 51300~51499 is Camera-->
