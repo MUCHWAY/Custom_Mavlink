@@ -3,10 +3,16 @@ COLOR_RED    = \033[0;31m
 COLOR_GREEN  = \033[0;32m
 COLOR_YELLOW = \033[0;33m
 COLOR_RESET  = \033[0m
-.PHONY: validate
+.PHONY: validate install_deps
 
 ACTIVATE_PATH :=/home/hyh/workspace/transky/pyenv/bin/activate
 OUTPUT_PATH := $(PWD)/validate_xml
+PIP_DEPS_PATH := $(PWD)/pip-dependencies
+
+install_deps:
+	@echo "Installing pip dependencies..."
+	@mkdir -p $(PIP_DEPS_PATH)
+	@bash -c "source $(ACTIVATE_PATH) && python3 -m pip install -r pymavlink/requirements.txt -t $(PIP_DEPS_PATH)/"
 validate: 
 	mkdir -p $(OUTPUT_PATH)
 	echo "rebuild mavlink for arm"

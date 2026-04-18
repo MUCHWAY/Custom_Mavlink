@@ -29,7 +29,7 @@ set(EXAMPLE_HEADER ${CMAKE_CURRENT_BINARY_DIR}/include/mavlink/${MAVLINK_DIALECT
 
 add_custom_command(OUTPUT ${EXAMPLE_HEADER}
     COMMAND ${Python_EXECUTABLE}
-        -m pip install -r pymavlink/requirements.txt --upgrade -t ${CMAKE_CURRENT_BINARY_DIR}/pip-dependencies/
+        -m pip install -r pymavlink/requirements.txt --upgrade --index-url https://pypi.tuna.tsinghua.edu.cn/simple --trusted-host pypi.tuna.tsinghua.edu.cn --no-cache-dir -t ${CMAKE_CURRENT_BINARY_DIR}/pip-dependencies/
         COMMAND ${CMAKE_COMMAND} -E env "PYTHONPATH=${CMAKE_CURRENT_BINARY_DIR}/pip-dependencies/" ${Python_EXECUTABLE}
         -m pymavlink.tools.mavgen
         --lang=C
