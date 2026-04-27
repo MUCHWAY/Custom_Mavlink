@@ -263,14 +263,17 @@
                 </description>
             </entry>
             <!-- Ability Detail Commands -->
+            <entry value="51954" name="MAV_CMD_CUSTOM_DOG_GET_BATTERY_ABILITY_DETAIL">
+                <description>Query battery ability details (number of batteries); server sends message CUSTOM_DOG_BATTERY_ABILITY_DETAIL (51854).</description>
+            </entry>
             <entry value="51955" name="MAV_CMD_CUSTOM_DOG_GET_ACTION_ABILITY_DETAIL">
                 <description>Query total supported actions (static capability); server sends message CUSTOM_DOG_ACTION_ABILITY_DETAIL (51855).</description>
             </entry>
             <entry value="51956" name="MAV_CMD_CUSTOM_DOG_GET_CAMERA_ABILITY_DETAIL">
-                <description>Query camera ability details; server sends message CUSTOM_DOG_CAMERA_ABILITY_DETAIL (51857).</description>
+                <description>Query camera ability details; server sends message CUSTOM_DOG_CAMERA_ABILITY_DETAIL (51856).</description>
             </entry>
             <entry value="51957" name="MAV_CMD_CUSTOM_DOG_GET_SEARCH_LIGHT_ABILITY_DETAIL">
-                <description>Query search light ability details; server sends message CUSTOM_DOG_SEARCH_LIGHT_ABILITY_DETAIL (51856).</description>
+                <description>Query search light ability details; server sends message CUSTOM_DOG_SEARCH_LIGHT_ABILITY_DETAIL (51857).</description>
             </entry>
             <entry value="51958" name="MAV_CMD_CUSTOM_DOG_GET_GAIT_ABILITY_DETAIL">
                 <description>Query gait ability details; server sends message CUSTOM_DOG_GAIT_ABILITY_DETAIL (51858).</description>
@@ -372,6 +375,14 @@
         </message>
 
         <!-- Ability Detail Messages -->
+        <message id="51854" name="CUSTOM_DOG_BATTERY_ABILITY_DETAIL">
+            <description>
+                Battery ability details. Sent in response to COMMAND_LONG
+                MAV_CMD_CUSTOM_DOG_GET_BATTERY_ABILITY_DETAIL (51954).
+            </description>
+            <field type="uint32_t" name="battery_count">Number of batteries (1 or 2).</field>
+        </message>
+
         <message id="51855" name="CUSTOM_DOG_ACTION_ABILITY_DETAIL">
             <description>
                 Total supported actions (static capability). Sent in response to COMMAND_LONG
@@ -380,20 +391,20 @@
             <field type="uint32_t" name="action_bitmask">Supported actions (bitmask of CUSTOM_DOG_ACTION_OP).</field>
         </message>
 
-        <message id="51856" name="CUSTOM_DOG_SEARCH_LIGHT_ABILITY_DETAIL">
-            <description>
-                Search light ability details. Sent in response to COMMAND_LONG
-                MAV_CMD_CUSTOM_DOG_GET_SEARCH_LIGHT_ABILITY_DETAIL (51957).
-            </description>
-            <field type="uint32_t" name="search_light_type_bitmask">Search light types (bitmask of CUSTOM_DOG_SEARCH_LIGHT_OP).</field>
-        </message>
-
-        <message id="51857" name="CUSTOM_DOG_CAMERA_ABILITY_DETAIL">
+        <message id="51856" name="CUSTOM_DOG_CAMERA_ABILITY_DETAIL">
             <description>
                 Camera ability details. Sent in response to COMMAND_LONG
                 MAV_CMD_CUSTOM_DOG_GET_CAMERA_ABILITY_DETAIL (51956).
             </description>
             <field type="uint32_t" name="camera_type_bitmask">Camera types (bitmask of camera types).</field>
+        </message>
+
+        <message id="51857" name="CUSTOM_DOG_SEARCH_LIGHT_ABILITY_DETAIL">
+            <description>
+                Search light ability details. Sent in response to COMMAND_LONG
+                MAV_CMD_CUSTOM_DOG_GET_SEARCH_LIGHT_ABILITY_DETAIL (51957).
+            </description>
+            <field type="uint32_t" name="search_light_type_bitmask">Search light types (bitmask of CUSTOM_DOG_SEARCH_LIGHT_OP).</field>
         </message>
 
         <message id="51858" name="CUSTOM_DOG_GAIT_ABILITY_DETAIL">
