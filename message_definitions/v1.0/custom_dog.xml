@@ -476,12 +476,13 @@
             <field type="uint32_t" name="available_action_bitmask">Currently available actions (CUSTOM_DOG_ACTION_OP bitmask).</field>
         </message>
 
-        <message id="51867" name="CUSTOM_DOG_ERROR">
+        <message id="51867" name="CUSTOM_DOG_ERROR_CODE">
             <description>
-                Error event. Published by server when an error occurs.
+                Error code. Published by server when an error occurs.
                 No associated MAV_CMD; this is a publish/subscribe message.
+                The meaning of each code is defined at the application layer.
             </description>
-            <field type="uint32_t" name="error_code">Error code (application-defined).</field>
+            <field type="uint32_t" name="error_code">User-defined error code.</field>
         </message>
     </messages>
 
