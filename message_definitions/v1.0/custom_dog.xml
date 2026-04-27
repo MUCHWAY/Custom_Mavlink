@@ -329,6 +329,10 @@
             <entry value="51973" name="MAV_CMD_CUSTOM_DOG_GET_ALL_CURRENT_STATE">
                 <description>Query snapshot of all current states; server sends message CUSTOM_DOG_ALL_CURRENT_STATE (51866).</description>
             </entry>
+            <entry value="51974" name="MAV_CMD_CUSTOM_DOG_USER_COMMAND">
+                <description>Send a user-defined command. Semantics of the command code are defined at the application layer.</description>
+                <param index="1">User-defined command code.</param>
+            </entry>
         </enum>
     </enums>
 
