@@ -20,4 +20,7 @@ include/
 *.pyc
 include/mavlink/v1.0
 .idea
-/.vscode
+.vscode
+.specstory
+.cursorindexingignore
+validate_xml

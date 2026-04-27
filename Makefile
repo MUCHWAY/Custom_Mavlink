@@ -4,7 +4,7 @@ COLOR_GREEN  = \033[0;32m
 COLOR_YELLOW = \033[0;33m
 COLOR_RESET  = \033[0m
 .PHONY: validate install_deps
-
+all: validate
 ACTIVATE_PATH :=/home/hyh/workspace/transky/pyenv/bin/activate
 OUTPUT_PATH := $(PWD)/validate_xml
 PIP_DEPS_PATH := $(PWD)/pip-dependencies
