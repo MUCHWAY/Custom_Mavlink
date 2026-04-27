@@ -326,6 +326,9 @@
             <entry value="51972" name="MAV_CMD_CUSTOM_DOG_GET_CURRENT_AUTHORITY">
                 <description>Query current authority state; server sends message CUSTOM_DOG_CURRENT_AUTHORITY (51865).</description>
             </entry>
+            <entry value="51973" name="MAV_CMD_CUSTOM_DOG_GET_ALL_CURRENT_STATE">
+                <description>Query snapshot of all current states; server sends message CUSTOM_DOG_ALL_CURRENT_STATE (51866).</description>
+            </entry>
         </enum>
     </enums>
 
@@ -458,18 +461,15 @@
         <!-- Publish/Subscribe Messages (server publishes proactively, no MAV_CMD) -->
         <message id="51866" name="CUSTOM_DOG_ALL_CURRENT_STATE">
             <description>
-                Snapshot of all current states. Published by server proactively or on change.
-                No associated MAV_CMD; this is a publish/subscribe message.
+                Snapshot of current states (excluding search light and battery — those have dedicated APIs).
+                Sent in response to COMMAND_LONG MAV_CMD_CUSTOM_DOG_GET_ALL_CURRENT_STATE (51973),
+                or published by server proactively.
             </description>
             <field type="uint32_t" name="current_gait">Current gait type (CUSTOM_DOG_GAIT_TYPE value).</field>
             <field type="uint32_t" name="current_usage_mode">Current usage mode (CUSTOM_DOG_USAGE_MODE value).</field>
-            <field type="uint32_t" name="search_light_type">Active search light type (CUSTOM_DOG_SEARCH_LIGHT_OP value).</field>
-            <field type="uint8_t" name="search_light_on">1 if search light is on, 0 if off.</field>
             <field type="uint32_t" name="current_camera">Current camera type.</field>
             <field type="uint32_t" name="current_authority">Current authority state (CUSTOM_DOG_AUTHORITY_OP value).</field>
             <field type="uint32_t" name="available_action_bitmask">Currently available actions (CUSTOM_DOG_ACTION_OP bitmask).</field>
-            <field type="uint32_t" name="battery_level_1">Battery 1 level.</field>
-            <field type="uint32_t" name="battery_level_2">Battery 2 level; 0 if not present.</field>
         </message>
 
         <message id="51867" name="CUSTOM_DOG_ERROR">
