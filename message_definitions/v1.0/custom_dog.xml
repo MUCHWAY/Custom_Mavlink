@@ -70,6 +70,9 @@
             <description>
                 Dog ability categories (bitmask). Each bit indicates whether the dog has a capability.
             </description>
+            <entry value="0" name="DOG_ABILITY_CATEGORY_UNDEFINED">
+                <description>Undefined / no ability.</description>
+            </entry>
             <entry value="1" name="DOG_ABILITY_CATEGORY_ACTION_CONTROL">
                 <description>Has action control. Query detail for supported actions (CUSTOM_DOG_ACTION_OP).</description>
             </entry>
@@ -123,6 +126,9 @@
         <!-- Action operation sub-options (bitmask) for DOG_ABILITY_ACTION -->
         <enum name="CUSTOM_DOG_ACTION_OP">
             <description>Action operation sub-options (bitmask). Used in CUSTOM_DOG_CURRENT_AVAILABLE_ACTION and detail/control for ACTION.</description>
+            <entry value="0" name="DOG_ACTION_UNDEFINED">
+                <description>Undefined / no action.</description>
+            </entry>
             <entry value="1" name="DOG_ACTION_STAND_UP">
                 <description>Stand up.</description>
             </entry>
@@ -158,6 +164,9 @@
         <!-- Gait sub-options (bitmask) for DOG_ABILITY_GAIT_SWITCH detail -->
         <enum name="CUSTOM_DOG_GAIT_TYPE">
             <description>Gait type sub-options (bitmask).</description>
+            <entry value="0" name="DOG_GAIT_TYPE_UNDEFINED">
+                <description>Undefined / no gait type.</description>
+            </entry>
             <entry value="1" name="DOG_GAIT_TYPE_1">
                 <description>Gait type 1.</description>
             </entry>
@@ -187,6 +196,9 @@
         <!-- Usage mode sub-options (bitmask). Semantic names per CUSTOM_DOG_MODEL in application code. -->
         <enum name="CUSTOM_DOG_USAGE_MODE">
             <description>Usage mode sub-options (bitmask). Index semantics are model-specific.</description>
+            <entry value="0" name="DOG_USAGE_MODE_UNDEFINED">
+                <description>Undefined / no usage mode.</description>
+            </entry>
             <entry value="1" name="DOG_USAGE_MODE_1">
                 <description>Usage mode 1 is available.</description>
             </entry>
@@ -216,6 +228,9 @@
         <!-- Authority sub-options (bitmask) for DOG_ABILITY_AUTHORITY -->
         <enum name="CUSTOM_DOG_AUTHORITY_OP">
             <description>Authority operation sub-options (bitmask).</description>
+            <entry value="0" name="DOG_AUTHORITY_UNDEFINED">
+                <description>Undefined / no authority op.</description>
+            </entry>
             <entry value="1" name="DOG_AUTHORITY_ACQUIRE">
                 <description>Can acquire authority.</description>
             </entry>
@@ -233,6 +248,9 @@
         <!-- Search light sub-options (bitmask) for DOG_ABILITY_SEARCH_LIGHT -->
         <enum name="CUSTOM_DOG_SEARCH_LIGHT_OP">
             <description>Search light sub-options (bitmask). count field in detail = total lights.</description>
+            <entry value="0" name="DOG_SEARCH_LIGHT_UNDEFINED">
+                <description>Undefined / no search light.</description>
+            </entry>
             <entry value="1" name="DOG_SEARCH_LIGHT_1">
                 <description>Front search light is independently controllable.</description>
             </entry>
@@ -244,6 +262,26 @@
             </entry>
             <entry value="8" name="DOG_SEARCH_LIGHT_4">
                 <description>Search light 4 is independently controllable.</description>
+            </entry>
+        </enum>
+
+        <!-- Camera type enum (matches proto CameraType) -->
+        <enum name="CUSTOM_DOG_CAMERA_TYPE">
+            <description>Camera type sub-options (bitmask).</description>
+            <entry value="0" name="DOG_CAMERA_TYPE_UNDEFINED">
+                <description>Undefined / no camera.</description>
+            </entry>
+            <entry value="1" name="DOG_CAMERA_TYPE_1">
+                <description>Camera type 1.</description>
+            </entry>
+            <entry value="2" name="DOG_CAMERA_TYPE_2">
+                <description>Camera type 2.</description>
+            </entry>
+            <entry value="4" name="DOG_CAMERA_TYPE_3">
+                <description>Camera type 3.</description>
+            </entry>
+            <entry value="8" name="DOG_CAMERA_TYPE_4">
+                <description>Camera type 4.</description>
             </entry>
         </enum>
 
@@ -476,15 +514,16 @@
         <!-- Publish/Subscribe Messages (server publishes proactively, no MAV_CMD) -->
         <message id="51866" name="CUSTOM_DOG_ALL_CURRENT_STATE">
             <description>
-                Snapshot of current states (excluding search light and battery — those have dedicated APIs).
+                Snapshot of current states. Excludes battery (dedicated SubscribeBatteryLevel API).
                 Sent in response to COMMAND_LONG MAV_CMD_CUSTOM_DOG_GET_ALL_CURRENT_STATE (51973),
                 or published by server proactively.
             </description>
             <field type="uint32_t" name="current_gait">Current gait type (CUSTOM_DOG_GAIT_TYPE value).</field>
             <field type="uint32_t" name="current_usage_mode">Current usage mode (CUSTOM_DOG_USAGE_MODE value).</field>
-            <field type="uint32_t" name="current_camera">Current camera type.</field>
+            <field type="uint32_t" name="current_camera">Current camera type (CUSTOM_DOG_CAMERA_TYPE value).</field>
             <field type="uint32_t" name="current_authority">Current authority state (CUSTOM_DOG_AUTHORITY_OP value).</field>
-            <field type="uint32_t" name="available_action_bitmask">Currently available actions (CUSTOM_DOG_ACTION_OP bitmask).</field>
+            <field type="uint32_t" name="current_search_light_1">Active search light type (CUSTOM_DOG_SEARCH_LIGHT_OP value).</field>
+            <field type="uint8_t" name="current_search_light_2">1 if search light is on, 0 if off.</field>
         </message>
 
         <message id="51867" name="CUSTOM_DOG_ERROR_CODE">
