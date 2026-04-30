@@ -285,6 +285,20 @@
             </entry>
         </enum>
 
+        <!-- Battery type enum (matches proto BatteryType) -->
+        <enum name="CUSTOM_DOG_BATTERY_TYPE">
+            <description>Battery type sub-options (bitmask).</description>
+            <entry value="0" name="DOG_BATTERY_TYPE_UNDEFINED">
+                <description>Undefined / no battery.</description>
+            </entry>
+            <entry value="1" name="DOG_BATTERY_TYPE_1">
+                <description>Battery type 1.</description>
+            </entry>
+            <entry value="2" name="DOG_BATTERY_TYPE_2">
+                <description>Battery type 2.</description>
+            </entry>
+        </enum>
+
         <!-- Custom Dog Control Commands -->
         <enum name="MAV_CMD">
             <entry value="51951" name="MAV_CMD_CUSTOM_DOG_SELECT_MODEL">
@@ -302,7 +316,7 @@
             </entry>
             <!-- Ability Detail Commands -->
             <entry value="51954" name="MAV_CMD_CUSTOM_DOG_GET_BATTERY_ABILITY_DETAIL">
-                <description>Query battery ability details (number of batteries); server sends message CUSTOM_DOG_BATTERY_ABILITY_DETAIL (51854).</description>
+                <description>Query battery ability details; server sends message CUSTOM_DOG_BATTERY_ABILITY_DETAIL (51854).</description>
             </entry>
             <entry value="51955" name="MAV_CMD_CUSTOM_DOG_GET_ACTION_ABILITY_DETAIL">
                 <description>Query total supported actions (static capability); server sends message CUSTOM_DOG_ACTION_ABILITY_DETAIL (51855).</description>
@@ -418,7 +432,7 @@
                 Battery ability details. Sent in response to COMMAND_LONG
                 MAV_CMD_CUSTOM_DOG_GET_BATTERY_ABILITY_DETAIL (51954).
             </description>
-            <field type="uint32_t" name="battery_count">Number of batteries (1 or 2).</field>
+            <field type="uint32_t" name="battery_type_bitmask">Supported battery types (bitmask of CUSTOM_DOG_BATTERY_TYPE).</field>
         </message>
 
         <message id="51855" name="CUSTOM_DOG_ACTION_ABILITY_DETAIL">
