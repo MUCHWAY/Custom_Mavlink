@@ -539,7 +539,7 @@
             <field type="uint32_t" name="current_camera">Current camera type (CUSTOM_DOG_CAMERA_TYPE value).</field>
             <field type="uint32_t" name="current_authority">Current authority state (CUSTOM_DOG_AUTHORITY_OP value).</field>
             <field type="uint32_t" name="current_search_light_1">Active search light type (CUSTOM_DOG_SEARCH_LIGHT_OP value).</field>
-            <field type="uint8_t" name="current_search_light_2">1 if search light is on, 0 if off.</field>
+            <field type="uint32_t" name="current_search_light_2">1 if search light is on, 0 if off.</field>
         </message>
 
         <message id="51867" name="CUSTOM_DOG_ERROR_CODE">
