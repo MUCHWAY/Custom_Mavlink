@@ -507,8 +507,8 @@
                 Current search light state. Sent in response to COMMAND_LONG
                 MAV_CMD_CUSTOM_DOG_GET_CURRENT_SEARCH_LIGHT_STATE (51970).
             </description>
-            <field type="uint32_t" name="search_light_type">Active search light type (value from CUSTOM_DOG_SEARCH_LIGHT_OP).</field>
-            <field type="uint8_t" name="is_on">1 if the light is on, 0 if off.</field>
+            <field type="uint32_t" name="current_search_light_1">Search light 1 type (CUSTOM_DOG_SEARCH_LIGHT_OP value).</field>
+            <field type="uint32_t" name="current_search_light_2">Search light 2 type (CUSTOM_DOG_SEARCH_LIGHT_OP value).</field>
         </message>
 
         <message id="51864" name="CUSTOM_DOG_CURRENT_CAMERA">
@@ -539,7 +539,7 @@
             <field type="uint32_t" name="current_camera">Current camera type (CUSTOM_DOG_CAMERA_TYPE value).</field>
             <field type="uint32_t" name="current_authority">Current authority state (CUSTOM_DOG_AUTHORITY_OP value).</field>
             <field type="uint32_t" name="current_search_light_1">Active search light type (CUSTOM_DOG_SEARCH_LIGHT_OP value).</field>
-            <field type="uint32_t" name="current_search_light_2">1 if search light is on, 0 if off.</field>
+            <field type="uint32_t" name="current_search_light_2">Search light 2 type (CUSTOM_DOG_SEARCH_LIGHT_OP value).</field>
         </message>
 
         <message id="51867" name="CUSTOM_DOG_ERROR_CODE">
