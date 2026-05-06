@@ -21,88 +21,534 @@
             <entry value="1" name="CUSTOM_DOG_MODEL_DEEPROBOTICS_X30">
                 <description>Deeprobotics X30.</description>
             </entry>
-            <entry value="2" name="CUSTOM_DOG_MODEL_ZSI_ZSL1">
+            <entry value="2" name="CUSTOM_DOG_MODEL_ZSI_L1">
                 <description>ZSI ZSL-1.</description>
             </entry>
             <entry value="3" name="CUSTOM_DOG_MODEL_ASTRALL_A01">
                 <description>Astrall A01.</description>
             </entry>
+            <entry value="4" name="CUSTOM_DOG_DEEPROBOTICS_M20Pro">
+                <description>Deeprobotics M20 Pro.</description>
+            </entry>
+            <entry value="5" name="CUSTOM_DOG_MODEL_ZSI_M1">
+                <description>ZSI M1.</description>
+            </entry>
+            <entry value="6" name="CUSTOM_DOG_MODEL_TYPY6">
+                <description>Dog model 6.</description>
+            </entry>
+            <entry value="7" name="CUSTOM_DOG_MODEL_TYPE7">
+                <description>Dog model 7.</description>
+            </entry>
+            <entry value="8" name="CUSTOM_DOG_MODEL_TYPE8">
+                <description>Dog model 8.</description>
+            </entry>
+            <entry value="9" name="CUSTOM_DOG_MODEL_TYPE9">
+                <description>Dog model 9.</description>
+            </entry>
+            <entry value="10" name="CUSTOM_DOG_MODEL_TYPE10">
+                <description>Dog model 10.</description>
+            </entry>
+            <entry value="11" name="CUSTOM_DOG_MODEL_TYPE11">
+                <description>Dog model 11.</description>
+            </entry>
+            <entry value="12" name="CUSTOM_DOG_MODEL_TYPE12">
+                <description>Dog model 12.</description>
+            </entry>
+            <entry value="13" name="CUSTOM_DOG_MODEL_TYPE13">
+                <description>Dog model 13.</description>
+            </entry>
+            <entry value="14" name="CUSTOM_DOG_MODEL_TYPE14">
+                <description>Dog model 14.</description>
+            </entry>
+            <entry value="15" name="CUSTOM_DOG_MODEL_TYPE15">
+                <description>Dog model 15.</description>
+            </entry>
         </enum>
 
-        <!-- Dog Command Values (used as bitmask for capability check) -->
-        <enum name="CUSTOM_DOG_ALL_ABILITY">
-            <description>Dog command values (used as bitmask for capability check).</description>
-            <entry value="1" name="STAND_UP">
-                <description>Enter stand up mode.</description>
+        <!-- Ability categories (bitmask). Each bit is one category. -->
+        <enum name="CUSTOM_DOG_ABILITY_CATEGORY">
+            <description>
+                Dog ability categories (bitmask). Each bit indicates whether the dog has a capability.
+            </description>
+            <entry value="0" name="DOG_ABILITY_CATEGORY_UNDEFINED">
+                <description>Undefined / no ability.</description>
             </entry>
-            <entry value="2" name="LIE_DOWN">
-                <description>Lie down mode.</description>
+            <entry value="1" name="DOG_ABILITY_CATEGORY_ACTION_CONTROL">
+                <description>Has action control. Query detail for supported actions (CUSTOM_DOG_ACTION_OP).</description>
             </entry>
-            <entry value="4" name="CROUCH">
-                <description>Crouch mode.</description>
+            <entry value="2" name="DOG_ABILITY_CATEGORY_EMERGENCY_STOP">
+                <description>Has emergency stop. No sub-options.</description>
             </entry>
-            <entry value="8" name="ENTER_POSE_CONTROL">
-                <description>Enter pose control mode.</description>
+            <entry value="4" name="DOG_ABILITY_CATEGORY_SEARCH_LIGHT">
+                <description>
+                    Has controllable search lights. Query detail for count and which lights (CUSTOM_DOG_SEARCH_LIGHT_OP).
+                </description>
             </entry>
-            <entry value="16" name="ENTER_MOVE_CONTROL">
-                <description>Enter move mode.</description>
+            <entry value="8" name="DOG_ABILITY_CATEGORY_AUTHORITY">
+                <description>
+                    Has authority control. Query detail for supported operations (CUSTOM_DOG_AUTHORITY_OP).
+                </description>
             </entry>
-            <entry value="32" name="EmergencyStop">
-                <description>EmergencyStop.</description>
+            <entry value="16" name="DOG_ABILITY_CATEGORY_GAIT_SWITCH">
+                <description>
+                    Has gait switching. Query detail for supported gait types (CUSTOM_DOG_GAIT_TYPE).
+                </description>
+            </entry>
+            <entry value="32" name="DOG_ABILITY_CATEGORY_USAGE_MODE_SWITCH">
+                <description>
+                    Has usage mode switching. Query detail for supported modes (CUSTOM_DOG_USAGE_MODE).
+                    Mode names are defined per dog model at the application layer.
+                </description>
+            </entry>
+            <entry value="64" name="DOG_ABILITY_CATEGORY_CAMERA_SWITCH">
+                <description>Has camera switching. Query detail for count (number of cameras).</description>
+            </entry>
+            <entry value="128" name="DOG_ABILITY_CATEGORY_BATTERY">
+                <description>Has multi-battery reporting. Query detail for count (number of batteries). Telemetry; not a control target.</description>
+            </entry>
+            <entry value="256" name="DOG_ABILITY_CATEGORY_CUSTOM_1">
+                <description>Custom ability category 1.</description>
+            </entry>
+            <entry value="512" name="DOG_ABILITY_CATEGORY_CUSTOM_2">
+                <description>Custom ability category 2.</description>
+            </entry>
+            <entry value="1024" name="DOG_ABILITY_CATEGORY_CUSTOM_3">
+                <description>Custom ability category 3.</description>
+            </entry>
+            <entry value="2048" name="DOG_ABILITY_CATEGORY_CUSTOM_4">
+                <description>Custom ability category 4.</description>
+            </entry>
+            <entry value="4096" name="DOG_ABILITY_CATEGORY_CUSTOM_5">
+                <description>Custom ability category 5.</description>
+            </entry>
+        </enum>
+
+        <!-- Action operation sub-options (bitmask) for DOG_ABILITY_ACTION -->
+        <enum name="CUSTOM_DOG_ACTION_OP">
+            <description>Action operation sub-options (bitmask). Used in CUSTOM_DOG_CURRENT_AVAILABLE_ACTION and detail/control for ACTION.</description>
+            <entry value="0" name="DOG_ACTION_UNDEFINED">
+                <description>Undefined / no action.</description>
+            </entry>
+            <entry value="1" name="DOG_ACTION_STAND_UP">
+                <description>Stand up.</description>
+            </entry>
+            <entry value="2" name="DOG_ACTION_LIE_DOWN">
+                <description>Lie down.</description>
+            </entry>
+            <entry value="4" name="DOG_ACTION_CROUCH">
+                <description>Crouch.</description>
+            </entry>
+            <entry value="8" name="DOG_ACTION_POSTURE_CONTROL">
+                <description>Posture control.</description>
+            </entry>
+            <entry value="16" name="DOG_ACTION_MOVE_CONTROL">
+                <description>Move control.</description>
+            </entry>
+            <entry value="32" name="DOG_ACTION_EXTENDED_CONTROL1">
+                <description>Extended control 1.</description>
+            </entry>
+            <entry value="64" name="DOG_ACTION_EXTENDED_CONTROL2">
+                <description>Extended control 2.</description>
+            </entry>
+            <entry value="128" name="DOG_ACTION_EXTENDED_CONTROL3">
+                <description>Extended control 3.</description>
+            </entry>
+            <entry value="256" name="DOG_ACTION_EXTENDED_CONTROL4">
+                <description>Extended control 4.</description>
+            </entry>
+            <entry value="512" name="DOG_ACTION_EXTENDED_CONTROL5">
+                <description>Extended control 5.</description>
+            </entry>
+        </enum>
+
+        <!-- Gait sub-options (bitmask) for DOG_ABILITY_GAIT_SWITCH detail -->
+        <enum name="CUSTOM_DOG_GAIT_TYPE">
+            <description>Gait type sub-options (bitmask).</description>
+            <entry value="0" name="DOG_GAIT_TYPE_UNDEFINED">
+                <description>Undefined / no gait type.</description>
+            </entry>
+            <entry value="1" name="DOG_GAIT_TYPE_1">
+                <description>Gait type 1.</description>
+            </entry>
+            <entry value="2" name="DOG_GAIT_TYPE_2">
+                <description>Gait type 2.</description>
+            </entry>
+            <entry value="4" name="DOG_GAIT_TYPE_3">
+                <description>Gait type 3.</description>
+            </entry>
+            <entry value="8" name="DOG_GAIT_TYPE_4">
+                <description>Gait type 4.</description>
+            </entry>
+            <entry value="16" name="DOG_GAIT_TYPE_5">
+                <description>Gait type 5.</description>
+            </entry>
+            <entry value="32" name="DOG_GAIT_TYPE_6">
+                <description>Gait type 6.</description>
+            </entry>
+            <entry value="64" name="DOG_GAIT_TYPE_7">
+                <description>Gait type 7.</description>
+            </entry>
+            <entry value="128" name="DOG_GAIT_TYPE_8">
+                <description>Gait type 8.</description>
+            </entry>
+        </enum>
+
+        <!-- Usage mode sub-options (bitmask). Semantic names per CUSTOM_DOG_MODEL in application code. -->
+        <enum name="CUSTOM_DOG_USAGE_MODE">
+            <description>Usage mode sub-options (bitmask). Index semantics are model-specific.</description>
+            <entry value="0" name="DOG_USAGE_MODE_UNDEFINED">
+                <description>Undefined / no usage mode.</description>
+            </entry>
+            <entry value="1" name="DOG_USAGE_MODE_1">
+                <description>Usage mode 1 is available.</description>
+            </entry>
+            <entry value="2" name="DOG_USAGE_MODE_2">
+                <description>Usage mode 2 is available.</description>
+            </entry>
+            <entry value="4" name="DOG_USAGE_MODE_3">
+                <description>Usage mode 3 is available.</description>
+            </entry>
+            <entry value="8" name="DOG_USAGE_MODE_4">
+                <description>Usage mode 4 is available.</description>
+            </entry>
+            <entry value="16" name="DOG_USAGE_MODE_5">
+                <description>Usage mode 5 is available.</description>
+            </entry>
+            <entry value="32" name="DOG_USAGE_MODE_6">
+                <description>Usage mode 6 is available.</description>
+            </entry>
+            <entry value="64" name="DOG_USAGE_MODE_7">
+                <description>Usage mode 7 is available.</description>
+            </entry>
+            <entry value="128" name="DOG_USAGE_MODE_8">
+                <description>Usage mode 8 is available.</description>
+            </entry>
+        </enum>
+
+        <!-- Authority sub-options (bitmask) for DOG_ABILITY_AUTHORITY -->
+        <enum name="CUSTOM_DOG_AUTHORITY_OP">
+            <description>Authority operation sub-options (bitmask).</description>
+            <entry value="0" name="DOG_AUTHORITY_UNDEFINED">
+                <description>Undefined / no authority op.</description>
+            </entry>
+            <entry value="1" name="DOG_AUTHORITY_ACQUIRE">
+                <description>Can acquire authority.</description>
+            </entry>
+            <entry value="2" name="DOG_AUTHORITY_RELEASE">
+                <description>Can release authority.</description>
+            </entry>
+            <entry value="4" name="DOG_AUTHORITY_OP_3">
+                <description>Authority operation 3.</description>
+            </entry>
+            <entry value="8" name="DOG_AUTHORITY_OP_4">
+                <description>Authority operation 4.</description>
+            </entry>
+        </enum>
+
+        <!-- Search light sub-options (bitmask) for DOG_ABILITY_SEARCH_LIGHT -->
+        <enum name="CUSTOM_DOG_SEARCH_LIGHT_OP">
+            <description>Search light sub-options (bitmask). count field in detail = total lights.</description>
+            <entry value="0" name="DOG_SEARCH_LIGHT_UNDEFINED">
+                <description>Undefined / no search light.</description>
+            </entry>
+            <entry value="1" name="DOG_SEARCH_LIGHT_1">
+                <description>Front search light is independently controllable.</description>
+            </entry>
+            <entry value="2" name="DOG_SEARCH_LIGHT_2">
+                <description>Rear search light is independently controllable.</description>
+            </entry>
+            <entry value="4" name="DOG_SEARCH_LIGHT_3">
+                <description>Search light 3 is independently controllable.</description>
+            </entry>
+            <entry value="8" name="DOG_SEARCH_LIGHT_4">
+                <description>Search light 4 is independently controllable.</description>
+            </entry>
+        </enum>
+
+        <!-- Camera type enum (matches proto CameraType) -->
+        <enum name="CUSTOM_DOG_CAMERA_TYPE">
+            <description>Camera type sub-options (bitmask).</description>
+            <entry value="0" name="DOG_CAMERA_TYPE_UNDEFINED">
+                <description>Undefined / no camera.</description>
+            </entry>
+            <entry value="1" name="DOG_CAMERA_TYPE_1">
+                <description>Camera type 1.</description>
+            </entry>
+            <entry value="2" name="DOG_CAMERA_TYPE_2">
+                <description>Camera type 2.</description>
+            </entry>
+            <entry value="4" name="DOG_CAMERA_TYPE_3">
+                <description>Camera type 3.</description>
+            </entry>
+            <entry value="8" name="DOG_CAMERA_TYPE_4">
+                <description>Camera type 4.</description>
+            </entry>
+        </enum>
+
+        <!-- Battery type enum (matches proto BatteryType) -->
+        <enum name="CUSTOM_DOG_BATTERY_TYPE">
+            <description>Battery type sub-options (bitmask).</description>
+            <entry value="0" name="DOG_BATTERY_TYPE_UNDEFINED">
+                <description>Undefined / no battery.</description>
+            </entry>
+            <entry value="1" name="DOG_BATTERY_TYPE_1">
+                <description>Battery type 1.</description>
+            </entry>
+            <entry value="2" name="DOG_BATTERY_TYPE_2">
+                <description>Battery type 2.</description>
             </entry>
         </enum>
 
         <!-- Custom Dog Control Commands -->
         <enum name="MAV_CMD">
-            <!-- Server register a cb to handle, client send it proactively-->
-            <entry value="51950" name="MAV_CMD_CUSTOM_DOG_CONTROL_CMD">
-                <description>Custom dog control command.</description>
-                <param index="1">Command value (CUSTOM_DOG_ALL_ABILITY).</param>
-            </entry>
-            <!-- The client send the cmd proactively, and Server response seccess or not-->
             <entry value="51951" name="MAV_CMD_CUSTOM_DOG_SELECT_MODEL">
-                <description>Select dog model.</description>
+                <description>Select dog model. Server loads model config; result via COMMAND_ACK.</description>
                 <param index="1" enum="CUSTOM_DOG_MODEL">Dog model value.</param>
             </entry>
-            <!-- The client send the cmd proactively, then server return a CUSTOM_DOG_SUPPORT_ABILITY msg -->
-            <entry value="51952" name="MAV_CMD_CUSTOM_DOG_ASK_ABILITY">
-                <description>Ask the dog ability from client.</description>
+            <entry value="51952" name="MAV_CMD_CUSTOM_DOG_GET_ABILITY_CATEGORY">
+                <description>Query supported ability categories; server sends message CUSTOM_DOG_SUPPORTED_ABILITY_CATEGORY (51851).</description>
             </entry>
-            <!-- The client send the cmd proactively, then server return a CUSTOM_DOG_CURRENT_AVAILABLE_CMD msg -->
-            <entry value="51953" name="MAV_CMD_CUSTOM_DOG_CURRENT_AVAILABLE_CMD">
-                <description>Ask the dog available cmd currently from client.</description>
+            <entry value="51953" name="MAV_CMD_CUSTOM_DOG_GET_CURRENT_AVAILABLE_ACTION">
+                <description>
+                    Request current available action sub-options; server sends message CUSTOM_DOG_CURRENT_AVAILABLE_ACTION (51852).
+                    Message 51852 may also be sent proactively when action availability changes.
+                </description>
+            </entry>
+            <!-- Ability Detail Commands -->
+            <entry value="51954" name="MAV_CMD_CUSTOM_DOG_GET_BATTERY_ABILITY_DETAIL">
+                <description>Query battery ability details; server sends message CUSTOM_DOG_BATTERY_ABILITY_DETAIL (51854).</description>
+            </entry>
+            <entry value="51955" name="MAV_CMD_CUSTOM_DOG_GET_ACTION_ABILITY_DETAIL">
+                <description>Query total supported actions (static capability); server sends message CUSTOM_DOG_ACTION_ABILITY_DETAIL (51855).</description>
+            </entry>
+            <entry value="51956" name="MAV_CMD_CUSTOM_DOG_GET_CAMERA_ABILITY_DETAIL">
+                <description>Query camera ability details; server sends message CUSTOM_DOG_CAMERA_ABILITY_DETAIL (51856).</description>
+            </entry>
+            <entry value="51957" name="MAV_CMD_CUSTOM_DOG_GET_SEARCH_LIGHT_ABILITY_DETAIL">
+                <description>Query search light ability details; server sends message CUSTOM_DOG_SEARCH_LIGHT_ABILITY_DETAIL (51857).</description>
+            </entry>
+            <entry value="51958" name="MAV_CMD_CUSTOM_DOG_GET_GAIT_ABILITY_DETAIL">
+                <description>Query gait ability details; server sends message CUSTOM_DOG_GAIT_ABILITY_DETAIL (51858).</description>
+            </entry>
+            <entry value="51959" name="MAV_CMD_CUSTOM_DOG_GET_USAGE_MODE_ABILITY_DETAIL">
+                <description>Query usage mode ability details; server sends message CUSTOM_DOG_USAGE_MODE_ABILITY_DETAIL (51859).</description>
+            </entry>
+            <entry value="51960" name="MAV_CMD_CUSTOM_DOG_GET_AUTHORITY_ABILITY_DETAIL">
+                <description>Query authority/control capability details; server sends message CUSTOM_DOG_AUTHORITY_ABILITY_DETAIL (51860).</description>
+            </entry>
+            <!-- Independent Control Commands -->
+            <entry value="51961" name="MAV_CMD_CUSTOM_DOG_EMERGENCY_STOP">
+                <description>Emergency stop. No parameters.</description>
+            </entry>
+            <entry value="51962" name="MAV_CMD_CUSTOM_DOG_ACTION_CONTROL">
+                <description>Execute action control.</description>
+                <param index="1" enum="CUSTOM_DOG_ACTION_OP">Action operation.</param>
+            </entry>
+            <entry value="51963" name="MAV_CMD_CUSTOM_DOG_SEARCH_LIGHT_CONTROL">
+                <description>Control search light.</description>
+                <param index="1" enum="CUSTOM_DOG_SEARCH_LIGHT_OP">Light type.</param>
+                <param index="2">is_on (1=on, 0=off).</param>
+            </entry>
+            <entry value="51964" name="MAV_CMD_CUSTOM_DOG_AUTHORITY_CONTROL">
+                <description>Control authority.</description>
+                <param index="1" enum="CUSTOM_DOG_AUTHORITY_OP">Authority operation.</param>
+            </entry>
+            <entry value="51965" name="MAV_CMD_CUSTOM_DOG_GAIT_CONTROL">
+                <description>Switch gait type.</description>
+                <param index="1" enum="CUSTOM_DOG_GAIT_TYPE">Gait type.</param>
+            </entry>
+            <entry value="51966" name="MAV_CMD_CUSTOM_DOG_USAGE_MODE_CONTROL">
+                <description>Switch usage mode.</description>
+                <param index="1" enum="CUSTOM_DOG_USAGE_MODE">Usage mode.</param>
+            </entry>
+            <entry value="51967" name="MAV_CMD_CUSTOM_DOG_CAMERA_CONTROL">
+                <description>Switch camera (1).</description>
+                <param index="1">Camera index (1-based: 1=Type1, 2=Type2, 3=Type3, 4=Type4)</param>
+            </entry>
+            <!-- Current State Query Commands -->
+            <entry value="51968" name="MAV_CMD_CUSTOM_DOG_GET_CURRENT_GAIT">
+                <description>Query current gait type; server sends message CUSTOM_DOG_CURRENT_GAIT (51861).</description>
+            </entry>
+            <entry value="51969" name="MAV_CMD_CUSTOM_DOG_GET_CURRENT_USAGE_MODE">
+                <description>Query current usage mode; server sends message CUSTOM_DOG_CURRENT_USAGE_MODE (51862).</description>
+            </entry>
+            <entry value="51970" name="MAV_CMD_CUSTOM_DOG_GET_CURRENT_SEARCH_LIGHT_STATE">
+                <description>Query current search light state; server sends message CUSTOM_DOG_CURRENT_SEARCH_LIGHT_STATE (51863).</description>
+            </entry>
+            <entry value="51971" name="MAV_CMD_CUSTOM_DOG_GET_CURRENT_CAMERA">
+                <description>Query current camera; server sends message CUSTOM_DOG_CURRENT_CAMERA (51864).</description>
+            </entry>
+            <entry value="51972" name="MAV_CMD_CUSTOM_DOG_GET_CURRENT_AUTHORITY">
+                <description>Query current authority state; server sends message CUSTOM_DOG_CURRENT_AUTHORITY (51865).</description>
+            </entry>
+            <entry value="51973" name="MAV_CMD_CUSTOM_DOG_GET_ALL_CURRENT_STATE">
+                <description>Query snapshot of all current states; server sends message CUSTOM_DOG_ALL_CURRENT_STATE (51866).</description>
+            </entry>
+            <entry value="51974" name="MAV_CMD_CUSTOM_DOG_USER_COMMAND">
+                <description>Send a user-defined command. Semantics of all parameters are defined at the application layer.</description>
+                <param index="1">User-defined command code.</param>
+                <param index="2">User-defined parameter 2.</param>
+                <param index="3">User-defined parameter 3.</param>
             </entry>
         </enum>
     </enums>
 
     <messages>
-        <!-- Custom Dog Joy Data Message -->
-        <!-- The clinet send the data proactively the server register a cb to handle it -->
         <message id="51850" name="CUSTOM_DOG_JOY_DATA">
-            <description>Custom dog joystick channel values.</description>
+            <description>Custom dog joystick channel values. Client sends; server handles.</description>
             <field type="float" name="lx">Left joystick x-axis value.</field>
             <field type="float" name="ly">Left joystick y-axis value.</field>
             <field type="float" name="rx">Right joystick x-axis value.</field>
             <field type="float" name="ry">Right joystick y-axis value.</field>
         </message>
 
-        <!-- Dog Support Ability - returned when model is selected -->
-        <!-- client send the MAV_CMD_CUSTOM_DOG_ASK_ABILITY cmd then server return this msg -->
-        <message id="51851" name="CUSTOM_DOG_SUPPORT_ABILITY">
-            <description>Dog capability.</description>
-            <field type="uint32_t" name="capability_bitmask">Supported commands (bitmask of CUSTOM_DOG_ALL_ABILITY).</field>
+        <message id="51851" name="CUSTOM_DOG_SUPPORTED_ABILITY_CATEGORY">
+            <description>
+                Supported ability categories (static capability). Sent in response to COMMAND_LONG
+                MAV_CMD_CUSTOM_DOG_GET_ABILITY_CATEGORY (51952).
+            </description>
+            <field type="uint32_t" name="capability_bitmask">Bitmask of CUSTOM_DOG_ABILITY_CATEGORY.</field>
         </message>
 
-        <!-- Current Available Commands - real-time based on current state -->
-        <!-- the client can  send MAV_CMD_CUSTOM_DOG_CURRENT_AVAILABLE_CMD to get this msg -->
-        <!-- or server can send this msg proactively and client register a cb to handle thisi -->
-        <message id="51852" name="CUSTOM_DOG_CURRENT_AVAILABLE_CMD">
-            <description>Real-time available commands based on current state.</description>
-            <field type="uint32_t" name="available_cmd_bitmask">Currently available commands (bitmask of CUSTOM_DOG_ALL_ABILITY).</field>
+        <message id="51852" name="CUSTOM_DOG_CURRENT_AVAILABLE_ACTION">
+            <description>
+                Real-time available action sub-options (body/action state). Field is bitmask of CUSTOM_DOG_ACTION_OP.
+                Sent in response to COMMAND_LONG MAV_CMD_CUSTOM_DOG_GET_CURRENT_AVAILABLE_ACTION (51953),
+                or proactively when availability changes. Client should register a handler for id 51852.
+            </description>
+            <field type="uint32_t" name="available_action_bitmask">Currently available actions (bitmask of CUSTOM_DOG_ACTION_OP).</field>
         </message>
+
         <message id="51853" name="CUSTOM_DOG_BATTERY_LEVEL">
-            <description>battery level of dog.</description>
-            <field type="uint32_t" name="battery_level">Current battery level</field>
+            <description>
+                Battery levels. Server may send periodically or on change. Single-battery dogs: use battery_level_1;
+                set battery_level_2 to 0 or a documented sentinel if unused.
+            </description>
+            <field type="uint32_t" name="battery_level_1">Battery 1 level (unit defined by implementation, e.g. percent or mV).</field>
+            <field type="uint32_t" name="battery_level_2">Battery 2 level; 0 if not present.</field>
+        </message>
+
+        <!-- Ability Detail Messages -->
+        <message id="51854" name="CUSTOM_DOG_BATTERY_ABILITY_DETAIL">
+            <description>
+                Battery ability details. Sent in response to COMMAND_LONG
+                MAV_CMD_CUSTOM_DOG_GET_BATTERY_ABILITY_DETAIL (51954).
+            </description>
+            <field type="uint32_t" name="battery_type_bitmask">Supported battery types (bitmask of CUSTOM_DOG_BATTERY_TYPE).</field>
+        </message>
+
+        <message id="51855" name="CUSTOM_DOG_ACTION_ABILITY_DETAIL">
+            <description>
+                Total supported actions (static capability). Sent in response to COMMAND_LONG
+                MAV_CMD_CUSTOM_DOG_GET_ACTION_ABILITY_DETAIL (51955).
+            </description>
+            <field type="uint32_t" name="action_bitmask">Supported actions (bitmask of CUSTOM_DOG_ACTION_OP).</field>
+        </message>
+
+        <message id="51856" name="CUSTOM_DOG_CAMERA_ABILITY_DETAIL">
+            <description>
+                Camera ability details. Sent in response to COMMAND_LONG
+                MAV_CMD_CUSTOM_DOG_GET_CAMERA_ABILITY_DETAIL (51956).
+            </description>
+            <field type="uint32_t" name="camera_type_bitmask">Camera types (bitmask of camera types).</field>
+        </message>
+
+        <message id="51857" name="CUSTOM_DOG_SEARCH_LIGHT_ABILITY_DETAIL">
+            <description>
+                Search light ability details. Sent in response to COMMAND_LONG
+                MAV_CMD_CUSTOM_DOG_GET_SEARCH_LIGHT_ABILITY_DETAIL (51957).
+            </description>
+            <field type="uint32_t" name="search_light_type_bitmask">Search light types (bitmask of CUSTOM_DOG_SEARCH_LIGHT_OP).</field>
+        </message>
+
+        <message id="51858" name="CUSTOM_DOG_GAIT_ABILITY_DETAIL">
+            <description>
+                Gait ability details. Sent in response to COMMAND_LONG
+                MAV_CMD_CUSTOM_DOG_GET_GAIT_ABILITY_DETAIL (51958).
+            </description>
+            <field type="uint32_t" name="gait_type_bitmask">Gait types (bitmask of CUSTOM_DOG_GAIT_TYPE).</field>
+        </message>
+
+        <message id="51859" name="CUSTOM_DOG_USAGE_MODE_ABILITY_DETAIL">
+            <description>
+                Usage mode ability details. Sent in response to COMMAND_LONG
+                MAV_CMD_CUSTOM_DOG_GET_USAGE_MODE_ABILITY_DETAIL (51959).
+            </description>
+            <field type="uint32_t" name="usage_mode_bitmask">Usage modes (bitmask of CUSTOM_DOG_USAGE_MODE).</field>
+        </message>
+
+        <message id="51860" name="CUSTOM_DOG_AUTHORITY_ABILITY_DETAIL">
+            <description>
+                Authority/control capability details. Sent in response to COMMAND_LONG
+                MAV_CMD_CUSTOM_DOG_GET_AUTHORITY_ABILITY_DETAIL (51960).
+            </description>
+            <field type="uint32_t" name="authority_op_bitmask">Supported operations (bitmask of CUSTOM_DOG_AUTHORITY_OP).</field>
+        </message>
+
+        <!-- Current State Response Messages (request/response) -->
+        <message id="51861" name="CUSTOM_DOG_CURRENT_GAIT">
+            <description>
+                Current gait type. Sent in response to COMMAND_LONG
+                MAV_CMD_CUSTOM_DOG_GET_CURRENT_GAIT (51968).
+            </description>
+            <field type="uint32_t" name="current_gait">Current gait type (value from CUSTOM_DOG_GAIT_TYPE).</field>
+        </message>
+
+        <message id="51862" name="CUSTOM_DOG_CURRENT_USAGE_MODE">
+            <description>
+                Current usage mode. Sent in response to COMMAND_LONG
+                MAV_CMD_CUSTOM_DOG_GET_CURRENT_USAGE_MODE (51969).
+            </description>
+            <field type="uint32_t" name="current_usage_mode">Current usage mode (value from CUSTOM_DOG_USAGE_MODE).</field>
+        </message>
+
+        <message id="51863" name="CUSTOM_DOG_CURRENT_SEARCH_LIGHT_STATE">
+            <description>
+                Current search light state. Sent in response to COMMAND_LONG
+                MAV_CMD_CUSTOM_DOG_GET_CURRENT_SEARCH_LIGHT_STATE (51970).
+            </description>
+            <field type="uint32_t" name="current_search_light_1">Search light 1 type (CUSTOM_DOG_SEARCH_LIGHT_OP value).</field>
+            <field type="uint32_t" name="current_search_light_2">Search light 2 type (CUSTOM_DOG_SEARCH_LIGHT_OP value).</field>
+        </message>
+
+        <message id="51864" name="CUSTOM_DOG_CURRENT_CAMERA">
+            <description>
+                Current camera. Sent in response to COMMAND_LONG
+                MAV_CMD_CUSTOM_DOG_GET_CURRENT_CAMERA (51971).
+            </description>
+            <field type="uint32_t" name="current_camera">Current camera type (1-based index or camera type value).</field>
+        </message>
+
+        <message id="51865" name="CUSTOM_DOG_CURRENT_AUTHORITY">
+            <description>
+                Current authority state. Sent in response to COMMAND_LONG
+                MAV_CMD_CUSTOM_DOG_GET_CURRENT_AUTHORITY (51972).
+            </description>
+            <field type="uint32_t" name="current_authority">Current authority state (value from CUSTOM_DOG_AUTHORITY_OP).</field>
+        </message>
+
+        <!-- Publish/Subscribe Messages (server publishes proactively, no MAV_CMD) -->
+        <message id="51866" name="CUSTOM_DOG_ALL_CURRENT_STATE">
+            <description>
+                Snapshot of current states. Excludes battery (dedicated SubscribeBatteryLevel API).
+                Sent in response to COMMAND_LONG MAV_CMD_CUSTOM_DOG_GET_ALL_CURRENT_STATE (51973),
+                or published by server proactively.
+            </description>
+            <field type="uint32_t" name="current_gait">Current gait type (CUSTOM_DOG_GAIT_TYPE value).</field>
+            <field type="uint32_t" name="current_usage_mode">Current usage mode (CUSTOM_DOG_USAGE_MODE value).</field>
+            <field type="uint32_t" name="current_camera">Current camera type (CUSTOM_DOG_CAMERA_TYPE value).</field>
+            <field type="uint32_t" name="current_authority">Current authority state (CUSTOM_DOG_AUTHORITY_OP value).</field>
+            <field type="uint32_t" name="current_search_light_1">Active search light type (CUSTOM_DOG_SEARCH_LIGHT_OP value).</field>
+            <field type="uint32_t" name="current_search_light_2">Search light 2 type (CUSTOM_DOG_SEARCH_LIGHT_OP value).</field>
+        </message>
+
+        <message id="51867" name="CUSTOM_DOG_ERROR_CODE">
+            <description>
+                Error code. Published by server when an error occurs.
+                No associated MAV_CMD; this is a publish/subscribe message.
+                The meaning of each code is defined at the application layer.
+            </description>
+            <field type="uint32_t" name="error_code">User-defined error code.</field>
         </message>
     </messages>
 

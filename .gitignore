@@ -20,4 +20,10 @@ include/
 *.pyc
 include/mavlink/v1.0
 .idea
-/.vscode
+.vscode
+.specstory
+.cursorindexingignore
+validate_xml
+mavlink_2_common.lua
+pip-dependencies
+
