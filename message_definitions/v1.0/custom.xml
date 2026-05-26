@@ -1382,6 +1382,11 @@
             <field type="char[64]" name="name">The name of audio file.</field>
             <field type="uint32_t" name="index">Zero-based index of this audio since vehicle was armed.</field>
         </message>
+        <message id="20402" name="SKYLINK_STATUS">
+            <description>Status of skylink system.</description>
+            <field type="int32_t" name="network_module_signal_quality">Current network signal quality.</field>
+            <field type="float" name="network_module_latency_ms">Current network latency (in milliseconds).</field>
+        </message>
 
 
         <!-- 20500~50599 is light-->
