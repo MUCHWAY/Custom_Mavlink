@@ -550,6 +550,42 @@
             </description>
             <field type="uint32_t" name="error_code">User-defined error code.</field>
         </message>
+
+        <message id="51868" name="CUSTOM_DOG_STREAM_DATA_1">
+            <description>
+                Generic stream data channel 1. Published by server proactively.
+                No associated MAV_CMD; field semantics are defined at the application layer.
+            </description>
+            <field type="uint32_t" name="param1">Generic unsigned parameter 1.</field>
+            <field type="uint32_t" name="param2">Generic unsigned parameter 2.</field>
+            <field type="uint32_t" name="param3">Generic unsigned parameter 3.</field>
+            <field type="float" name="param4">Generic float parameter 4.</field>
+            <field type="float" name="param5">Generic float parameter 5.</field>
+        </message>
+
+        <message id="51869" name="CUSTOM_DOG_STREAM_DATA_2">
+            <description>
+                Generic stream data channel 2. Published by server proactively.
+                No associated MAV_CMD; field semantics are defined at the application layer.
+            </description>
+            <field type="uint32_t" name="param1">Generic unsigned parameter 1.</field>
+            <field type="uint32_t" name="param2">Generic unsigned parameter 2.</field>
+            <field type="uint32_t" name="param3">Generic unsigned parameter 3.</field>
+            <field type="float" name="param4">Generic float parameter 4.</field>
+            <field type="float" name="param5">Generic float parameter 5.</field>
+        </message>
+
+        <message id="51870" name="CUSTOM_DOG_STREAM_DATA_3">
+            <description>
+                Generic stream data channel 3. Published by server proactively.
+                No associated MAV_CMD; field semantics are defined at the application layer.
+            </description>
+            <field type="uint32_t" name="param1">Generic unsigned parameter 1.</field>
+            <field type="uint32_t" name="param2">Generic unsigned parameter 2.</field>
+            <field type="uint32_t" name="param3">Generic unsigned parameter 3.</field>
+            <field type="float" name="param4">Generic float parameter 4.</field>
+            <field type="float" name="param5">Generic float parameter 5.</field>
+        </message>
     </messages>
 
 </mavlink>
