@@ -890,6 +890,18 @@
                 <param index="2" label="Servo State" minValue="0" maxValue="1" >Servo state,0:off,1:on</param>
             </entry>
 
+            <!-- 51039 -->
+            <entry value="51039" name="MAV_CMD_TK_GIMBAL_STEP_MOVE">
+                <description>Step-move the gimbal by a fixed angular amount in one direction.</description>
+                <param index="1" label="Direction" minValue="1" maxValue="4" increment="1">Direction: 1=up, 2=down, 3=left, 4=right.</param>
+                <param index="2" label="Step" units="deg">Angular step value, unit degree.</param>
+                <param index="3">Empty</param>
+                <param index="4">Empty</param>
+                <param index="5">Empty</param>
+                <param index="6">Empty</param>
+                <param index="7">Empty</param>
+            </entry>
+
             <!-- 51400~51599 is camera-->
 
             <entry value="51400" name="MAV_CMD_TK_CAMERA_CHANGE_PIP">
